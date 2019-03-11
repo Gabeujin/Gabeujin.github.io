@@ -1,0 +1,16 @@
+button.imgBtn{
+    padding: 0px;
+    float: right;
+    background-image : url(../img/issue.png);
+    background-size : cover;
+    width : 82.7px;
+    height : 37.7px;
+    border : none;
+    border-radius : 8px;
+    cursor : pointer;
+    outline : none;
+}
+
+a{
+    text-decoration: none;
+}
