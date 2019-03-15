@@ -6,6 +6,12 @@ a{
     text-decoration: none;
 }
 
+footer{
+    height: 2.5em;
+    background-color: #564848;
+    color: #d9b1b1;
+}
+
 body h2{
     padding-left:0.2em;
 }
