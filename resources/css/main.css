@@ -3,17 +3,18 @@ body{
 }
 
 a{
-    text-decoration: none;
+    text-decoration : none;
 }
 
 footer{
-    height: 2.5em;
-    background-color: #564848;
-    color: #d9b1b1;
+    margin-top          : 6em;
+    height              : 2.5em;
+    background-color    : #564848;
+    color               : #d9b1b1;
 }
 
 body h2{
-    padding-left:0.2em;
+    padding-left : 0.2em;
 }
 
 body>h1:first-child{
@@ -21,32 +22,32 @@ body>h1:first-child{
 }
 
 h1>div>p{
-    color: #b6c9ba;
-    margin: 1.5em 0px 0px 0px;
-    font-size: 0.3em;
+    color       : #b6c9ba;
+    margin      : 1.5em 0px 0px 0px;
+    font-size   : 0.3em;
 }
 
 button.imgBtn{
-    margin-right: 0.5em;
-    float: right;
-    background-image : url(../img/issue.png);
-    background-size : cover;
-    width : 82.7px;
-    height : 37.7px;
-    border-radius : 8px;
-    border : none;
-    cursor : pointer;
-    outline : none;
-    opacity: 0.5;
+    margin-right        : 0.5em;
+    float               : right;
+    background-image    : url(../img/issue.png);
+    background-size     : cover;
+    width               : 82.7px;
+    height              : 37.7px;
+    border-radius       : 8px;
+    border              : none;
+    cursor              : pointer;
+    outline             : none;
+    opacity             : 0.5;
 }
 button.imgBtn:hover{
-    opacity: 1;
+    opacity : 1;
 }
 
 div.pageTitle{
-    width : 100%;
-    height: 2.5em;
-    background-color: #564848;
-    color : #d9b1b1;
-    padding-left : 0.2em;
+    width               : 100%;
+    height              : 2.5em;
+    background-color    : #564848;
+    color               : #d9b1b1;
+    padding-left        : 0.2em;
 }
