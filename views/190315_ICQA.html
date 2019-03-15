@@ -23,7 +23,7 @@
     <hr />
     <div><br /></div>
     <div><span style="font-weight: bold;">1번.</span></div>
-    <div><img src="resources/190315_ICQA_files/Image.png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image.png" type="image/png" data-filename="Image.png" /></div>
     <div><br /></div>
     <div>풀이 시작을 누르게 되면 '로컬 영역 연결 속성'이 나타납니다.</div>
     <div>위의 IP Address 형식을 보게되면 8비트.8비트.8비트.8비트 로 총 32비트의 형식을 가지므로 IPv4 형식이란 것을 알 수 있습니다.</div>
@@ -35,11 +35,11 @@
     <div>11111111.11111111.11111111.00000000 = 255.255.255.0</div>
     <div><br /></div>
     <div>이렇게 계산이 끝나면</div>
-    <div><img src="resources/190315_ICQA_files/Image [1].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [1].png" type="image/png" data-filename="Image.png" /></div>
     <div>IPv4 프로토콜을 더블클릭하여 속성을 열어줍니다.</div>
     <div><br /></div>
     <div><br /></div>
-    <div><img src="resources/190315_ICQA_files/Image [2].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [2].png" type="image/png" data-filename="Image.png" /></div>
     <div>추가적인 설정을 하라는 지시가 없었으므로 위와 같이 적고 확인 후, 설정을 확인하면 문제 풀이가 종료됩니다.</div>
     <div><br /></div>
     <div><br /></div>
@@ -47,10 +47,10 @@
     <div><br /></div>
     <div><br /></div>
     <div><span style="font-weight: bold;">2번.</span></div>
-    <div><img src="resources/190315_ICQA_files/Image [3].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [3].png" type="image/png" data-filename="Image.png" /></div>
     <div><br /></div>
     <div>풀이시작을 누르면 아래와 같은 화면이 출력되죠.</div>
-    <div><img src="resources/190315_ICQA_files/Image [4].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [4].png" type="image/png" data-filename="Image.png" /></div>
     <div><br /></div>
     <div>위 화면은 <a
         href="https://ko.wikipedia.org/wiki/%EC%9D%B8%ED%84%B0%EB%84%B7_%EC%A0%95%EB%B3%B4_%EC%84%9C%EB%B9%84%EC%8A%A4">IIS</a>(Internet
@@ -58,32 +58,32 @@
     <div><br /></div>
     <div>2번문제의 경우, 제시문제와 같이 웹서버를 추가 설정 하라고 했으니</div>
     <div>웹 서버를 추가 해보도록 하겠습니다.</div>
-    <div><img src="resources/190315_ICQA_files/Image [5].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [5].png" type="image/png" data-filename="Image.png" /></div>
     <div>왼쪽 view의 '사이트'라는 항목에서 오른쪽마우스로 클릭 후,</div>
     <div>'웹 사이트 추가...' 항목을 클릭 해줍니다.</div>
     <div><br /></div>
     <div><br /></div>
-    <div><img src="resources/190315_ICQA_files/Image [6].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [6].png" type="image/png" data-filename="Image.png" /></div>
     <div>제시문제대로 입력해줍니다.</div>
     <div><br /></div>
     <div><br /></div>
-    <div><img src="resources/190315_ICQA_files/Image [7].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [7].png" type="image/png" data-filename="Image.png" /></div>
     <div>추가가 되었습니다.</div>
     <div>이제 허용 규칙을 지정해 보겠습니다.</div>
     <div>왼쪽 view에서 'ICQA'를 클릭하게 되면 다양한 서비스가 오른쪽 view에 나타나게 됩니다. 거기서 IIS 탭에 'IP 주소 및 도메인 제한'을 실행합니다.</div>
     <div><br /></div>
     <div><br /></div>
-    <div><img src="resources/190315_ICQA_files/Image [8].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [8].png" type="image/png" data-filename="Image.png" /></div>
     <div>빈 화면에서 오른쪽 마우스를 클릭하고. '허용 항목 추가'를 선택하여 클릭합니다.</div>
     <div><br /></div>
     <div>우리는 211.111.100.0 ~ 211.11.100.255 까지의 IP Address 를 접속허용 하도록 설정해야 합니다.</div>
-    <div><img src="resources/190315_ICQA_files/Image [9].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [9].png" type="image/png" data-filename="Image.png" /></div>
     <div>위와 같이 마지막비트에 0을 주고 서브넷 마스크 또한 마지막에 0을 주게되면</div>
     <div>211.111.100.xxx 형식의 ip는 모두 접속이 가능하게 됩니다.</div>
     <div><br /></div>
     <div>그리고 확인을 눌러줍니다!</div>
     <div>그리고 닫기를 눌러주면 아래처럼 경고 메시지가 뜹니다.</div>
-    <div><img src="resources/190315_ICQA_files/Image [10].png" type="image/png" data-filename="Image.png" /> </div>
+    <div><img src="../resources/190315_ICQA_files/Image [10].png" type="image/png" data-filename="Image.png" /> </div>
     <div><br /></div>
     <div>'예'를 누르시고 문제에서 나가주시면 됩니다.</div>
     <div><br /></div>
@@ -91,7 +91,7 @@
     <hr />
     <div><br /></div>
     <div><span style="font-weight: bold;">3번.</span></div>
-    <div><img src="resources/190315_ICQA_files/Image [11].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [11].png" type="image/png" data-filename="Image.png" /></div>
     <div>문제에 답이 나와있습니다!</div>
     <div><br /></div>
     <div>풀이시작을 눌러줍시다. 한번쯤은 봤을 법한 'services.msc' 실행 모습입니다.</div>
@@ -106,13 +106,13 @@
     <div><br /></div>
     <div>다시 문제로 돌아와, 제시문제를 보면 &quot;인터넷 정보 서비스 관리자를 사용하여...&quot;라고 적여있는 게 보이실 겁니다. 설명항목을 오름차순으로 정렬 후, 'ㅇ'에 해당하는 위치로
       스크롤을 내려줍니다.(참고로 더 길게보고싶은 탭 경계에서 더블클릭을 하게되면 해당 컬럼의 최대 길이를 갖는 속성값에 맞춰 길이가 늘어납니다.)</div>
-    <div><img src="resources/190315_ICQA_files/Image [12].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [12].png" type="image/png" data-filename="Image.png" /></div>
     <div><br /></div>
     <div>**저 경계 사이에서 마우스 커서가 '&lt;-&gt;' 모습을 보일 때, 더블클릭</div>
     <div><br /></div>
     <div><br /></div>
     <div>해당 속성값을 찾아 서비스 이름을 보면 &quot;World Wide Web Publishing Service&quot;를 찾을 수 있습니다.</div>
-    <div><img src="resources/190315_ICQA_files/Image [13].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [13].png" type="image/png" data-filename="Image.png" /></div>
     <div><br /></div>
     <div><br /></div>
     <div><br /></div>
@@ -122,7 +122,7 @@
         <div>현재 시스템에서 &quot;중지&quot;</div>
       </li>
     </ol>
-    <div> <img src="resources/190315_ICQA_files/Image [14].png" type="image/png" data-filename="Image.png" /></div>
+    <div> <img src="../resources/190315_ICQA_files/Image [14].png" type="image/png" data-filename="Image.png" /></div>
     <div><br /></div>
     <div><br /></div>
     <ol start="2">
@@ -130,9 +130,9 @@
         <div>시작유형에서 &quot;사용 안함&quot;</div>
       </li>
     </ol>
-    <div> <img src="resources/190315_ICQA_files/Image [15].png" type="image/png" data-filename="Image.png" /></div>
+    <div> <img src="../resources/190315_ICQA_files/Image [15].png" type="image/png" data-filename="Image.png" /></div>
     <div> </div>
-    <div> <img src="resources/190315_ICQA_files/Image [16].png" type="image/png" data-filename="Image.png" /></div>
+    <div> <img src="../resources/190315_ICQA_files/Image [16].png" type="image/png" data-filename="Image.png" /></div>
     <div><br /></div>
     <div>이렇게 설정해주시면 됩니다.(확인 후 종료)</div>
     <div><br /></div>
@@ -140,15 +140,15 @@
     <hr />
     <div><br /></div>
     <div><b>4번.</b></div>
-    <div><img src="resources/190315_ICQA_files/Image [17].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [17].png" type="image/png" data-filename="Image.png" /></div>
     <div><br /></div>
     <div>풀이시작을 누르겠습니다.</div>
-    <div><img src="resources/190315_ICQA_files/Image [18].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [18].png" type="image/png" data-filename="Image.png" /></div>
     <div>위와 같은 화면이 출력됩니다.</div>
     <div><br /></div>
     <div>제시문제에서 봤던 것처럼 당연히 IPv4 형식이므로, 왼쪽 view에서 'IPv4'에</div>
     <div>오른쪽 마우스를 올리고 '새 범위'를 클릭해줍니다.</div>
-    <div><img src="resources/190315_ICQA_files/Image [19].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [19].png" type="image/png" data-filename="Image.png" /></div>
     <div><br /></div>
     <div
       style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;">
@@ -159,50 +159,50 @@
     </div>
     <div><br /></div>
     <div><br /></div>
-    <div><img src="resources/190315_ICQA_files/Image [20].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [20].png" type="image/png" data-filename="Image.png" /></div>
     <div>'다음'을 클릭해줍니다.</div>
     <div><br /></div>
     <div><br /></div>
     <div><br /></div>
-    <div><img src="resources/190315_ICQA_files/Image [21].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [21].png" type="image/png" data-filename="Image.png" /></div>
     <div>제시된대로 이름과 설명을 입력한 후, '다음'을 클릭합니다.</div>
     <div><br /></div>
     <div><br /></div>
-    <div><img src="resources/190315_ICQA_files/Image [22].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [22].png" type="image/png" data-filename="Image.png" /></div>
     <div>입력하라는 값만 입력 후, '다음'을 클릭해줍니다.</div>
     <div>(길이에 따라 서브넷마스크 값이 변화합니다)</div>
     <div><br /></div>
     <div><br /></div>
     <div><br /></div>
     <div><br /></div>
-    <div><img src="resources/190315_ICQA_files/Image [23].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [23].png" type="image/png" data-filename="Image.png" /></div>
     <div>제외 주소의 범위를 입력 후 '추가'를 클릭합니다.</div>
     <div><br /></div>
-    <div><img src="resources/190315_ICQA_files/Image [24].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [24].png" type="image/png" data-filename="Image.png" /></div>
     <div>위와 같이 추가가 됩니다. 다시 '다음'버튼을 클릭해줍니다.</div>
     <div><br /></div>
     <div><br /></div>
     <div><br /></div>
-    <div><img src="resources/190315_ICQA_files/Image [25].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [25].png" type="image/png" data-filename="Image.png" /></div>
     <div>제시된 문제대로 임대 기간을 '6시간'으로 설정하고 '다음'을 클릭합니다.</div>
     <div><br /></div>
     <div><br /></div>
     <div><br /></div>
-    <div><img src="resources/190315_ICQA_files/Image [26].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [26].png" type="image/png" data-filename="Image.png" /></div>
     <div>radio 버튼에서 '아니오,나중에 구성하겠습니다'을 체크하고 다음으로 가면</div>
     <div><br /></div>
     <div><br /></div>
-    <div><img src="resources/190315_ICQA_files/Image [27].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [27].png" type="image/png" data-filename="Image.png" /></div>
     <div>새 범위 마법사가 끝나게 됩니다.</div>
     <div><br /></div>
     <div><br /></div>
     <div><br /></div>
     <div>위 제시문제 외로 추가설정사항이 나온다면</div>
-    <div><img src="resources/190315_ICQA_files/Image [28].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [28].png" type="image/png" data-filename="Image.png" /></div>
     <div>왼쪽 view 에서 부가설정을 진행할 수 있습니다.</div>
     <div><br /></div>
     <div>그리고 마지막으로 설정이 다 끝난 후, 우리가 등록한 범위를 오른쪽 마우스로 클릭 후,</div>
-    <div><img src="resources/190315_ICQA_files/Image [29].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [29].png" type="image/png" data-filename="Image.png" /></div>
     <div>&quot;<span style="font-weight: bold; font-size: 16pt;">활성화</span>&quot;를 꼭 눌러줍니다!</div>
     <div><br /></div>
     <div>그리고 문제를 종료합니다.</div>
@@ -211,7 +211,7 @@
     <div><br /></div>
     <div><br /></div>
     <div><b>5번.</b></div>
-    <div><img src="resources/190315_ICQA_files/Image [30].png" type="image/png" data-filename="Image.png" /></div>
+    <div><img src="../resources/190315_ICQA_files/Image [30].png" type="image/png" data-filename="Image.png" /></div>
     <div><br /></div>
     <div><br /></div>
     <div>업데이트중/190315</div>
