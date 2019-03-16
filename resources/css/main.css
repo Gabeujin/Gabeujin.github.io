@@ -4,9 +4,11 @@ body{
 
 a{
     text-decoration : none;
+    color           : #5c2d2d;
 }
 
 footer{
+    width               : 100%;
     margin-top          : 6em;
     height              : 2.5em;
     background-color    : #564848;
@@ -25,6 +27,16 @@ h1>div>p{
     color       : #b6c9ba;
     margin      : 1.5em 0px 0px 0px;
     font-size   : 0.3em;
+}
+
+ol li{
+    padding-top         : 0.5em;
+    color               : #5c2d2d;
+    font-size           : 1.2em; 
+}
+
+a:hover{
+    font-weight         : bolder;
 }
 
 button.imgBtn{
