@@ -1,0 +1,2053 @@
+<html>
+<head>
+  <title>APM3</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136316379-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-136316379-1');
+  </script>
+  <basefont face="D2Coding ligature" size="2" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="exporter-version" content="Evernote Windows/308292 (ko-KR, DDL); Windows/10.0.0 (Win64);"/>
+  <style>
+    body, td {
+      font-family: D2Coding ligature;
+      font-size: 12pt;
+    }
+  </style>
+</head>
+<body>
+<a name="1587"/>
+
+<div>
+<span>
+  <div>
+    <div>
+      <div>
+        <font face="D2Coding">이제 마지막 챕터3입니다!</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">참고로 이 글의 주제는 단지 Apache웹서버와 php엔진, MySQL데이터베이스서버를 사용하여 각자의 컴퓨터에</font>
+      </div>
+      <div>
+        <font face="D2Coding">APM 환경을 구축하고 서로 연동하는 것까지가 목표입니다!</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">그럼 이제 바로 MySQL을 설치해보도록 하겠습니다.<span style="color: rgb(255, 0, 0);">(19년 2월 기준 </span><span
+            style="color: rgb(255, 0, 0);">mysql-8.0.15-winx64</span> <span
+            style="color: rgb(255, 0, 0);">released)</span></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <hr />
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">일단 다운로드 받았던 압축파일을 마찬가지로 작업영역에 압축을 풀어주겠습니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image.png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">저는 알기 쉽게 'mysql8'로 폴더명을 변경해주겠습니다!</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">압축이 다 풀리면 바로 환경변수를 설정해보겠습니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [1].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding">win10 이라면 검색창에 '환경'만 입력해도 환경 변수 편집 항목이 표시됩니다!</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [2].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding">그 다음 위에서 '환경 변수(N)' 을 클릭해줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">그리고 이번엔 환경변수에서 변수를 새롭게 정의하여 PATH에 추가해보도록 하겠습니다! </font>
+      </div>
+      <div>
+        <font face="D2Coding">'JAVA'를 설치해보셨던 분들이라면 무슨말인지 어느정도 짐작이 갈 듯 하네요. </font>
+      </div>
+      <div><span style="font-weight: bold;">
+          <font face="D2Coding">**아래는 예시입니다!</font>
+        </span></div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [3].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [4].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding">시스템 변수에서 '새로 만들기'를 클릭해줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [5].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding">위 처럼 이름을 입력해줍니다. 변수이름은 누가봐도 알기 쉽게, </font>
+      </div>
+      <div>
+        <font face="D2Coding">누구라도 이해할 수 있게 명명해줘야 하는 센스를 겸비해야 합니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">이제 변수를 새로 정의해줬으니 </font>
+      </div>
+      <div>
+        <font face="D2Coding">시스템 변수에서 'Path'를 찾아 편집을 해줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [6].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding">제일 아래칸에서 빈 칸을 더블클릭하여 편집상태가 되면</font>
+      </div>
+      <div>
+        <font face="D2Coding">위와같이 %MYSQL_HOME%\bin 을 입력해줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">bin 으로 path 경로를 지정해주는 이유는 bin 폴더안에 그 이유가 있습니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [7].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding">bin 폴더안에 우리가 실행할 mysqld.exe 파일이 존재하기 때문에 bin폴더로 경로를 지정해주는 것입니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">(참고로 원화 표시는 표준 키보드 방식에서 '엔터'키 위에 있습니다.)</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">그 다음 관리자 권한으로 명령프롬포트(cmd) 를 실행합니다.</font>
+      </div>
+      <div><span style="font-weight: bold;">
+          <font face="D2Coding">win + s : cmd -&gt; 오른쪽마우스 -&gt; 관리자권한으로 실행</font>
+        </span></div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div><span style="font-weight: bold;">
+          <font face="D2Coding"><img src="../resources/APM3_files/Image [8].png" type="image/png" data-filename="Image.png" /></font>
+        </span></div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">이제 설치를 해보도록 하겠습니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [9].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding">입력모드에서 &quot;mysqld --install&quot;을 해줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">이상없이 설치가 됬고 환경변수가 잘 지정됬다면 위와 같이</font>
+      </div>
+      <div>
+        <font face="D2Coding">&quot;Service successfully installed.&quot;</font>
+      </div>
+      <div>
+        <font face="D2Coding">라는 말이 뜹니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">그리고! 혹여나 아래처럼</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [10].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding">이런 문구가 뜬다면 이미 설치가 된 상태입니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">그럴 땐 &quot;mysqld --remove&quot;를 통해 삭제해주시면 됩니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">그리고 위 사진과 같이 &quot;mysqld --version&quot;을 입력하여 </font>
+      </div>
+      <div>
+        <font face="D2Coding">현재 위치에 맞게 설치가 잘 되어있는지 확인 해주세요!</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">그리고 mysql설치폴더에 들어가서 &quot;data&quot;라는 폴더를 만들어 줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [11].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">기존의 버전들은 &quot;my.ini&quot; 라는 설정파일이 존재했었지만 최신버전들은 존재하지 않습니다. 때문에 새롭게 만들어주도록 하겠습니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">메모장을 열어줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">[mysqld]</font>
+      </div>
+      <div>
+        <font face="D2Coding">basedir = D:/workspaces/mysql8</font>
+      </div>
+      <div>
+        <font face="D2Coding">datadir = D:/workspaces/mysql8/data</font>
+      </div>
+      <div>
+        <font face="D2Coding">port = 3306</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [12].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding">위와 같이 입력해줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">참고로 경로는 본인이 mysql을 설치한 경로입니다!</font>
+      </div>
+      <div>
+        <font face="D2Coding">그리고 저장을 해줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">저장할 땐 mysql8 폴더 내 &quot;my.ini&quot; , 그리고 파일형식은 &quot;모든 파일&quot;,</font>
+      </div>
+      <div>
+        <font face="D2Coding">인코딩은 &quot;ANSI&quot;로 지정해주시면 됩니다!</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [13].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding">경로는 역슬래시(원화표시) 말고 일반 '/'로 경로를 설정하셔야 인식함에 있어 문제가 발생하지 않습니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div><span style="font-size: 18pt; font-weight: bold;">
+          <font face="D2Coding">참고로 우리가 설치 이전에 했어야 할 과정을 </font>
+        </span></div>
+      <div><span style="font-size: 18pt; font-weight: bold;">
+          <font face="D2Coding">이제서야 했네요.</font>
+        </span></div>
+      <div>
+        <font face="D2Coding">결국 설치 과정을 잘못 진행한 것입니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">다시 cmd를 관리자모드로 실행하겠습니다!</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">먼저 설치정보를 삭제 하겠습니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">&quot;mysqld --remove&quot;</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">그 다음 설정 초기화를 위해</font>
+      </div>
+      <div>
+        <font face="D2Coding">&quot;mysqld --initialize-insecure&quot;</font>
+      </div>
+      <div>
+        <font face="D2Coding">를 입력해줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">그러면 data 폴더에 하나하나 채워지기 시작합니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [14].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">그다음 다시 설치를 합니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">&quot;mysqld --install&quot;</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">그리고 win + s : &quot;services.msc&quot; 를 실행해줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [15].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">거기서 이름쪽을 한번 클릭하고 키보드로 'M'을 눌러주면</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [16].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">위 사진처럼 MySQL 이 설치된 것을 확인 할 수 있습니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">그 다음 다시 명령프롬포트에서</font>
+      </div>
+      <div>
+        <font face="D2Coding">&quot;net start mysql&quot; 을 입력해줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [17].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">위와 같이 잘 실행되었으면 다시 종료해줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [18].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">서버를 종료한 이유는 현재 root 암호가 텅 비어있기 때문입니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">이제 root 암호를 변경해보도록 하겠습니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">암호를 지정해주는 파일을 하나 만들어줍니다. -&gt; <a
+            href="https://dev.mysql.com/doc/refman/8.0/en/resetting-permissions.html">참고문서</a></font>
+      </div>
+      <div>
+        <font face="D2Coding">저는 mysql 작업폴더에 &quot;new_password.txt&quot; 로 만들어 주겠습니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><span
+            style="border: 0px; outline: 0px; font-size: 12.8304px; background: rgb(248, 248, 248); letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(0, 119, 170); font-variant-caps: normal; font-variant-ligatures: normal;">ALTER</span>
+          <span
+            style="border: 0px; outline: 0px; font-size: 12.8304px; background: rgb(248, 248, 248); letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(0, 119, 170); font-variant-caps: normal; font-variant-ligatures: normal;">USER</span>
+          <span
+            style="border: 0px; outline: 0px; font-size: 12.8304px; background: rgb(248, 248, 248); letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(102, 153, 0); font-variant-caps: normal; font-variant-ligatures: normal;">'root'</span><span
+            style="font-size: 12.8304px; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 248, 248); color: rgb(0, 0, 0); font-variant-caps: normal; font-variant-ligatures: normal;">@</span><span
+            style="border: 0px; outline: 0px; font-size: 12.8304px; background: rgb(248, 248, 248); letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(102, 153, 0); font-variant-caps: normal; font-variant-ligatures: normal;">'localhost'</span>
+          <span
+            style="border: 0px; outline: 0px; font-size: 12.8304px; background: rgb(248, 248, 248); letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(0, 119, 170); font-variant-caps: normal; font-variant-ligatures: normal;">IDENTIFIED</span>
+          <span
+            style="border: 0px; outline: 0px; font-size: 12.8304px; background: rgb(248, 248, 248); letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(0, 119, 170); font-variant-caps: normal; font-variant-ligatures: normal;">BY</span>
+          <span
+            style="border: 0px; outline: 0px; font-size: 12.8304px; background: rgb(248, 248, 248); letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(102, 153, 0); font-variant-caps: normal; font-variant-ligatures: normal;">'MyNewPass'</span><span
+            style="border: 0px; outline: 0px; font-size: 12.8304px; background: rgb(248, 248, 248); letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(153, 153, 153); font-variant-caps: normal; font-variant-ligatures: normal;">;</span>
+        </font>
+      </div>
+      <div>
+        <font face="D2Coding">내용은 위와같이 한줄만 넣어주고 'MyNewPass' 에 원하는 암호를 넣어줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">다시 cmd 창을 관리자 모드로 열어 특별하게 실행을 해봅니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">&quot;mysqld --init-file=D:\workspaces\mysql8\new_password.txt&quot;</font>
+      </div>
+      <div>
+        <font face="D2Coding">를 입력하게 되면 커맨드 창에 커서만 깜빡깜빡 하게 됩니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">(여기서 경로와 파일이름은 각자 다를 수 있습니다.)</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">그렇게 몇초뒤에 ctrl + c를 눌러 작업을 취소해주고</font>
+      </div>
+      <div>
+        <font face="D2Coding">암호설정파일을 삭제해줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">다시 정상적으로 서버를 실행해줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">&quot;net start mysql&quot; </font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">그리고</font>
+      </div>
+      <div>
+        <font face="D2Coding">&quot;mysql -uroot -p&quot; 를 입력합니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">이제 우리가 아까 설정한 암호를 그대로 입력하고 엔터를 치게되면</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [19].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding">위와 같이 root 계정을 암호를 입력해야만 접속이 가능하게 되었습니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">그 다음 status를 입력하면</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [20].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">위처럼 값이 나오게 됩니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">저기 문자셋을 보면 <span style="font-weight: bold;">utf8mb4 </span>라고 적혀있습니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">우리가 알던 utf-8과는 다르게 뭔가 더 길어졌죠?</font>
+      </div>
+      <div>
+        <font face="D2Coding">자세한 내용은 <a href="https://blog.lael.be/post/917">여기</a> 에서 친절하게 설명을 해주셨습니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">한번쯤은 읽어봐도 좋은 글이라고 생각합니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">다시 win + s : services.msc 로 들어가볼까요?</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [21].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding">이제 실행중임을 알 수 있습니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">만약 자동으로 DB서버가 실행하는 것을 막으려면 오른쪽마우스를 눌러</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [22].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">속성에서 시작유형을 수동으로 변경해주시기 바랍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [23].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">이제 우리가 테스트해 볼 계정과 Database를 만들어 보겠습니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">루트 계정으로 접속을 해줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [24].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">Database를 확인하고 mysql database를 사용해줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [25].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">'test' 데이터베이스를 만들어줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [26].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div><span style="text-decoration: line-through;">
+          <font face="D2Coding">사용자계정을 만들어줍니다.</font>
+        </span></div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [27].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding">위 형식으로 했을 시 연결테스트 페이지에서 연결이 안되는 현상이 발생했습니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">아래처럼 ~~ IDENTIFIED <span style="font-weight: bold;">WITH mysql_native_password</span> ~~ 
+          로 작성해서 계정을 만들어주시기 바랍니다.</font>
+      </div>
+      <div><span style="color: rgb(227, 0, 0); font-weight: bold;">
+          <font face="D2Coding">CREATE USER 'user'@'localhost' IDENTIFIED WITH mysql_native_password BY '????';</font>
+        </span></div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">계정에 test Database 권한을 부여합니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [28].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">그리고 동기화 명령어인 FLUSH 를 입력해줍니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [29].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">이제 계정이 만들어졌는지 확인해보겠습니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [30].png" type="image/png" data-filename="Image.png" /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <ol>
+        <li>
+          <div>
+            <font face="D2Coding">계정 로그인</font>
+          </div>
+        </li>
+        <li>
+          <div>
+            <font face="D2Coding">SHOW DATABASES;</font>
+          </div>
+        </li>
+      </ol>
+      <div>
+        <font face="D2Coding">위와같이 접근권한을 루트계정에서 허용했기 때문에 test db가 보이게 됩니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">이제 실질적으로 Apache와 연동을 해보겠습니다.</font>
+      </div>
+      <div>
+        <font face="D2Coding">현재 웹서버가 실행중이라면</font>
+      </div>
+      <div>
+        <font face="D2Coding">&quot;httpd -k restart&quot;</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+      <div>
+        <font face="D2Coding">서비스가 죽어있다면</font>
+      </div>
+      <div>
+        <font face="D2Coding">&quot;httpd -k start&quot;</font>
+      </div>
+      <div>
+        <font face="D2Coding">를 해주세요!</font>
+      </div>
+      <div>
+        <font face="D2Coding">(안된다면 컴퓨터를 다시시작 후, 환경변수를 한번 확인해주세요)</font>
+      </div>
+      <div>
+        <font face="D2Coding"><br /></font>
+      </div>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding">127.0.0.1 로 접속해줍니다.(IT WORK 페이지)</font>
+    </div>
+    <div>
+      <font face="D2Coding">웹서버가 잘 실행되었는지 확인 후,</font>
+    </div>
+    <div>
+      <font face="D2Coding"><img src="../resources/APM3_files/Image [31].png" type="image/png" data-filename="Image.png" /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding">127.0.0.1/phpinfo.php로 들어가줍니다.(챕터2에서 만들었던 php의 상세정보출력페이지)</font>
+    </div>
+    <div>
+      <font face="D2Coding"><img src="../resources/APM3_files/Image [32].png" type="image/png" data-filename="Image.png" /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding">db_conn.php(자유형식) 으로 아래 코드가 담긴 파일을 root directory에 만들어주세요.</font>
+      </span></div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding">저에겐 root directory가 아래 경로입니다.</font>
+      </span></div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding">D:\workspaces\apache2\Apache24\htdocs</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">
+        <font face="D2Coding">&lt;?php</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$host</span>
+        <span style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span> <span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">'localhost'</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;   :호스트</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$user</span>
+        <span style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span> <span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">'xxxx'</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;        :이름</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$pw</span>
+        <span style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span> <span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">'xxxx'</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;          :패스워드</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$dbName</span>
+        <span style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span> <span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">'xxxx'</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;     :데이터베이스 이름</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><br /></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$conn</span>
+        <span style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span> <span
+          style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">mysqli_connect</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$host</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">,</span> <span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$user</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">,</span> <span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$pw</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">,</span> <span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$dbName</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">);</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(197, 134, 192); line-height: 19px;">if</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$conn</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">){</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">echo</span>
+        <span style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;MySQL 접속
+          성공&lt;br/&gt;&quot;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">}</span><span
+          style="font-size: 12pt; color: rgb(197, 134, 192); line-height: 19px;">else</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">{</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">echo</span>
+        <span style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;MySQL 접속
+          실패&lt;br/&gt;&quot;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">
+        <font face="D2Coding">}</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><br /></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$sql</span>
+        <span style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span> <span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;SHOW VARIABLES LIKE
+          'version'&quot;</span><span style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;</span>
+      </font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$result</span>
+        <span style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span> <span
+          style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">mysqli_query</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$conn</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">,</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$sql</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">);</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$row</span>
+        <span style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span> <span
+          style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">mysqli_fetch_array</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$result</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">);</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">echo</span>
+        <span style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$row</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">[</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;Value&quot;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">];</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); color: rgb(212, 212, 212); line-height: 19px; white-space: pre;">
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">?</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div><span style="font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span style="font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span style="font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span style="font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span style="font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding">이제 모든 과정이 끝났으면 127.0.0.1/db_conn.php로 접속해주세요.</font>
+      </span></div>
+    <div>
+      <font face="D2Coding" style="font-size: 12pt;"><br /></font>
+    </div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding">화면에 접속성공, 그리고 mysql 버전이 표시되면 됩니다.</font>
+      </span></div>
+    <div><span style="font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span style="font-size: 11pt;">
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [33].png" type="image/png" data-filename="Image.png" /></font>
+      </span></div>
+    <div><span style="font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span style="font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding">한번 종합적으로 사용을 해보겠습니다.</font>
+      </span></div>
+    <div>
+      <font face="D2Coding"><span style="font-size: 12pt;">참고문서는 </span><a
+          href="https://www.w3schools.com/Php/php_ajax_database.asp"
+          style="font-size: 12pt;">https://www.w3schools.com/Php/php_ajax_database.asp</a><span
+          style="font-size: 12pt;"> 입니다.</span></font>
+    </div>
+    <hr />
+    <div><span style="font-size: 18pt;"><span style="font-size: 18pt; font-weight: bold;">
+          <font face="D2Coding">[MySQL]</font>
+        </span></span></div>
+    <div><span style="font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span style="font-size: 11pt;"><span style="font-size: 11pt;">
+          <font face="D2Coding"><img src="../resources/APM3_files/Image [34].png" type="image/png" data-filename="Image.png" />
+          </font>
+        </span></span></div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding">차례대로 설명을 해드리겠습니다.</font>
+      </span></div>
+    <ol>
+      <li>
+        <div><span style="font-size: 12pt;">
+            <font face="D2Coding">'test' database 사용</font>
+          </span></div>
+      </li>
+      <li>
+        <div><span style="font-size: 12pt;">
+            <font face="D2Coding">존재하는 테이블 확인하기</font>
+          </span></div>
+      </li>
+      <li>
+        <div><span style="font-size: 12pt;">
+            <font face="D2Coding">user 테이블 만들기(자동으로 증가하는 숫자타입의 id와(무조건 값이 들어와야 한다. 빈값은 안됨), 가변형태의 문자열 name, 그리고 id값을
+              기본키로 사용하겠다는 표시);</font>
+          </span></div>
+      </li>
+      <li>
+        <div><span style="font-size: 12pt;">
+            <font face="D2Coding">존재하는 테이블 확인하기</font>
+          </span></div>
+      </li>
+    </ol>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><img src="../resources/APM3_files/Image [35].png" type="image/png" data-filename="Image.png" /></font>
+    </div>
+    <ol>
+      <li>
+        <div><span style="font-size: 12pt;">
+            <font face="D2Coding">'john doe'라는 값을 user테이블의 name 컬럼에 집어넣는다.</font>
+          </span></div>
+      </li>
+      <li>
+        <div><span style="font-size: 12pt;">
+            <font face="D2Coding">'jane doe'라는 값을 user테이블의 name 컬럼에 집어넣는다.</font>
+          </span></div>
+      </li>
+      <li>
+        <div><span style="font-size: 12pt;">
+            <font face="D2Coding">user테이블의 값을 전부 선택하여 표시한다.</font>
+          </span></div>
+      </li>
+    </ol>
+    <div><span style="font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <hr />
+    <div><span
+        style="box-sizing: border-box; font-size: 18pt; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;"><span
+          style="font-size: 18pt; color: rgb(0, 0, 0); font-variant-caps: normal; font-variant-ligatures: normal; font-weight: bold;">
+          <font face="D2Coding">[html]</font>
+        </span></span></div>
+    <div><span
+        style="box-sizing: border-box; font-size: 18pt; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span style="font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span
+        style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;"><span
+          style="font-size: 12pt; color: rgb(0, 0, 0); font-variant-caps: normal; font-variant-ligatures: normal;">
+          <font face="D2Coding">먼저 우리의 index 페이지를 바꿔보겠습니다.</font>
+        </span></span></div>
+    <div><span
+        style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;"><span
+          style="font-size: 12pt; color: rgb(0, 0, 0); font-variant-caps: normal; font-variant-ligatures: normal;">
+          <font face="D2Coding">root directory의 index.html파일을 텍스트에디터로 열어줍니다.</font>
+        </span></span></div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding"><img src="../resources/APM3_files/Image [36].png" type="image/png" data-filename="Image.png" /></font>
+      </span></div>
+    <div><span
+        style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;"><span
+          style="font-size: 12pt; color: rgb(0, 0, 0); font-variant-caps: normal; font-variant-ligatures: normal;">
+          <font face="D2Coding">열어주게 되면 위와 같은 형식이 되있습니다.</font>
+        </span></span></div>
+    <div><span
+        style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span
+        style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span
+        style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span
+        style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span
+        style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;"><span
+          style="font-size: 12pt; color: rgb(0, 0, 0); font-variant-caps: normal; font-variant-ligatures: normal;">
+          <font face="D2Coding">아래의 코드를 그대로 복사해서 붙여넣기 해주세요!</font>
+        </span></span></div>
+    <div><span
+        style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;"><span
+          style="font-size: 12pt; color: rgb(0, 0, 0); font-variant-caps: normal; font-variant-ligatures: normal;">
+          <font face="D2Coding">(index.html)</font>
+        </span></span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">html</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">head</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">script</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">function</span>
+        <span style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">showName</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">name</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">) {</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">//showName() 함수 선언 : 파라미터로 name값을 받는다.</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">let</span> <span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">xmlhttp</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">//변수 xmlhttp 선언</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><br /></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(197, 134, 192); line-height: 19px;">if</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">name</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">==</span> <span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;&quot;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">) {</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">//아래 select 태그에서 option의 value가 텅 비어있을 때</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><br /></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">document</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">.</span><span
+          style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">getElementById</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;print&quot;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">).</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">innerHTML</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span> <span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;name print.&quot;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">//dom 객체에서 id가 print인 태그의 html코드를 &quot;name print&quot;로 바꿔준다.</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(197, 134, 192); line-height: 19px;">return</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">//그리고 함수 종료</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">}</span> <span
+          style="font-size: 12pt; color: rgb(197, 134, 192); line-height: 19px;">else</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">{</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">//위 조건을 제외하면 전부 이 코드를 실행</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(197, 134, 192); line-height: 19px;">if</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">window</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">.</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">XMLHttpRequest</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">) {</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">xmlhttp</span>
+        <span style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">new</span> <span
+          style="font-size: 12pt; color: rgb(78, 201, 176); line-height: 19px;">XMLHttpRequest</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">();</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">
+        <font face="D2Coding">}</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">xmlhttp</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">.</span><span
+          style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">onreadystatechange</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span> <span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">function</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">() {</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(197, 134, 192); line-height: 19px;">if</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">this</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">.</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">readyState</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">==</span> <span
+          style="font-size: 12pt; color: rgb(181, 206, 168); line-height: 19px;">4</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">&amp;&amp;</span> <span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">this</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">.</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">status</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">==</span> <span
+          style="font-size: 12pt; color: rgb(181, 206, 168); line-height: 19px;">200</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">) {</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">document</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">.</span><span
+          style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">getElementById</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;print&quot;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">).</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">innerHTML</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span> <span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">this</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">.</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">responseText</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">
+        <font face="D2Coding">}</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">
+        <font face="D2Coding">};</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">xmlhttp</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">.</span><span
+          style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">open</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;GET&quot;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">,</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;test.php?name=&quot;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">+</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">name</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">,</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">true</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">);</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">//데이터 전달 방식중 get방식으로 test.php에 보냄(비동기로)</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">xmlhttp</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">.</span><span
+          style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">send</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">();</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">//위의 전체
+          부분은</span> <a href="https://developer.mozilla.org/ko/docs/Web/Guide/AJAX/Getting_Started"
+          style="font-size: 24pt; line-height: 19px;">여기</a>
+        <font style="font-size: 12pt;"><span
+            style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">참고</span></font>
+      </font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">
+        <font face="D2Coding">}</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">
+        <font face="D2Coding">}</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">/</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">script</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;/</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">head</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">body</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">h1</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">It works!</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;/</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">h1</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">form</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">select</span> <span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">name</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;user&quot;</span> <span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">onchange</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;</span><span
+          style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">showName</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">this</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">.</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">value</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">)&quot;</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">&lt;!-- 옵션값이 바뀌게 되면 이벤트 실행(value값을 담아서) --&gt;</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">option</span> <span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">value</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;&quot;</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">name</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;/</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">option</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">&lt;!-- 텅비어있는 value 값 --&gt;</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">option</span> <span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">value</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;john doe&quot;</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">john doe</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;/</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">option</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">&lt;!-- value 값이 john doe --&gt;</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">option</span> <span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">value</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;jane doe&quot;</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">jane doe</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;/</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">option</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">&lt;!-- value 값이 jane doe --&gt;</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;/</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">select</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;/</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">form</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">hr</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">/&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">div</span> <span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">id</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;print&quot;</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">option name print.</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;/</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">div</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">&lt;!-- id가 print인 태그 --&gt;</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;/</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">body</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span style="background-color: rgb(30, 30, 30);">
+        <font face="D2Coding" style="font-size: 12pt;"><span
+            style="background-color: rgb(30, 30, 30); font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;/</span><span
+            style="background-color: rgb(30, 30, 30); font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">html</span><span
+            style="background-color: rgb(30, 30, 30); font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span>
+        </font>
+      </span></div>
+    <div><span
+        style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span
+        style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span
+        style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span
+        style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span
+        style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span
+        style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span
+        style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span
+        style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span
+        style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div><span style="font-size: 11pt;"><span style="font-size: 11pt;">
+          <font face="D2Coding"><img src="../resources/APM3_files/Image [37].png" type="image/png" data-filename="Image.png" />
+          </font>
+        </span></span></div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding">같은 위치에 새롭게 파일을 만들어주세요.</font>
+      </span></div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding">(test.php)</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;!</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">DOCTYPE</span> <span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">html</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">html</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">head</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">style</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(215, 186, 125); line-height: 19px;">table</span>
+        <span style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">{</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">border-collapse</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">:</span> <span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">collapse</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">width</span>
+        <span style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">:</span> <span
+          style="font-size: 12pt; color: rgb(181, 206, 168); line-height: 19px;">50%</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">
+        <font face="D2Coding">}</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><br /></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span
+          style="font-size: 12pt; color: rgb(215, 186, 125); line-height: 19px;">table</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">,</span> <span
+          style="font-size: 12pt; color: rgb(215, 186, 125); line-height: 19px;">td</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">,</span> <span
+          style="font-size: 12pt; color: rgb(215, 186, 125); line-height: 19px;">th</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">{</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">border</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">:</span> <span
+          style="font-size: 12pt; color: rgb(181, 206, 168); line-height: 19px;">1px</span> <span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">solid</span> <span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">black</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">padding</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">:</span> <span
+          style="font-size: 12pt; color: rgb(181, 206, 168); line-height: 19px;">5px</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">
+        <font face="D2Coding">}</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><br /></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(215, 186, 125); line-height: 19px;">th</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">{</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">text-align</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">:</span> <span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">left</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;}</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">/* 테이블의 스타일 설정 */</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">/</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">style</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;/</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">head</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">body</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><br /></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">
+        <font face="D2Coding">&lt;?php</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$name</span>
+        <span style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span> <span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$_GET</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">[</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">'name'</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">];</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">// get방식으로 name이란 값이 넘어오면 변수에 담는다.</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$conn</span>
+        <span style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span> <span
+          style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">mysqli_connect</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">'localhost'</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">,</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">'user'</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">,</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">'test'</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">,</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">'test'</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">);</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">// mysql db 연결('호스트'.'사용자계정','암호','db명')</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(197, 134, 192); line-height: 19px;">if</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(!</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$conn</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">) {</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(197, 134, 192); line-height: 19px;">die</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">'Could not connect: '</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">.</span> <span
+          style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">mysqli_error</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$conn</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">));</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">//연결 에러 일때</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">
+        <font face="D2Coding">}</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$sql</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">SELECT</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">*</span> <span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">FROM</span> <span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">user</span> <span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">WHERE</span> <span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">name</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span> <span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">'&quot;.</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$name</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">.&quot;'</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">//sql 문으로 &quot;user테이블에서 'name'컬럼값이 '$name인 것을 선택해 가져온다</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$result</span>
+        <span style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span> <span
+          style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">mysqli_query</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$conn</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">,</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$sql</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">);</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">//해당 sql을 db에 던져서 돌아온 값이 담긴다</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><br /></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">echo</span>
+        <span style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">
+        <font face="D2Coding">&lt;table&gt;</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">
+        <font face="D2Coding">&lt;tr&gt;</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">
+        <font face="D2Coding">&lt;th&gt;id&lt;/th&gt;</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">
+        <font face="D2Coding">&lt;th&gt;name&lt;/th&gt;</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&lt;/tr&gt;&quot;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">//table 머릿말 설정</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span
+          style="font-size: 12pt; color: rgb(197, 134, 192); line-height: 19px;">while</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$row</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">=</span> <span
+          style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">mysqli_fetch_array</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$result</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">)) {</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">//결과값이 없을 때 까지 계속 반복(배열형태로 한 행씩 담긴다.row)</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">echo</span>
+        <span style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;&lt;tr&gt;&quot;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">echo</span>
+        <span style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;&lt;td&gt;&quot;</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">.</span> <span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$row</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">[</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">'id'</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">]</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">.</span> <span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;&lt;/td&gt;&quot;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">//넘어온 배열에서 id값을 td에 입력</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">echo</span>
+        <span style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;&lt;td&gt;&quot;</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">.</span> <span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$row</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">[</span><span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">'name'</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">]</span> <span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">.</span> <span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;&lt;/td&gt;&quot;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">//넘어온 배열에서 name값을 td에 입력</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">echo</span>
+        <span style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;&lt;/tr&gt;&quot;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">
+        <font face="D2Coding">}</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding"><span style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">echo</span>
+        <span
+          style="font-size: 12pt; color: rgb(206, 145, 120); line-height: 19px;">&quot;&lt;/table&gt;&quot;</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(220, 220, 170); line-height: 19px;">mysqli_close</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">(</span><span
+          style="font-size: 12pt; color: rgb(156, 220, 254); line-height: 19px;">$conn</span><span
+          style="font-size: 12pt; color: rgb(212, 212, 212); line-height: 19px;">);</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;"><span
+        style="font-size: 12pt; color: rgb(106, 153, 85); line-height: 19px;">
+        <font face="D2Coding">//mysql db와의 연결 해제</font>
+      </span></div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">?</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;/</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">body</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div style="background-color: rgb(30, 30, 30); white-space: pre;">
+      <font face="D2Coding" style="font-size: 12pt;"><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&lt;/</span><span
+          style="font-size: 12pt; color: rgb(86, 156, 214); line-height: 19px;">html</span><span
+          style="font-size: 12pt; color: rgb(128, 128, 128); line-height: 19px;">&gt;</span></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding">아래처럼 인덱스 페이지에 들어가면(127.0.0.1)</font>
+      </span></div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding">javascript 비동기통신(ajax)를 활용해 페이지 이동 없이 php엔진을 활용하여 Database 와 값을 주고 받아 화면에 출력해줍니다.</font>
+      </span></div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding"><img src="../resources/APM3_files/2019-03-17 22;52;26_.gif" type="image/gif"
+            data-filename="2019-03-17 22;52;26_.gif" /></font>
+      </span></div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div>
+      <font face="D2Coding"><br /></font>
+    </div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding">이상 여기까지 였습니다. </font>
+      </span></div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding">긴말 필요 없네요.</font>
+      </span></div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding">수고링!</font>
+      </span></div>
+    <div><span style="font-size: 11pt;">
+        <font face="D2Coding"><br /></font>
+      </span></div>
+    <div>
+      <font face="D2Coding" style="font-size: 12pt;"><br /></font>
+    </div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding">그리고 안풀린다거나 궁금한 점, 다른 방식으로 풀었거나 신박한 방법으로 해결하시면</font>
+      </span></div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding">issue 로 글 많이 많이 남겨주세요!</font>
+      </span></div>
+    <div><span style="font-size: 12pt;">
+        <font face="D2Coding">감사합니다^^</font>
+      </span></div>
+  </div>
+  <div>
+    <font face="D2Coding"><br /></font>
+  </div>
+  <div>
+    <font face="D2Coding"><br /></font>
+  </div>
+  <div><b>
+      <font face="D2Coding">keyword</font>
+    </b></div>
+  <div><span style="font-weight: bold;">
+      <font face="D2Coding">net start mysql / net stop mysql / my.ini</font>
+    </span></div>
+  <div><span style="font-weight: bold;">
+      <font face="D2Coding">mysql 서버 실행 / mysql 서버 종료/ 설정파일</font>
+    </span></div>
+</span>
+</div></body></html> 
