@@ -5,6 +5,7 @@ body{
 a{
     text-decoration : none;
     color           : #5c2d2d;
+    word-break      : break-word;
 }
 
 footer{
