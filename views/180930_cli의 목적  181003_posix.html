@@ -1,100 +1,109 @@
-<html>
+<!DOCTYPE HTML>
+<html lang="ko">
+
 <head>
-    <title>180930_cli의 목적</title>
+  <title>180930_cli의 목적</title>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-  <meta name="exporter-version" content="Evernote Windows/308292 (ko-KR, DDL); Windows/10.0.0 (Win64);"/>
   <style>
-    body, td {
+    body,
+    td {
       font-family: D2Coding ligature;
       font-size: 12pt;
     }
   </style>
 </head>
+
 <body>
 
-<div>
-<span>
   <div>
-    <div>
+    <span>
       <div>
-        <div>file과 directory</div>
-        <div>정리의 효율성 증대. 복잡성 감소</div>
-        <div>file : 개개인 </div>
-        <div>directory : 같은 목적의 다수</div>
-        <div
-          style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;">
-          <div>명령어</div>
-          <div>pwd : print working directory</div>
-          <div>/ : root directory(절대경로)</div>
-          <div>.. &amp; ../ : 현재폴더에서 위로(상대경로)</div>
-          <div>./ : 현재위치에서(상대경로)</div>
-          <div><span style="font-size: 9pt; color: rgb(51, 51, 51); font-family: Monaco;">cd : change directory</span>
-          </div>
-          <div><span style="font-size: 9pt; color: rgb(51, 51, 51); font-family: Monaco;">ls : list 호출</span></div>
+        <div>
           <div>
-            <font face="Monaco">ls -l : 자세히</font>
+            <div>file과 directory</div>
+            <div>정리의 효율성 증대. 복잡성 감소</div>
+            <div>file : 개개인 </div>
+            <div>directory : 같은 목적의 다수</div>
+            <div
+              style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;">
+              <div>명령어</div>
+              <div>pwd : print working directory</div>
+              <div>/ : root directory(절대경로)</div>
+              <div>.. &amp; ../ : 현재폴더에서 위로(상대경로)</div>
+              <div>./ : 현재위치에서(상대경로)</div>
+              <div><span style="font-size: 9pt; color: rgb(51, 51, 51); font-family: Monaco;">cd : change
+                  directory</span>
+              </div>
+              <div><span style="font-size: 9pt; color: rgb(51, 51, 51); font-family: Monaco;">ls : list 호출</span></div>
+              <div>
+                <font face="Monaco">ls -l : 자세히</font>
+              </div>
+              <div><span style="font-size: 9pt; color: rgb(51, 51, 51); font-family: Monaco;">ls -a : 제외없이(숨긴파일형식도
+                  가져온다)</span></div>
+              <div><span style="font-size: 9pt; color: rgb(51, 51, 51); font-family: Monaco;">mv PATH &amp; NAME PATH2
+                  &amp;
+                  NAME2 : move and update</span></div>
+              <div><span style="font-size: 9pt; color: rgb(51, 51, 51); font-family: Monaco;">rm : remove</span></div>
+              <div><span style="font-size: 9pt; color: rgb(51, 51, 51); font-family: Monaco;">rm -r : 안전한 삭제(안전핀)</span>
+              </div>
+            </div>
+            <hr />
+            <div>posix 계열의 운영체제에선 파일이름 앞에 .000.txt 와 같이</div>
+            <div>앞에 .이 들어가면 숨긴파일로 인식한다.</div>
+            <div><br /></div>
+            <div>상대경로? 상대적으로 변하는 경로. 변화한다</div>
+            <div>절대경로? 절대적인 고정 경로. 변하지 않는다</div>
+            <hr />
+            <div>GUI 는 과정을, 행동을 배우면 너무 쉽다. 트리구조를 구성한다.</div>
+            <div>CLI 는 언어를 배우는 것과 같다. 마인드맵, 웹구조를 구성한다.</div>
+            <div><br /></div>
+            <div>시간의 순서에 따라 일을 진행할 수 있도록 CLI는 명령한다.</div>
+            <div>GUI는 다양한 가능성을 배제하고 자주 사용되는 명령을 그 순간 실행한다.</div>
+            <div><br /></div>
+            <div>공장으로 치면,</div>
+            <div>과자를 포장하는 거대한 기계가 있다.</div>
+            <div>그 기계엔 ON / OFF / EMERGENCY 총 3개의 버튼이 있다.</div>
+            <div>이것은  GUI다.</div>
+            <div>ON 버튼을 누르는 순간, 자동적으로 5초에 한번씩 포장지를 자르고, 그후 벨트는 움직이면서 과자를 담고, 포장을 한다.</div>
+            <div>이 일은 지속적인 반복적인 일이다.</div>
+            <div>이 명령은 CLI로 반복적으로 적용된다.</div>
+            <div><br /></div>
+            <div>GUI는 이처럼 우리의 행동에너지가 소비되는 대신, 시각적으로 편리함을 주고, 전문성이 없더라도 누구나 한번에 이해할 수 있는 구조로 갖춰진다.(UI/UX 디자인이 중요한 이유이기도
+              하다)
+            </div>
+            <div>위와는 반대로 CLI의 경우, 우리가 영어를 배워 사용하듯이 배움이 있어야 활용할 수 있다. 그만큼 전문성이 필요하다. 그리고 많이 익히고 배울수록, 다양한 환경에서 적용이 가능하다.
+            </div>
           </div>
-          <div><span style="font-size: 9pt; color: rgb(51, 51, 51); font-family: Monaco;">ls -a : 제외없이(숨긴파일형식도
-              가져온다)</span></div>
-          <div><span style="font-size: 9pt; color: rgb(51, 51, 51); font-family: Monaco;">mv PATH &amp; NAME PATH2 &amp;
-              NAME2 : move and update</span></div>
-          <div><span style="font-size: 9pt; color: rgb(51, 51, 51); font-family: Monaco;">rm : remove</span></div>
-          <div><span style="font-size: 9pt; color: rgb(51, 51, 51); font-family: Monaco;">rm -r : 안전한 삭제(안전핀)</span>
-          </div>
+          <div><br /></div>
+          <hr />
+          <div>한줄로 명령을 계속 입력할때.</div>
+          <div>; : 각 명령을 구분짓는  command seperator</div>
+          <div>&amp;&amp; : and operator &quot;앞선 명령이 실행되고 난 후&quot;</div>
+          <div><br /></div>
+          <div>&amp;&amp;를 사용한다면 좀 더 정교한 명령을 내릴 수 있다.</div>
+          <hr />
+          <div>shell script : computer automatic system을 구성할 수 있다</div>
+          <div><br /></div>
+          <div>다른사람이 사용할 수 있도록, package를 구성할것.</div>
+          <div>-package manager (잘 다룰수록 더욱 더 풍부해진다)</div>
         </div>
-        <hr />
-        <div>posix 계열의 운영체제에선 파일이름 앞에 .000.txt 와 같이</div>
-        <div>앞에 .이 들어가면 숨긴파일로 인식한다.</div>
+        <ol>
+          <li>
+            <div>linux : apt-get, yum</div>
+          </li>
+          <li>
+            <div>mac : homebrew</div>
+          </li>
+          <li>
+            <div>windows : chocolatey</div>
+          </li>
+        </ol>
         <div><br /></div>
-        <div>상대경로? 상대적으로 변하는 경로. 변화한다</div>
-        <div>절대경로? 절대적인 고정 경로. 변하지 않는다</div>
-        <hr />
-        <div>GUI 는 과정을, 행동을 배우면 너무 쉽다. 트리구조를 구성한다.</div>
-        <div>CLI 는 언어를 배우는 것과 같다. 마인드맵, 웹구조를 구성한다.</div>
-        <div><br /></div>
-        <div>시간의 순서에 따라 일을 진행할 수 있도록 CLI는 명령한다.</div>
-        <div>GUI는 다양한 가능성을 배제하고 자주 사용되는 명령을 그 순간 실행한다.</div>
-        <div><br /></div>
-        <div>공장으로 치면,</div>
-        <div>과자를 포장하는 거대한 기계가 있다.</div>
-        <div>그 기계엔 ON / OFF / EMERGENCY 총 3개의 버튼이 있다.</div>
-        <div>이것은  GUI다.</div>
-        <div>ON 버튼을 누르는 순간, 자동적으로 5초에 한번씩 포장지를 자르고, 그후 벨트는 움직이면서 과자를 담고, 포장을 한다.</div>
-        <div>이 일은 지속적인 반복적인 일이다.</div>
-        <div>이 명령은 CLI로 반복적으로 적용된다.</div>
-        <div><br /></div>
-        <div>GUI는 이처럼 우리의 행동에너지가 소비되는 대신, 시각적으로 편리함을 주고, 전문성이 없더라도 누구나 한번에 이해할 수 있는 구조로 갖춰진다.(UI/UX 디자인이 중요한 이유이기도 하다)
-        </div>
-        <div>위와는 반대로 CLI의 경우, 우리가 영어를 배워 사용하듯이 배움이 있어야 활용할 수 있다. 그만큼 전문성이 필요하다. 그리고 많이 익히고 배울수록, 다양한 환경에서 적용이 가능하다.
-        </div>
+        <div>top , htop , computer architecture(컴퓨터의 구조와 원리 파악)</div>
       </div>
       <div><br /></div>
-      <hr />
-      <div>한줄로 명령을 계속 입력할때.</div>
-      <div>; : 각 명령을 구분짓는  command seperator</div>
-      <div>&amp;&amp; : and operator &quot;앞선 명령이 실행되고 난 후&quot;</div>
-      <div><br /></div>
-      <div>&amp;&amp;를 사용한다면 좀 더 정교한 명령을 내릴 수 있다.</div>
-      <hr />
-      <div>shell script : computer automatic system을 구성할 수 있다</div>
-      <div><br /></div>
-      <div>다른사람이 사용할 수 있도록, package를 구성할것.</div>
-      <div>-package manager (잘 다룰수록 더욱 더 풍부해진다)</div>
-    </div>
-    <ol>
-      <li>
-        <div>linux : apt-get, yum</div>
-      </li>
-      <li>
-        <div>mac : homebrew</div>
-      </li>
-      <li>
-        <div>windows : chocolatey</div>
-      </li>
-    </ol>
-    <div><br /></div>
-    <div>top , htop , computer architecture(컴퓨터의 구조와 원리 파악)</div>
+    </span>
   </div>
-  <div><br /></div>
-</span>
-</div></body></html>
+</body>
+
+</html>

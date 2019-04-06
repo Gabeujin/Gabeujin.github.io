@@ -1,60 +1,68 @@
-<html>
+<!DOCTYPE HTML>
+<html lang="ko">
+
 <head>
   <title>180911_security_mysqlFiltering</title>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-  <meta name="exporter-version" content="Evernote Windows/308292 (ko-KR, DDL); Windows/10.0.0 (Win64);"/>
   <style>
-    body, td {
+    body,
+    td {
       font-family: D2Coding ligature;
       font-size: 12pt;
     }
   </style>
 </head>
-<body>
-<h1>180911_security_mysqlFiltering</h1>
 
-<div>
-<span>
+<body>
+  <h1>180911_security_mysqlFiltering</h1>
+
   <div>
-    <div>
-      <div>filtering?</div>
-      <div>: 문제가 될만한 정보를 사전에 미리 제거하는 것, 혹은 들어오면서 분별하는 것</div>
+    <span>
+      <div>
+        <div>
+          <div>filtering?</div>
+          <div>: 문제가 될만한 정보를 사전에 미리 제거하는 것, 혹은 들어오면서 분별하는 것</div>
+          <div><br /></div>
+          <div>escaping?</div>
+          <div>: 저장된 정보를 사용자에게 노출할 때 발생할 문제를 찾아가 제외,제거 시키는 것</div>
+          <div><br /></div>
+          <div>백신의 정밀검사 : escaping</div>
+          <div>백신의 실시간검사 : filtering</div>
+          <hr />
+          <div><img src="../resources/180911_security_mysqlFiltering_files/Image.png" type="image/png"
+              data-filename="Image.png" /></div>
+          <div>mysqli api &gt;&gt;</div>
+          <div>인자로 들어온 sql injection 공격을 막는다. pasing</div>
+          <div>sql구문에 들어가는 변수들(input값, url parameter 등)</div>
+        </div>
+        <div><br /></div>
+        <div><img src="../resources/180911_security_mysqlFiltering_files/Image [1].png" type="image/png"
+            data-filename="Image.png" />
+        </div>
+        <div>복수의 sql 명령을 실행할 때 사용하는 api 함수</div>
+        <div>mysql에서의 sql은 ddl,dml,dcl 후에 ;(세미콜론)으로</div>
+        <div>그 한 행을 마무리 짓는데, 여러 행을 세미콜론으로 구분지어</div>
+        <div>보내면 다중 명령이 실행된다. 이때 위의 api는 그 값을 return받는다.</div>
+        <hr />
+        <div><br /></div>
+        <div>사용자에게(혹은 주기적으로) 들어오는 데이터는 항상 의심의 눈초리로 지켜본다.</div>
+        <ul>
+          <li>
+            <div>개발자의 의도에 크나 큰 변수로 작용하는 부분이므로.</div>
+          </li>
+          <li>
+            <div>DB - &gt; SW로 흘러가기 때문에 썩은 물이 퍼질 수 있다. </div>
+          </li>
+        </ul>
+        <div><br /></div>
+        <hr />
+        <div><br /></div>
+      </div>
+      <div>htmlspecialchars = HTML에서 사용되는 특별한 의미를 가지는 (예약어[태그 등]) 문자를 변환한다.</div>
+      <div>mysqli_real_escape_string = sql 쿼리에서의 의미있는 문자를 이스케이프한다.(sql injection방지)</div>
       <div><br /></div>
-      <div>escaping?</div>
-      <div>: 저장된 정보를 사용자에게 노출할 때 발생할 문제를 찾아가 제외,제거 시키는 것</div>
-      <div><br /></div>
-      <div>백신의 정밀검사 : escaping</div>
-      <div>백신의 실시간검사 : filtering</div>
-      <hr />
-      <div><img src="../resources/180911_security_mysqlFiltering_files/Image.png" type="image/png" data-filename="Image.png" /></div>
-      <div>mysqli api &gt;&gt;</div>
-      <div>인자로 들어온 sql injection 공격을 막는다. pasing</div>
-      <div>sql구문에 들어가는 변수들(input값, url parameter 등)</div>
-    </div>
-    <div><br /></div>
-    <div><img src="../resources/180911_security_mysqlFiltering_files/Image [1].png" type="image/png" data-filename="Image.png" />
-    </div>
-    <div>복수의 sql 명령을 실행할 때 사용하는 api 함수</div>
-    <div>mysql에서의 sql은 ddl,dml,dcl 후에 ;(세미콜론)으로</div>
-    <div>그 한 행을 마무리 짓는데, 여러 행을 세미콜론으로 구분지어</div>
-    <div>보내면 다중 명령이 실행된다. 이때 위의 api는 그 값을 return받는다.</div>
-    <hr />
-    <div><br /></div>
-    <div>사용자에게(혹은 주기적으로) 들어오는 데이터는 항상 의심의 눈초리로 지켜본다.</div>
-    <ul>
-      <li>
-        <div>개발자의 의도에 크나 큰 변수로 작용하는 부분이므로.</div>
-      </li>
-      <li>
-        <div>DB - &gt; SW로 흘러가기 때문에 썩은 물이 퍼질 수 있다. </div>
-      </li>
-    </ul>
-    <div><br /></div>
-    <hr />
-    <div><br /></div>
+    </span>
   </div>
-  <div>htmlspecialchars = HTML에서 사용되는 특별한 의미를 가지는 (예약어[태그 등]) 문자를 변환한다.</div>
-  <div>mysqli_real_escape_string = sql 쿼리에서의 의미있는 문자를 이스케이프한다.(sql injection방지)</div>
-  <div><br /></div>
-</span>
-</div></body></html>
+</body>
+
+</html>

@@ -1,44 +1,52 @@
-<html>
+<!DOCTYPE HTML>
+<html lang="ko">
+
 <head>
   <title>180910_dbConn</title>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-  <meta name="exporter-version" content="Evernote Windows/308292 (ko-KR, DDL); Windows/10.0.0 (Win64);"/>
   <style>
-    body, td {
+    body,
+    td {
       font-family: D2Coding ligature;
       font-size: 12pt;
     }
   </style>
 </head>
-<body>
-<h1>180910_dbConn</h1>
 
-<div>
-<span>
+<body>
+  <h1>180910_dbConn</h1>
+
   <div>
-    <div>db와 통신하기위해(mysqli api 활용)</div>
-    <div>-스키마는 innoDB로 정의되어있다.</div>
-    <div><br /></div>
-    <div>순서대로 호스트이름, 사용자이름, 암호, 사용DB(스키마) 를 적어준다.</div>
-    <div><br /></div>
-    <div><img src="../resources/180910_dbConn_files/Image.png" type="image/png" data-filename="Image.png" /></div>
-    <div>원하는 sql을 입력하고</div>
-    <div>*select구문을 활용할 때엔 항상 limit를 지정해준다.(뻑이나는 것을 방지하는 좋은 습관)</div>
-    <div><br /></div>
-    <div>mysqli_query함수를 통해 db에 query를 보낸 결과값을 가져온다. =&gt; return php객체</div>
-    <div><br /></div>
-    <div><img src="../resources/180910_dbConn_files/Image [1].png" type="image/png" data-filename="Image.png" /></div>
-    <div>위에 보는 것처럼,</div>
-    <div>mysqli_fetch_array() 를 활용해서 한개의 행을 가져온다. =&gt; 배열형태로 parshing</div>
-    <div>php에선 NULL이 false와 같은 값을 가르킨다.</div>
-    <div>위의 while문을 활용해 계속 sql을 담아서 받으면</div>
-    <div>db를 통해 가져올 데이터가 바닥날 때까지 가져온다.</div>
-    <div><br /></div>
-    <hr />
-    <div><br /></div>
-    <div><img src="../resources/180910_dbConn_files/Image [2].png" type="image/png" data-filename="Image.png" /></div>
-    <div>개발진행중, 에러를 즉각즉각 화면에 보여주는 api함수</div>
-    <div>항상 작업시작할 때, require_once(errorDP.php) 입력</div>
+    <span>
+      <div>
+        <div>db와 통신하기위해(mysqli api 활용)</div>
+        <div>-스키마는 innoDB로 정의되어있다.</div>
+        <div><br /></div>
+        <div>순서대로 호스트이름, 사용자이름, 암호, 사용DB(스키마) 를 적어준다.</div>
+        <div><br /></div>
+        <div><img src="../resources/180910_dbConn_files/Image.png" type="image/png" data-filename="Image.png" /></div>
+        <div>원하는 sql을 입력하고</div>
+        <div>*select구문을 활용할 때엔 항상 limit를 지정해준다.(뻑이나는 것을 방지하는 좋은 습관)</div>
+        <div><br /></div>
+        <div>mysqli_query함수를 통해 db에 query를 보낸 결과값을 가져온다. =&gt; return php객체</div>
+        <div><br /></div>
+        <div><img src="../resources/180910_dbConn_files/Image [1].png" type="image/png" data-filename="Image.png" />
+        </div>
+        <div>위에 보는 것처럼,</div>
+        <div>mysqli_fetch_array() 를 활용해서 한개의 행을 가져온다. =&gt; 배열형태로 parshing</div>
+        <div>php에선 NULL이 false와 같은 값을 가르킨다.</div>
+        <div>위의 while문을 활용해 계속 sql을 담아서 받으면</div>
+        <div>db를 통해 가져올 데이터가 바닥날 때까지 가져온다.</div>
+        <div><br /></div>
+        <hr />
+        <div><br /></div>
+        <div><img src="../resources/180910_dbConn_files/Image [2].png" type="image/png" data-filename="Image.png" />
+        </div>
+        <div>개발진행중, 에러를 즉각즉각 화면에 보여주는 api함수</div>
+        <div>항상 작업시작할 때, require_once(errorDP.php) 입력</div>
+      </div>
+    </span>
   </div>
-</span>
-</div></body></html>
+</body>
+
+</html>
