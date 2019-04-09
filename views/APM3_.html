@@ -41,37 +41,37 @@
         <p>
           일단 다운로드 받았던 압축파일을 마찬가지로 작업영역에 압축을 풀어주겠습니다.
         </p>
-        <img src="../resources/APM3_files/Image.png" type="image/png" data-filename="Image.png" />
+        <img src="../resources/APM3__files/Image.png" type="image/png" data-filename="Image.png" />
         <p>
           저는 알기 쉽게 <q>mysql8</q>로 폴더명을 변경해주겠습니다!<br />압축이 다 풀리면 바로 환경변수를 설정해보겠습니다.
         </p>
-        <img src="../resources/APM3_files/Image [1].png" type="image/png" data-filename="Image.png" />
+        <img src="../resources/APM3__files/Image [1].png" type="image/png" data-filename="Image.png" />
         <p>
           win10 이라면 검색창에 <q>환경</q>만 입력해도 환경 변수 편집 항목이 표시됩니다!
         </p>
-        <img src="../resources/APM3_files/Image [2].png" type="image/png" data-filename="Image.png" />
+        <img src="../resources/APM3__files/Image [2].png" type="image/png" data-filename="Image.png" />
         <p>
           그 다음 위에서 <q>환경 변수(N)</q> 을 클릭해줍니다.<br />
           그리고 이번엔 환경변수에서 변수를 새롭게 정의하여 PATH에 추가해보도록 하겠습니다!<br />JAVA를 설치해보셨던 분들이라면 무슨말인지 어느정도 짐작이 갈 듯 하네요.<br />
           <strong>**아래는 예시입니다!</strong>
         </p>
-        <img src="../resources/APM3_files/Image [3].png" type="image/png" data-filename="Image.png" />
+        <img src="../resources/APM3__files/Image [3].png" type="image/png" data-filename="Image.png" />
         <br />
-        <img src="../resources/APM3_files/Image [4].png" type="image/png" data-filename="Image.png" />
+        <img src="../resources/APM3__files/Image [4].png" type="image/png" data-filename="Image.png" />
         <p>
           시스템 변수에서 <q>새로 만들기</q>를 클릭해줍니다.
         </p>
-        <img src="../resources/APM3_files/Image [5].png" type="image/png" data-filename="Image.png" />
+        <img src="../resources/APM3__files/Image [5].png" type="image/png" data-filename="Image.png" />
         <p>
           위 처럼 이름을 입력해줍니다. 변수이름은 누가봐도 알기 쉽게, 누구라도 이해할 수 있게 명명해줘야 하는 센스.<br />
           이제 변수를 새로 정의해줬으니 시스템 변수에서 <q>Path</q>를 찾아 편집을 해줍니다.
         </p>
-        <img src="../resources/APM3_files/Image [6].png" type="image/png" data-filename="Image.png" />
+        <img src="../resources/APM3__files/Image [6].png" type="image/png" data-filename="Image.png" />
         <p>
           제일 아래칸에서 빈 칸을 더블클릭하여 편집상태가 되면 위와같이 <q>%MYSQL_HOME%\bin</q> 을 입력해줍니다.<br />
           bin 으로 path 경로를 지정해주는 이유는 bin 폴더안에 그 이유가 있습니다.
         </p>
-        <img src="../resources/APM3_files/Image [7].png" type="image/png" data-filename="Image.png" />
+        <img src="../resources/APM3__files/Image [7].png" type="image/png" data-filename="Image.png" />
         <p>
           bin 폴더안에 우리가 실행할 mysqld.exe 파일이 존재하기 때문에 bin폴더로 경로를 지정해주는 것입니다.<br />
           (참고로 원화 표시는 표준 키보드 방식에서 Enter키 위에 있습니다.)
@@ -79,11 +79,11 @@
         <p>
           그 다음 관리자 권한으로 명령프롬포트(cmd) 를 실행합니다.<strong>win + s : cmd -&gt; 오른쪽마우스 -&gt; 관리자권한으로 실행</strong>
         </p>
-        <img src="../resources/APM3_files/Image [8].png" type="image/png" data-filename="Image.png" />
+        <img src="../resources/APM3__files/Image [8].png" type="image/png" data-filename="Image.png" />
         <p>
           이제 설치를 해보도록 하겠습니다.
         </p>
-        <img src="../resources/APM3_files/Image [9].png" type="image/png" data-filename="Image.png" />
+        <img src="../resources/APM3__files/Image [9].png" type="image/png" data-filename="Image.png" />
         <p>
           입력모드에서 <q>mysqld --install</q>을 해줍니다.
         </p>
@@ -92,14 +92,14 @@
         </p>
         <p>
           그리고! 혹시 아래와 같은 문구가 뜬다면<br>
-          <img src="../resources/APM3_files/Image [10].png" type="image/png" data-filename="Image.png" /><br />
+          <img src="../resources/APM3__files/Image [10].png" type="image/png" data-filename="Image.png" /><br />
           이미 설치가 된 상태입니다. 그럴 땐 <q>mysqld --remove</q>를 통해 삭제해주시면 됩니다.
         </p>
         <p>
           그리고 위 사진과 같이 <q>mysqld --version</q>을 입력하여<br />현재 위치에 맞게 설치가 잘 되어있는지 확인 해주세요!
         </p>
         <p>그리고 mysql설치폴더에 들어가서 &quot;data&quot;라는 폴더를 만들어 줍니다.</p>
-        <img src="../resources/APM3_files/Image [11].png" type="image/png" data-filename="Image.png" />
+        <img src="../resources/APM3__files/Image [11].png" type="image/png" data-filename="Image.png" />
         <p>
           기존의 버전들은 &quot;my.ini&quot; 라는 설정파일이 존재했었지만 최신버전들은 존재하지 않습니다. 때문에 새롭게 만들어주도록 하겠습니다.
         </p>
@@ -112,14 +112,14 @@ basedir = D:/workspaces/mysql8
 datadir = D:/workspaces/mysql8/data
 port = 3306
       </pre>
-        <img src="../resources/APM3_files/Image [12].png" type="image/png" data-filename="Image.png" />
+        <img src="../resources/APM3__files/Image [12].png" type="image/png" data-filename="Image.png" />
         <p>
           위와 같이 입력해줍니다.<br />
           <em>참고로 경로는 본인이 mysql을 설치한 경로입니다!</em><br />
           그리고 저장을 해줍니다.<br />
           저장할 땐 mysql8 폴더 내 <q>my.ini</q> , 그리고 파일형식은 <q>모든 파일</q>,인코딩은 <q>ANSI</q>로 지정해주시면 됩니다!
         </p>
-        <img src="../resources/APM3_files/Image [13].png" type="image/png" data-filename="Image.png" />
+        <img src="../resources/APM3__files/Image [13].png" type="image/png" data-filename="Image.png" />
         <h1><mark>190406!!!!!!</mark></h1>
         <div>
           경로는 역슬래시(원화표시) 말고 일반 '/'로 경로를 설정하셔야 인식함에 있어 문제가 발생하지 않습니다.
@@ -167,7 +167,7 @@ port = 3306
           그러면 data 폴더에 하나하나 채워지기 시작합니다.
         </div>
         <div>
-          <img src="../resources/APM3_files/Image [14].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [14].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
           <br />
@@ -194,7 +194,7 @@ port = 3306
           그리고 win + s : &quot;services.msc&quot; 를 실행해줍니다.
         </div>
         <div>
-          <img src="../resources/APM3_files/Image [15].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [15].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
           <br />
@@ -209,7 +209,7 @@ port = 3306
           <br />
         </div>
         <div>
-          <img src="../resources/APM3_files/Image [16].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [16].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
           <br />
@@ -230,7 +230,7 @@ port = 3306
           &quot;net start mysql&quot; 을 입력해줍니다.
         </div>
         <div>
-          <img src="../resources/APM3_files/Image [17].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [17].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
           <br />
@@ -242,7 +242,7 @@ port = 3306
           위와 같이 잘 실행되었으면 다시 종료해줍니다.
         </div>
         <div>
-          <img src="../resources/APM3_files/Image [18].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [18].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
           <br />
@@ -339,7 +339,7 @@ port = 3306
           이제 우리가 아까 설정한 암호를 그대로 입력하고 엔터를 치게되면
         </div>
         <div>
-          <img src="../resources/APM3_files/Image [19].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [19].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
           위와 같이 root 계정을 암호를 입력해야만 접속이 가능하게 되었습니다.
@@ -354,7 +354,7 @@ port = 3306
           그 다음 status를 입력하면
         </div>
         <div>
-          <img src="../resources/APM3_files/Image [20].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [20].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
           <br />
@@ -387,7 +387,7 @@ port = 3306
           다시 win + s : services.msc 로 들어가볼까요?
         </div>
         <div>
-          <img src="../resources/APM3_files/Image [21].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [21].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
           이제 실행중임을 알 수 있습니다.
@@ -408,7 +408,7 @@ port = 3306
           만약 자동으로 DB서버가 실행하는 것을 막으려면 오른쪽마우스를 눌러
         </div>
         <div>
-          <img src="../resources/APM3_files/Image [22].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [22].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
           <br />
@@ -432,7 +432,7 @@ port = 3306
           속성에서 시작유형을 수동으로 변경해주시기 바랍니다.
         </div>
         <div>
-          <img src="../resources/APM3_files/Image [23].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [23].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
           <br />
@@ -453,7 +453,7 @@ port = 3306
           루트 계정으로 접속을 해줍니다.
         </div>
         <div>
-          <img src="../resources/APM3_files/Image [24].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [24].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
           <br />
@@ -468,7 +468,7 @@ port = 3306
           Database를 확인하고 mysql database를 사용해줍니다.
         </div>
         <div>
-          <img src="../resources/APM3_files/Image [25].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [25].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
           <br />
@@ -486,7 +486,7 @@ port = 3306
           'test' 데이터베이스를 만들어줍니다.
         </div>
         <div>
-          <img src="../resources/APM3_files/Image [26].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [26].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
           <br />
@@ -501,7 +501,7 @@ port = 3306
             사용자계정을 만들어줍니다.
           </span></div>
         <div>
-          <img src="../resources/APM3_files/Image [27].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [27].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
           위 형식으로 했을 시 연결테스트 페이지에서 연결이 안되는 현상이 발생했습니다.
@@ -526,7 +526,7 @@ port = 3306
           계정에 test Database 권한을 부여합니다.
         </div>
         <div>
-          <img src="../resources/APM3_files/Image [28].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [28].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
           <br />
@@ -544,7 +544,7 @@ port = 3306
           그리고 동기화 명령어인 FLUSH 를 입력해줍니다.
         </div>
         <div>
-          <img src="../resources/APM3_files/Image [29].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [29].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
           <br />
@@ -565,7 +565,7 @@ port = 3306
           이제 계정이 만들어졌는지 확인해보겠습니다.
         </div>
         <div>
-          <img src="../resources/APM3_files/Image [30].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [30].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
           <br />
@@ -644,7 +644,7 @@ port = 3306
         웹서버가 잘 실행되었는지 확인 후,
       </div>
       <div>
-        <img src="../resources/APM3_files/Image [31].png" type="image/png" data-filename="Image.png" />
+        <img src="../resources/APM3__files/Image [31].png" type="image/png" data-filename="Image.png" />
       </div>
       <div>
         <br />
@@ -656,7 +656,7 @@ port = 3306
         127.0.0.1/phpinfo.php로 들어가줍니다.(챕터2에서 만들었던 php의 상세정보출력페이지)
       </div>
       <div>
-        <img src="../resources/APM3_files/Image [32].png" type="image/png" data-filename="Image.png" />
+        <img src="../resources/APM3__files/Image [32].png" type="image/png" data-filename="Image.png" />
       </div>
       <div>
         <br />
@@ -826,7 +826,7 @@ port = 3306
           <br />
         </span></div>
       <div><span style="font-size: 11pt;">
-          <img src="../resources/APM3_files/Image [33].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [33].png" type="image/png" data-filename="Image.png" />
         </span></div>
       <div><span style="font-size: 11pt;">
           <br />
@@ -850,7 +850,7 @@ port = 3306
           <br />
         </span></div>
       <div><span style="font-size: 11pt;"><span style="font-size: 11pt;">
-            <img src="../resources/APM3_files/Image [34].png" type="image/png" data-filename="Image.png" />
+            <img src="../resources/APM3__files/Image [34].png" type="image/png" data-filename="Image.png" />
 
           </span></span></div>
       <div><span style="font-size: 12pt;">
@@ -892,7 +892,7 @@ port = 3306
         <br />
       </div>
       <div>
-        <img src="../resources/APM3_files/Image [35].png" type="image/png" data-filename="Image.png" />
+        <img src="../resources/APM3__files/Image [35].png" type="image/png" data-filename="Image.png" />
       </div>
       <ol>
         <li>
@@ -938,7 +938,7 @@ port = 3306
             root directory의 index.html파일을 텍스트에디터로 열어줍니다.
           </span></span></div>
       <div><span style="font-size: 12pt;">
-          <img src="../resources/APM3_files/Image [36].png" type="image/png" data-filename="Image.png" />
+          <img src="../resources/APM3__files/Image [36].png" type="image/png" data-filename="Image.png" />
         </span></div>
       <div><span
           style="box-sizing: border-box; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;"><span
@@ -1357,7 +1357,7 @@ port = 3306
           <br />
         </span></div>
       <div><span style="font-size: 11pt;"><span style="font-size: 11pt;">
-            <img src="../resources/APM3_files/Image [37].png" type="image/png" data-filename="Image.png" />
+            <img src="../resources/APM3__files/Image [37].png" type="image/png" data-filename="Image.png" />
 
           </span></span></div>
       <div><span style="font-size: 12pt;">
@@ -1729,7 +1729,7 @@ port = 3306
           javascript 비동기통신(ajax)를 활용해 페이지 이동 없이 php엔진을 활용하여 Database 와 값을 주고 받아 화면에 출력해줍니다.
         </span></div>
       <div><span style="font-size: 12pt;">
-          <img src="../resources/APM3_files/2019-03-17 22;52;26_.gif" type="image/gif"
+          <img src="../resources/APM3__files/2019-03-17 22;52;26_.gif" type="image/gif"
             data-filename="2019-03-17 22;52;26_.gif" />
         </span></div>
       <div>
