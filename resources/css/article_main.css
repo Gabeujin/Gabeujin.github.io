@@ -1,0 +1,51 @@
+body {
+    margin            : 0px;
+    text-align        : center;
+    font-family       : D2Coding ligature;
+    background-color  :#564848;
+}
+
+ol{
+    margin        : 0 auto;
+    width         : fit-content;
+    -webkit-width : fit-content;
+    text-align    : start;
+}
+
+p {
+    font-family : D2Coding ligature;
+    font-size   : 1rem;
+    margin      : 1.3em 0px;
+    padding     : 0px 3.5em;
+}
+
+img {
+    max-width: 100%;
+}
+
+hr {
+    width: 90%;
+}
+
+
+@media(min-width:880px){
+    .container{
+        max-width         : 80%;
+        display           : inline-block;
+        background-color  : white;
+        border-left       : groove 1.5em #d9b1b1;
+        box-sizing        : content-box;
+        -webkit-box-sizing: content-box;
+    }
+}
+
+@media(max-width:800px){
+    .container{
+      width             : 100%;
+      display           : inline-block;
+      background-color  : white;
+      border-left       : groove 1.5em #d9b1b1;
+      box-sizing        : content-box;
+      -webkit-box-sizing: content-box;
+    }
+}
