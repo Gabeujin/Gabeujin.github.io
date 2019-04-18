@@ -1,67 +1,102 @@
+html{
+    cursor : default; 
+}
+
 body{
-    margin : 0px;
+    margin : 0 auto;
 }
 
-a{
-    text-decoration : none;
-    color           : #5c2d2d;
-    word-break      : break-word;
-}
-
-footer{
-    width               : 100%;
-    margin-top          : 6em;
-    height              : 2.5em;
+header{
+    padding-left        : 1.2rem;
     background-color    : #564848;
     color               : #d9b1b1;
 }
 
-body h2{
-    padding-left : 0.2em;
+header .pageTitle{
+    margin      : 0 0 0.5rem 0;
 }
 
-body>h1:first-child{
-    margin : 0px 0px 10px 0px;
+header span{
+    font-size   : 4rem;
+    word-break  : break-word;
+    color       : #ececec;
+    text-shadow : 
+    0.10rem 0 0 #d9b1b1,
+    0.20rem 0 0 #caa6a6,
+    0.30rem 0 0 #b19191,
+    0.40rem 0 0 #947878,
+    0.50rem 0 0 #7c6565,
+    0.60rem 0 0 #725d5d,
+    0.70rem 0 0 #695656,
+    0.85rem 0 0 #635151,
+    0.90rem 0 0 #5e4d4d,
+    0.95rem 0 0 #564848
+    ;
 }
 
-h1>div>p{
-    color       : #b6c9ba;
-    margin      : 1.5em 0px 0px 0px;
-    font-size   : 0.3em;
+header p{
+    margin-bottom   : 0.5rem;
+    padding-bottom  : 0.5rem;
+    font-size       : 1.2rem;
+    word-break: break-word;
 }
-
-ol li{
-    padding-top         : 0.5em;
-    margin-left         : 0.7em;
-    color               : #5c2d2d;
-    font-size           : 1.2em; 
-}
-
-a:hover{
-    font-weight         : bolder;
+#container{
+    width               : 100%;
+    box-sizing          : border-box;
+    -webkit-box-sizing  : border-box;
 }
 
 button.imgBtn{
     margin-right        : 0.5em;
     float               : right;
     background-image    : url(../img/issue.png);
-    background-size     : cover;
-    width               : 82.7px;
-    height              : 37.7px;
+    background-repeat   : round;
+    width               : 4.5rem;
+    height              : 2.58rem;
     border-radius       : 8px;
     border              : none;
     cursor              : pointer;
     outline             : none;
     opacity             : 0.5;
 }
+
 button.imgBtn:hover{
     opacity : 1;
 }
 
-div.pageTitle{
-    width               : 100%;
-    height              : 2.5em;
-    background-color    : #564848;
-    color               : #d9b1b1;
-    padding-left        : 0.2em;
+input.searchCustom{
+    border-radius : 0.1rem;
+}
+/* AMP */
+nav .sample-form{
+   padding : 1rem 0 0 1rem; 
+}
+
+amp-layout{
+    padding : 1rem 0.5rem 1rem 0.5rem;\
+    display: flex;
+}
+
+amp-layout div{
+    width           : 25rem;
+    height          : 25rem;
+    /* display: inline-block; */
+    border-radius   : 1.5rem;
+    margin          : 0.5rem;
+    float           : left;
+    font-size       : 10rem;
+    color           : #ffffff;
+    font-family     : D2Coding;
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+
+}
+
+amp-layout .first{
+    background-color: #caa6a6;
+}
+
+amp-layout .second{
+    background-color: #564848;
 }

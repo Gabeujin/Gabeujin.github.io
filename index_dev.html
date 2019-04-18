@@ -64,19 +64,52 @@
   <div id="container">
     <a href="https://github.com/Gabeujin/Gabeujin.github.io/issues/new"><button class="imgBtn" title="linked to 'gabeujin' github"></button></a>
     <nav>
-        <form class="sample-form" method="post" action="#" target="_top">
-          <input class="searchCustom" type="search" name="search" placeholder="검색" required>
-          <input class="searchCustom" type="submit" value="Go!">
+        <form class="sample-form" method="get"
+        action-xhr="https://ampbyexample.com/components/amp-form/submit-form-input-text-xhr"
+        target="_top">
+        <input class="searchCustom" type="search" name="search" placeholder="검색" required>
+        <input class="searchCustom" type="submit" value="Go!">
+        <div submit-success>
+          <template type="amp-mustache">
+            Success! Thanks {{name}} for trying the
+            <code>amp-form</code> demo! Try to insert the word "error" as a name input in the form to see how
+            <code>amp-form</code> handles errors.
+          </template>
+        </div>
+        <div submit-error>
+          <template type="amp-mustache">
+            Error! Thanks {{name}} for trying the
+            <code>amp-form</code> demo with an error response.
+          </template>
+        </div>
       </form>
     </nav>
-  <amp-layout layout="responsive">
-    <div class="first" >공</div>
-    <div class="second">사</div>
-    <div class="first">중</div>
-    <div class="second">공</div>
-    <div class="first">사</div>
-    <div class="second">중</div>
-  </amp-layout>
   </div>
+    <!-- <h2>네트워크관리사 2급 실기</h2>
+    <ol>
+      <li><a href="views/190315_ICQA_" title="네트워크관리사 실기 2급 챕터1">'네트워크 관리사 2급 실기풀이(케이블링 제외)'</a></li>
+    </ol>
+    <hr/>
+    <h2>githubPage_DNS(GoDaddy)</h2>
+    <ol>
+      <li><a href="views/190307_준비_" title="ready_to_connect">'작업 준비'</a></li>
+    </ol>
+    <hr/>
+    <h2>APM</h2>
+    <ol>
+      <li><a href="views/APM1_" title="APM_interlock_study_first_post">'윈도우10(64비트) 최신릴리즈에서 APM 최신버전으로 설치하고 연동하고 실행하기 - 1'</a></li>
+      <li><a href="views/APM2_" title="APM_interlock_study_second_post">'윈도우10(64비트) 최신릴리즈에서 APM 최신버전으로 설치하고 연동하고 실행하기 - 2'</a></li>
+      <li><a href="views/APM3_" title="APM_interlock_study_third_post">'윈도우10(64비트) 최신릴리즈에서 APM 최신버전으로 설치하고 연동하고 실행하기 - 3'</a></li>
+    </ol>
+    </ol>
+    <hr/>
+    <h2>AWS</h2>
+    <ol>
+      <li><a href="views/aws_WITH_gitbash_ubuntu_LAMP설정_" title="LAMP_setting_1">180723_aws_WITH_gitbash_ubuntu_LAMP설정(PHP7,APACHE2,MYSQL)_for_wordPress</a></li>
+      <li><a href="views/wordpress_설치(ing)_" title="LAMP_setting_2">180728_wordpress_설치(ing)-180730</a></li>
+      <li><a href="views/aws_ec2_도메인연결_https프로토콜_" title="LAMP_setting_3">180804_aws_ec2_도메인연결 및 https프로토콜</a></li>
+    </ol>
+    <script type="text/javascript" src="resources/js/luckyNumber.js"></script>
+  <footer></footer> -->
 </body>
 </html>
