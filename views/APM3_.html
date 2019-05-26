@@ -120,214 +120,86 @@ port = 3306
           저장할 땐 mysql8 폴더 내 <q>my.ini</q> , 그리고 파일형식은 <q>모든 파일</q>,인코딩은 <q>ANSI</q>로 지정해주시면 됩니다!
         </p>
         <img src="../resources/APM3__files/Image [13].png" type="image/png" data-filename="Image.png" />
-        <h1><mark>190406!!!!!!</mark></h1>
-        <div>
+        <p>
           경로는 역슬래시(원화표시) 말고 일반 '/'로 경로를 설정하셔야 인식함에 있어 문제가 발생하지 않습니다.
-        </div>
-        <div><span style="font-size: 18pt; font-weight: bold;">
-            참고로 우리가 설치 이전에 했어야 할 과정을 
-          </span></div>
-        <div><span style="font-size: 18pt; font-weight: bold;">
-            이제서야 했네요.
-          </span></div>
-        <div>
-          결국 설치 과정을 잘못 진행한 것입니다.
-        </div>
-        <div>
+        </p>
+        <p>
+          <strong>
+              참고로 우리가 설치 이전에 했어야 할 과정을 이제서야 했네요.
+          </strong>
+        </p>
+        <p>
+          결국 설치 과정을 잘못 진행한 것입니다.<br/>
           다시 cmd를 관리자모드로 실행하겠습니다!
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          먼저 설치정보를 삭제 하겠습니다.
-        </div>
-        <div>
-          &quot;mysqld --remove&quot;
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          그 다음 설정 초기화를 위해
-        </div>
-        <div>
-          &quot;mysqld --initialize-insecure&quot;
-        </div>
-        <div>
+        </p>
+        <p>
+          먼저 설치정보를 삭제 하겠습니다.<br/>
+          <q>mysqld --remove</q>
+        </p>
+        <p>
+          그 다음 설정 초기화를 위해<br/>
+          <q>mysqld --initialize-insecure</q><br/>
           를 입력해줍니다.
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
+        </p>
+        <p>
           그러면 data 폴더에 하나하나 채워지기 시작합니다.
-        </div>
-        <div>
-          <img src="../resources/APM3__files/Image [14].png" type="image/png" data-filename="Image.png" />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          그다음 다시 설치를 합니다.
-        </div>
-        <div>
-          &quot;mysqld --install&quot;
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          그리고 win + s : &quot;services.msc&quot; 를 실행해줍니다.
-        </div>
-        <div>
-          <img src="../resources/APM3__files/Image [15].png" type="image/png" data-filename="Image.png" />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
+        </p>
+        <img src="../resources/APM3__files/Image [14].png" type="image/png" data-filename="Image.png" />
+        <p>
+          그다음 다시 설치를 합니다.<br/>
+          <q>mysqld --install</q>
+        </p>
+        <p>
+          그리고 win + s : <q>services.msc</q> 를 실행해줍니다.
+        </p>
+        <img src="../resources/APM3__files/Image [15].png" type="image/png" data-filename="Image.png" />
+        <p>
           거기서 이름쪽을 한번 클릭하고 키보드로 'M'을 눌러주면
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <img src="../resources/APM3__files/Image [16].png" type="image/png" data-filename="Image.png" />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          위 사진처럼 MySQL 이 설치된 것을 확인 할 수 있습니다.
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          그 다음 다시 명령프롬포트에서
-        </div>
-        <div>
-          &quot;net start mysql&quot; 을 입력해줍니다.
-        </div>
-        <div>
-          <img src="../resources/APM3__files/Image [17].png" type="image/png" data-filename="Image.png" />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
+        </p>
+        <img src="../resources/APM3__files/Image [16].png" type="image/png" data-filename="Image.png" />
+        <p>
+        위 사진처럼 MySQL 이 설치된 것을 확인 할 수 있습니다.
+        </p>
+        <p>
+          그 다음 다시 명령프롬포트에서<br/>
+          <q>net start mysql</q> 을 입력해줍니다.
+        </p> 
+        <img src="../resources/APM3__files/Image [17].png" type="image/png" data-filename="Image.png" />
+        <p>
           위와 같이 잘 실행되었으면 다시 종료해줍니다.
-        </div>
-        <div>
-          <img src="../resources/APM3__files/Image [18].png" type="image/png" data-filename="Image.png" />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          서버를 종료한 이유는 현재 root 암호가 텅 비어있기 때문입니다.
-        </div>
-        <div>
-          이제 root 암호를 변경해보도록 하겠습니다.
-        </div>
-        <div>
-          암호를 지정해주는 파일을 하나 만들어줍니다. -&gt; <a
-            href="https://dev.mysql.com/doc/refman/8.0/en/resetting-permissions.html">참고문서</a>
-        </div>
-        <div>
-          저는 mysql 작업폴더에 &quot;new_password.txt&quot; 로 만들어 주겠습니다.
-        </div>
-        <div>
-          <span
-            style="border: 0px; outline: 0px; font-size: 12.8304px; background: rgb(248, 248, 248); letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(0, 119, 170); font-variant-caps: normal; font-variant-ligatures: normal;">ALTER</span>
-          <span
-            style="border: 0px; outline: 0px; font-size: 12.8304px; background: rgb(248, 248, 248); letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(0, 119, 170); font-variant-caps: normal; font-variant-ligatures: normal;">USER</span>
-          <span
-            style="border: 0px; outline: 0px; font-size: 12.8304px; background: rgb(248, 248, 248); letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(102, 153, 0); font-variant-caps: normal; font-variant-ligatures: normal;">'root'</span><span
-            style="font-size: 12.8304px; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(248, 248, 248); color: rgb(0, 0, 0); font-variant-caps: normal; font-variant-ligatures: normal;">@</span><span
-            style="border: 0px; outline: 0px; font-size: 12.8304px; background: rgb(248, 248, 248); letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(102, 153, 0); font-variant-caps: normal; font-variant-ligatures: normal;">'localhost'</span>
-          <span
-            style="border: 0px; outline: 0px; font-size: 12.8304px; background: rgb(248, 248, 248); letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(0, 119, 170); font-variant-caps: normal; font-variant-ligatures: normal;">IDENTIFIED</span>
-          <span
-            style="border: 0px; outline: 0px; font-size: 12.8304px; background: rgb(248, 248, 248); letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(0, 119, 170); font-variant-caps: normal; font-variant-ligatures: normal;">BY</span>
-          <span
-            style="border: 0px; outline: 0px; font-size: 12.8304px; background: rgb(248, 248, 248); letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(102, 153, 0); font-variant-caps: normal; font-variant-ligatures: normal;">'MyNewPass'</span><span
-            style="border: 0px; outline: 0px; font-size: 12.8304px; background: rgb(248, 248, 248); letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: pre; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(153, 153, 153); font-variant-caps: normal; font-variant-ligatures: normal;">;</span>
-
-        </div>
-        <div>
-          내용은 위와같이 한줄만 넣어주고 'MyNewPass' 에 원하는 암호를 넣어줍니다.
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
+        </p>
+        <img src="../resources/APM3__files/Image [18].png" type="image/png" data-filename="Image.png" />
+        <p>
+          서버를 종료한 이유는 현재 root 암호가 텅 비어있기 때문입니다. 이제 root 암호를 변경해보도록 하겠습니다.<br/>
+          암호를 지정해주는 파일을 하나 만들어줍니다. -&gt; <a href="https://dev.mysql.com/doc/refman/8.0/en/resetting-permissions.html">참고문서</a>
+        </p>
+        <p>
+          저는 mysql 작업폴더에 <q>new_password.txt</q> 로 만들어 주겠습니다.
+        </p>
+        <p class="focusSection">
+          <code title="DDL" class="sqlCode">
+            <strong>ALTER USER 'root'@'localhost' IDENTIFIED BY <mark>'MyNewPass'</mark></strong>;
+          </code>
+        </p>
+        <p>
+          내용은 위와같이 한줄만 넣어주고 'MyNewPass' 에 원하는 암호를 넣어줍니다.<br/>
           다시 cmd 창을 관리자 모드로 열어 특별하게 실행을 해봅니다.
-        </div>
-        <div>
-          &quot;mysqld --init-file=D:\workspaces\mysql8\new_password.txt&quot;
-        </div>
-        <div>
+        </p>
+        <p>
+          <q>mysqld --init-file=D:\workspaces\mysql8\new_password.txt</q>
+        </p>
+        <p>
           를 입력하게 되면 커맨드 창에 커서만 깜빡깜빡 하게 됩니다.
-        </div>
-        <div>
-          (여기서 경로와 파일이름은 각자 다를 수 있습니다.)
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          그렇게 몇초뒤에 ctrl + c를 눌러 작업을 취소해주고
-        </div>
-        <div>
-          암호설정파일을 삭제해줍니다.
-        </div>
-        <div>
-          <br />
-        </div>
+          <blockquote>
+            (여기서 경로와 파일이름은 각자 다를 수 있습니다. 그리고 저와는 다르게 뭔가 화면에 출력될수도..큼;;)
+          </blockquote>
+          그렇게 몇초뒤에 ctrl + c를 눌러 작업을 취소해주고 암호설정파일을 삭제해줍니다.
+        </p>
         <div>
           다시 정상적으로 서버를 실행해줍니다.
         </div>
         <div>
           &quot;net start mysql&quot; 
-        </div>
-        <div>
-          <br />
         </div>
         <div>
           그리고
@@ -343,12 +215,6 @@ port = 3306
         </div>
         <div>
           위와 같이 root 계정을 암호를 입력해야만 접속이 가능하게 되었습니다.
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
         </div>
         <div>
           그 다음 status를 입력하면
@@ -375,15 +241,6 @@ port = 3306
           한번쯤은 읽어봐도 좋은 글이라고 생각합니다.
         </div>
         <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
           다시 win + s : services.msc 로 들어가볼까요?
         </div>
         <div>
@@ -393,40 +250,10 @@ port = 3306
           이제 실행중임을 알 수 있습니다.
         </div>
         <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
           만약 자동으로 DB서버가 실행하는 것을 막으려면 오른쪽마우스를 눌러
         </div>
         <div>
           <img src="../resources/APM3__files/Image [22].png" type="image/png" data-filename="Image.png" />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
         </div>
         <div>
           속성에서 시작유형을 수동으로 변경해주시기 바랍니다.
@@ -435,19 +262,7 @@ port = 3306
           <img src="../resources/APM3__files/Image [23].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
           이제 우리가 테스트해 볼 계정과 Database를 만들어 보겠습니다.
-        </div>
-        <div>
-          <br />
         </div>
         <div>
           루트 계정으로 접속을 해줍니다.
@@ -456,46 +271,16 @@ port = 3306
           <img src="../resources/APM3__files/Image [24].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
           Database를 확인하고 mysql database를 사용해줍니다.
         </div>
         <div>
           <img src="../resources/APM3__files/Image [25].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
           'test' 데이터베이스를 만들어줍니다.
         </div>
         <div>
           <img src="../resources/APM3__files/Image [26].png" type="image/png" data-filename="Image.png" />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
         </div>
         <div><span style="text-decoration: line-through;">
             사용자계정을 만들어줍니다.
@@ -514,31 +299,10 @@ port = 3306
             CREATE USER 'user'@'localhost' IDENTIFIED WITH mysql_native_password BY '????';
           </span></div>
         <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
           계정에 test Database 권한을 부여합니다.
         </div>
         <div>
           <img src="../resources/APM3__files/Image [28].png" type="image/png" data-filename="Image.png" />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
         </div>
         <div>
           그리고 동기화 명령어인 FLUSH 를 입력해줍니다.
@@ -547,28 +311,10 @@ port = 3306
           <img src="../resources/APM3__files/Image [29].png" type="image/png" data-filename="Image.png" />
         </div>
         <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
           이제 계정이 만들어졌는지 확인해보겠습니다.
         </div>
         <div>
           <img src="../resources/APM3__files/Image [30].png" type="image/png" data-filename="Image.png" />
-        </div>
-        <div>
-          <br />
         </div>
         <ol>
           <li>
@@ -586,18 +332,6 @@ port = 3306
           위와같이 접근권한을 루트계정에서 허용했기 때문에 test db가 보이게 됩니다.
         </div>
         <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
-        <div>
           이제 실질적으로 Apache와 연동을 해보겠습니다.
         </div>
         <div>
@@ -605,9 +339,6 @@ port = 3306
         </div>
         <div>
           &quot;httpd -k restart&quot;
-        </div>
-        <div>
-          <br />
         </div>
         <div>
           서비스가 죽어있다면
@@ -621,21 +352,6 @@ port = 3306
         <div>
           (안된다면 컴퓨터를 다시시작 후, 환경변수를 한번 확인해주세요)
         </div>
-        <div>
-          <br />
-        </div>
-      </div>
-      <div>
-        <br />
-      </div>
-      <div>
-        <br />
-      </div>
-      <div>
-        <br />
-      </div>
-      <div>
-        <br />
       </div>
       <div>
         127.0.0.1 로 접속해줍니다.(IT WORK 페이지)
@@ -647,31 +363,10 @@ port = 3306
         <img src="../resources/APM3__files/Image [31].png" type="image/png" data-filename="Image.png" />
       </div>
       <div>
-        <br />
-      </div>
-      <div>
-        <br />
-      </div>
-      <div>
         127.0.0.1/phpinfo.php로 들어가줍니다.(챕터2에서 만들었던 php의 상세정보출력페이지)
       </div>
       <div>
         <img src="../resources/APM3__files/Image [32].png" type="image/png" data-filename="Image.png" />
-      </div>
-      <div>
-        <br />
-      </div>
-      <div>
-        <br />
-      </div>
-      <div>
-        <br />
-      </div>
-      <div>
-        <br />
-      </div>
-      <div>
-        <br />
       </div>
       <div><span style="font-size: 12pt;">
           db_conn.php(자유형식) 으로 아래 코드가 담긴 파일을 root directory에 만들어주세요.
