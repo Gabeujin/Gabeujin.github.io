@@ -1,4 +1,4 @@
 # Gabeujin.github.io
 
 homePage
-https://gabeujin.space
+https://Gabeujin.github.io
