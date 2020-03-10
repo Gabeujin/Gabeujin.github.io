@@ -31,6 +31,7 @@
       ]
     }
   </script>
+  <script src="resources/js/main.js"></script>
   <style amp-boilerplate>body
   {-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;
   -moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;
@@ -66,16 +67,15 @@
     <nav>
         <form class="sample-form" method="post" action="#" target="_top">
           <input class="searchCustom" type="search" name="search" placeholder="검색" required>
-          <input class="searchCustom" type="submit" value="Go!">
+          <input class="searchCustom" type="submit" onSubmit="return false;" value="Go!">
       </form>
     </nav>
-  <amp-layout layout="responsive">
-    <div class="first" >공</div>
-    <div class="second">사</div>
-    <div class="first">중</div>
-    <div class="second">공</div>
-    <div class="first">사</div>
-    <div class="second">중</div>
+  <amp-layout layout="container">
+    <div class="first kgj-category">1</div>
+    <div class="second kgj-category">2</div>
+    <div class="first kgj-category">3</div>
+    <div class="second kgj-category">4</div>
+    
   </amp-layout>
   </div>
 </body>
