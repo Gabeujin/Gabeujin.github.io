@@ -1,17 +1,16 @@
 html{
     cursor      : default;
     height      : 100%;
-    overflow    : auto;
+    overflow    : scroll;
 }
 
 body{
     margin  : 0 auto;
     width   : 100%;
     height  : 100%;
-    transition: 0.4s;
+    overflow    : scroll;
 }
 
-/* header section */
 header{
     padding-left        : 1.2rem;
     background-color    : #564848;
@@ -46,24 +45,92 @@ header p{
     font-size       : 1.2rem;
     word-break: break-word;
 }
-
-/*container section*/
 #container{
     width               : 100%;
     box-sizing          : border-box;
     -webkit-box-sizing  : border-box;
 }
 
-/* footer section */
-footer{
-    position        : absolute;
-    bottom          : 0rem;
-    width           : 100%;
-    margin-bottom   : 0rem;
+button.imgBtn{
+    margin-right        : 0.5em;
+    float               : right;
+    background-image    : url(../img/issue.png);
+    background-repeat   : round;
+    width               : 4.5rem;
+    height              : 2.58rem;
+    border-radius       : 8px;
+    border              : none;
+    cursor              : pointer;
+    outline             : none;
+    opacity             : 0.5;
 }
 
-footer p{
-    text-align  : center;
-    margin      : 0 auto;
-    padding     : 5px 0px 5px 0px;
+button.imgBtn:hover{
+    opacity : 1;
+}
+
+input.searchCustom{
+    border-radius : 0.2rem;
+}
+/* AMP */
+nav .sample-form{
+   padding : 1rem 0 0 1rem; 
+}
+
+amp-layout{
+    padding : 1rem 0.5rem 1rem 0.5rem;
+    height  : 100%;
+    width   : 100%;
+}
+
+amp-layout div.kgj-category{
+    min-width       : 90%;
+    height          : 20rem;
+    margin          : 0.5rem;
+    float           : left;
+    font-size       : 5em;
+    color           : #ffffff;
+    font-family     : D2Coding;
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+    text-align      : center; 
+}
+
+amp-layout div.first{
+    background-color: #caa6a6;
+}
+
+amp-layout div.second{
+    background-color: #857171;
+}
+
+amp-layout div.kgj-category:hover{
+    border-radius       : 0px;
+    -webkit-transition  : 0.5s;
+    -moz-transition     : 0.5s;
+    -o-transition       : 0.5s;
+    transition          : 0.5s;
+}
+
+amp-layout div.kgj-category:not(:hover){
+    border-radius       : 1.5rem;
+    -webkit-transition  : 0.2s;
+    -moz-transition     : 0.2s;
+    -o-transition       : 0.2s;
+    transition          : 0.2s;
+}
+
+div.kgj-category.showYou{
+    position        : relative;
+    height          : 100rem;
+    transition      : ease-in;
+    border-radius   : 1.5rem;
+}
+
+div.kgj-category.showOff{
+    position    : relative;
+    height      : 0rem;
+    visibility  : hidden;
+    transition  : ease-in;
 }

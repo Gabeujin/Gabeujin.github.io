@@ -1,2 +1,0 @@
-includeHTML();
-luckyNum(true);
