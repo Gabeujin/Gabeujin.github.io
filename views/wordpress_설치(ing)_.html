@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+
+<head>
+  <link rel="icon" type="image/x-icon" href="../resources/img/repo_favicon.ico" />
+  <link rel="stylesheet" href="../resources/css/article_main.css" />
+  <title>APM3</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136316379-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-136316379-1');
+  </script>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+</head>
+
+<body>
+  <h1>180728_wordpress_설치(ing) ----- 180730</h1>
+
+  <div class="container">
+    <span>
+      <div>
+        <div>
+          <ol>
+            <li>
+              <div>wget <a href="http://wordpress.org/latest.tar.gz">http://wordpress.org/latest.tar.gz</a></div>
+              <div>- var/www/ 경로 안에 압축파일을 설치한다.</div>
+              <div><br /></div>
+            </li>
+            <li>
+              <div>tar -zxvf latest.tar.gz</div>
+              <div>- 폴더내에 압축해제한다.</div>
+              <div>* wordpress폴더가 생성되는데, 이를 사용하기 위해선 웹접속 기본디렉토리[<a
+                  href="https://ko.wikipedia.org/wiki/%EB%A3%A8%ED%8A%B8_%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC">root
+                  directory</a>]를 변경해야한다![<a href="http://zzaps.tistory.com/242">default : /var/www/html</a>] &gt;&gt; ?
+              </div>
+              <div><br /></div>
+            </li>
+          </ol>
+          <hr />
+          <div><br /></div>
+        </div>
+        <ol>
+          <li>
+            <div>sudo nano /etc/apache2/sites-available/000-default.conf</div>
+            <div>- 나노에디터를 사용하여 기본값을 변경해준다.</div>
+            <div><br /></div>
+          </li>
+          <li>
+            <div>DocumentRoot를 원하는 경로로 지정해준다.(ex. /var/www/html &gt;&gt; /var/www)</div>
+            <div><br /></div>
+          </li>
+          <li>
+            <div><span
+                style="font-weight: bold; border: 0px; outline: 0px; font-size: 14px; background-image: initial; background-position: 0px 0px; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; color: rgb(51, 51, 51); font-family: Arial, sans-serif; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">sudo
+                chown -R www-data /var/www</span></div>
+            <div><span style="color: rgb(51, 51, 51);">
+                <font style="font-size: 14pt;">- 권한을 설정해준다.</font>
+              </span></div>
+            <div><span style="color: rgb(51, 51, 51);"><br /></span></div>
+          </li>
+          <li>
+            <div><span
+                style="font-weight: bold; border: 0px; outline: 0px; font-size: 14px; background-image: initial; background-position: 0px 0px; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; color: rgb(51, 51, 51); font-family: Arial, sans-serif; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">sudo
+                chmod -R 755 /var/www</span></div>
+            <div><span style="color: rgb(51, 51, 51); font-size: 14pt;">- 권한을
+                설정해준다.</span></div>
+            <div><span style="color: rgb(51, 51, 51);"><br /></span></div>
+          </li>
+          <li>
+            <div>sudo /etc/apache2/apache2 restart</div>
+            <div>- 변경한 설정이 적용될 수 있도록 재시작해준다.</div>
+            <div><br /></div>
+          </li>
+          <li>
+            <div>사이트 이름, 관리자(사용자이름),패스워드등을 입력해준다.</div>
+            <div><img src="../resources/wordpress_설치(ing)__files/Image.png" type="image/png"
+                data-filename="Image.png" width="405" /></div>
+            <div><br /></div>
+          </li>
+          <li>
+            <div>웹페이지에서 부가작업 진행.</div>
+            <div><img src="../resources/wordpress_설치(ing)__files/Image [1].png" type="image/png"
+                data-filename="Image.png" /></div>
+            <div><br /></div>
+          </li>
+        </ol>
+        <div><br /></div>
+      </div>
+    </span>
+  </div>
+</body>
+
+</html>

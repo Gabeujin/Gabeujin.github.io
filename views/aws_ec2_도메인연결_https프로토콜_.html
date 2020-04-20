@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+
+<head>
+  <link rel="icon" type="image/x-icon" href="../resources/img/repo_favicon.ico" />
+  <link rel="stylesheet" href="../resources/css/article_main.css" />
+  <title>APM3</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136316379-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-136316379-1');
+  </script>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+</head>
+
+<body>
+  <h1>180804_aws_ec2_도메인연결 및 https프로토콜</h1>
+
+  <div class="container">
+    <span>
+      <div>
+        <div>참고:<a
+            href="https://blog.perfectacle.com/2017/10/05/letsencrypt-with-certbot-feat-aws/">https://blog.perfectacle.com/2017/10/05/letsencrypt-with-certbot-feat-aws/</a>
+        </div>
+        <div><br /></div>
+        <hr />
+        <div><br /></div>
+        <div><a href="http://sanghaklee.tistory.com/18">http://sanghaklee.tistory.com/18</a></div>
+        <ol>
+          <li>
+            <div>먼저 elastic ip를 할당받는다.(고정아이피)</div>
+          </li>
+          <li>
+            <div style="text-align: justify;">dns와 연결한다(godaddy)x</div>
+            <div style="text-align: justify;"><img src="../resources/aws_ec2_도메인연결_https프로토콜__files/Image.png"
+                type="image/png" data-filename="Image.png" width="841" /></div>
+            <div style="text-align: justify;">ns를 godaddy에서 route 53으로 변경(마지막 '.'은 지워줘야 입력이 된다)</div>
+            <div style="text-align: justify;"><img
+                src="../resources/aws_ec2_도메인연결_https프로토콜__files/Image [1].png" type="image/png"
+                data-filename="Image.png" /></div>
+          </li>
+          <li>
+            <div>기본값(접속 ip[elastic ip])를 레코드에 추가해준다.</div>
+            <div><img src="../resources/aws_ec2_도메인연결_https프로토콜__files/Image [2].png" type="image/png"
+                data-filename="Image.png" /></div>
+            <div>-----시간이 지난 후, 변경사항이 적용.</div>
+          </li>
+          <li>
+            <div>위 과정을 거치면 접속이 안되거나 문제가 발생할 수 있다.(로그인 불가, css 깨짐 등) 이 문제를 해결하기 위해 &quot;eip&quot;/phpmyadmin 접속</div>
+          </li>
+          <li>
+            <div>db값 변경</div>
+            <div><img src="../resources/aws_ec2_도메인연결_https프로토콜__files/Image [3].png" type="image/png"
+                data-filename="Image.png" /></div>
+          </li>
+          <li>
+            <div>접속확인</div>
+          </li>
+        </ol>
+        <div><br /></div>
+        <div><br /></div>
+        <hr />
+        <div><br /></div>
+        <div
+          style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;">
+          <div>**문제점**</div>
+          <div>godaddy에서 &gt;&gt; amazon route 53으로 네임서버 연결 후, 기본값을 설정하고나서, 나는 로그인페이지가 안켜지고 수정씌는 아예 페이지가 css가 깨지는 현상 발견.
+          </div>
+          <div><br /></div>
+          <div>**해결책**</div>
+          <div>phpmyadmin으로 wordpress로 접속하여, wp_option 테이블의 siteurl,site의 값을 elastic ip로 변경해줬다.(해결)</div>
+        </div>
+      </div>
+      <div><br /></div>
+    </span>
+  </div>
+</body>
+
+</html>
