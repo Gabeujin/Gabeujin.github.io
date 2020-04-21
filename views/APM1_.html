@@ -1,0 +1,250 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+
+<head>
+  <link rel="icon" type="image/x-icon" href="../resources/img/repo_favicon.ico" />
+  <link rel="stylesheet" href="../resources/css/article_main.css" />
+  <title>APM3</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136316379-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-136316379-1');
+  </script>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+</head>
+
+<body>
+
+  <div class="container">
+    <span>
+      <div>
+        <div>우선 BITNAMI란 뭘까?</div>
+        <div>클라이언트에게 단 한번의 설치로 Windows 혹은 Linux에 서버엔진,웹서버,데이터베이스서버를 설치해주고 연동해주고 management를 사용하여 전체적인 관리까지 병행하는 소프트웨어
+          입니다.
+        </div>
+        <div><br /></div>
+        <div>우선 시작하기 전에 저처럼 멍청하게 하지마시고 먼저 Bitnami 사용법을 검색해보세요! -&gt; <a
+            href="https://www.google.com/search?safe=active&amp;ei=JO5_XJXWIaqSr7wPw_GuqAQ&amp;q=Bitnami+%EC%82%AC%EC%9A%A9%EB%B2%95&amp;oq=Bitnami+%EC%82%AC%EC%9A%A9%EB%B2%95&amp;gs_l=psy-ab.3.1.0j0i8i30l3.1689276.1689276..1689896...0.0..0.111.111.0j1......0....2j1..gws-wiz.7-US_zzSMJ0">검색</a>
+        </div>
+        <div><br /></div>
+        <div>윈도우 운영체제로는 bitnami - WAMP Stack이 가장 대중적으로 사용되죠.</div>
+        <div>WAMP?</div>
+        <div>W : Windows</div>
+        <div>A : Apache</div>
+        <div>M : MySQL</div>
+        <div>P : Php</div>
+        <div><br /></div>
+        <div
+          style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;">
+          <div>특징.</div>
+          <div><br /></div>
+          <div>편하게 사용하기엔 제일 좋다.</div>
+          <div>심지어 너무 편한데 관리하기도 용이하다.</div>
+          <div>시간을 절약할 수 있다.</div>
+        </div>
+        <hr />
+        <div>제가 위에 적었음에도 불구하고 아래로 눈길을 주셨다면 APM 설치방법, 윈도우10 APM설치, APACHE2 PHP7 MYSQL8 등으로 검색해서 들어오신 분들이겠죠.</div>
+        <div>그럼 불편한 길로 APM을 설치해봅시다.</div>
+        <div>APM?</div>
+        <div>A : Apache</div>
+        <div>P : Php</div>
+        <div>M : MySQL</div>
+        <div><br /></div>
+        <div><br /></div>
+        <div>APM은 직접 모든 프로그램을 설치하고 연동해야하며 서버또한 직접 CLI를 통해, 혹은 OS의 서비스관리 프로그램을 사용해 관리해야 합니다.</div>
+        <div>환경변수도 직접 입력해야 하고, 기본 설치파일도 본인이 직접 수정해야 해요. 안되면 또 찾아서 해야하고요. 저도 혼자서 검색해가면서 문제를 해결하다가 5시간을 보냈습니다. 인생...</div>
+        <div><br /></div>
+        <div><br /></div>
+        <div>그래서 지금부터 적어봅니다.</div>
+        <div>'윈도우10(64비트) 최신릴리즈에서 APM 최신버전으로 설치하고 때려박아 연동하고 실행하기 - 1'</div>
+        <div><span style="font-size: 10pt; color: rgb(255, 0, 0);">*지금부터 하는 모든 과정은 지극히 주관적인 설치과정입니다. 안되면 같이 찾아보고 해결해봅시다.
+            32비트는 똑같이 따라하셔도 어떤 문제가 발생할 지 모릅니다.</span></div>
+        <div>
+          <font style="font-size: 10pt;"><br /></font>
+        </div>
+        <div
+          style="box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;">
+          <div><span style="font-size: 9pt; color: rgb(51, 51, 51); font-family: Monaco;">궁금증이 생긴다면 검색을 하는 습관을
+              기릅시다! </span>
+          </div>
+          <div><span style="font-size: 9pt; color: rgb(51, 51, 51); font-family: Monaco;">**검색이 필요한 부분인 것 같다고 생각되는 곳에
+              표시를
+              해놨습니다!</span></div>
+        </div>
+        <hr />
+        <div>1)먼저 작업 전에 준비물이 필요하겠죠? 우선<span style="font-size: 16pt;"> </span><span
+            style="font-size: 16pt; font-weight: bold;">다운로드만!</span> 합니다.</div>
+        <div><br /></div>
+        <div>설치위치는 모두 자유롭게 받으시면 됩니다.</div>
+        <div>모든 설치에 앞서 무조건적으로 확인해야 될 것은 바로 자신의 운영체제와 맞냐-안맞냐입니다.(32비트:86 / 64비트:64)</div>
+        <div><br /></div>
+        <ol>
+          <li>
+            <div>아파치(<a href="https://www.apachelounge.com/download/">https://www.apachelounge.com/download/</a>)</div>
+          </li>
+        </ol>
+        <div><img src="../resources/APM1__files/APACHE1.jpg" type="image/jpeg" data-filename="APACHE1.jpg" /></div>
+        <div><br /></div>
+        <div>'VC15'를 확인하고 설치파일을 다운 받습니다.</div>
+        <div><br /></div>
+        <div><br /></div>
+        <ol start="2">
+          <li>
+            <div>PHP(<a href="https://windows.php.net/download/">https://windows.php.net/download/</a>)</div>
+          </li>
+        </ol>
+        <div><img src="../resources/APM1__files/php1.jpg" type="image/jpeg" data-filename="php1.jpg" /></div>
+        <div><br /></div>
+        <div>성능저하의 문제점을 개선한 것이 Non Thread Safe방식입니다.</div>
+        <div>하지만 Windows에 호환이 잘되는 건 Thread Safe버전이라고 하니 Thread Safe 로 다운 받습니다. -&gt; <a
+            href="https://www.google.com/search?q=php+non+thread+safe+thread+safe&amp;oq=php+non&amp;aqs=chrome.3.69i57j0l5.6453j0j8&amp;sourceid=chrome&amp;ie=UTF-8">검색</a>
+        </div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <ol start="3">
+          <li>
+            <div>MySQL(<a
+                href="https://dev.mysql.com/downloads/installer/">https://dev.mysql.com/downloads/installer/</a>)
+            </div>
+          </li>
+        </ol>
+        <div><img src="../resources/APM1__files/mysql.jpg" type="image/jpeg" data-filename="mysql.jpg" /></div>
+        <div>이건 둘 다 통합 설치 프로그램입니다. 32bit 밖에 없으니 다운받으세요.</div>
+        <div><br /></div>
+        <div><br /></div>
+        <hr />
+        <div><br /></div>
+        <div>2)먼저 <span style="font-size: 16pt; font-weight: bold;">아파치를</span> <span
+            style="font-size: 16pt; font-weight: bold;">설치</span> 해봅시다.</div>
+        <div><br /></div>
+        <div>다운로드 받은 압축파일을 원하는 위치에 풀어줍니다. 지금부터 작업영역은 &quot;D:\workspaces&quot;로 통일합니다.</div>
+        <div><img src="../resources/APM1__files/APACHE2.jpg" type="image/jpeg" data-filename="APACHE2.jpg" /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div>그 다음, 본인이 알기 쉽게 폴더이름을 바꿔줍니다.</div>
+        <div>나중에 그 경로로 바로바로 들어가기 쉽게!</div>
+        <div><img src="../resources/APM1__files/APACHE3.jpg" type="image/jpeg" data-filename="APACHE3.jpg" /></div>
+        <div><img src="../resources/APM1__files/APACHE4.jpg" type="image/jpeg" data-filename="APACHE4.jpg" /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div>메모장을 켜서 &quot;~&quot;\apache2\Apache24\conf&quot;로 들어가서 httpd.conf파일을 끌어와 열어줍니다. 그리고 아래 노랗게 칠한 부분을 ctrl+f로
+          키워드를
+          검색해 찾아가 각자의 작업영역으로 지정해줍니다.</div>
+        <div><img src="../resources/APM1__files/5.jpg" type="image/jpeg" data-filename="5.jpg" /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div>검색으로 &quot;Define SRVROOT&quot; 를 했을 때 안나온다면 위와 같이 새롭게 정의해주고 그 정의된 변수?를 위와 같이 ServerRoot 에
+          &quot;${SRVROOT}&quot;로 입력해주세요.</div>
+        <div><img src="../resources/APM1__files/6.jpg" type="image/jpeg" data-filename="6.jpg" /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div>그 다음엔 &quot;포트&quot;를 한번 확인해주세요. -&gt; <a
+            href="https://www.google.com/search?safe=active&amp;ei=dex_XNzsH6eMr7wP8KymQA&amp;q=server+port+listening&amp;oq=server+port+lis&amp;gs_l=psy-ab.3.2.0j0i30l2j0i10i30j0i5i30l6.5978.7751..9763...0.0..0.115.429.0j4......0....1..gws-wiz.......0i20i263j0i67.aAiFYzoRB78">검색</a>
+        </div>
+        <div><img src="../resources/APM1__files/7.jpg" type="image/jpeg" data-filename="7.jpg" /></div>
+        <div><img src="../resources/APM1__files/8.jpg" type="image/jpeg" data-filename="8.jpg" /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div>그리고 환경변수도 설정해주세요.</div>
+        <div>win + s : &quot;환경&quot; 키워드 입력 &gt; </div>
+        <div>시스템 환경 변수 편집 &gt; </div>
+        <div>환경변수 &gt; </div>
+        <div>사용자변수 및 시스템 변수에서 Path를 클릭 &gt; </div>
+        <div>&quot;본인작업영역&quot;\Apache24\bin 으로 추가.(제가 본 설명에선 시스템변수에만 추가하라고 했는데 저는 제대로 실행이 안돼서 둘 다 추가했습니다) &gt; </div>
+        <div>그리고 확인</div>
+        <div><img src="../resources/APM1__files/10.jpg" type="image/jpeg" data-filename="10.jpg" /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div>관리자모드로 cmd를 실행합니다.(win + s : cmd) &gt; </div>
+        <div>오른쪽 마우스로 클릭 또는 아래처럼 나오는 '항목'에서 &gt; </div>
+        <div>관리자권한으로 실행 &gt; </div>
+        <div>알림 &quot;예&quot; 클릭</div>
+        <div><img src="../resources/APM1__files/Image.png" type="image/png" data-filename="Image.png" /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div>&quot;httpd -k install&quot; 따옴표 빼고 입력해줍니다. -&gt; <a
+            href="https://www.google.com/search?q=httpd+-k+install&amp;oq=httpd+-k+install&amp;aqs=chrome..69i57.311j0j7&amp;sourceid=chrome&amp;ie=UTF-8">검색</a>
+        </div>
+        <div><br /></div>
+        <div>이렇게 진행했을 경우, 에러가 발생할 수도 있습니다.&quot;[ah00558]&quot;</div>
+        <div>그리고 전 제발 그 에러가 여러분의 cmd창에 나오기를 간절히 바랬습니다.</div>
+        <div><br /></div>
+        <div>혼자서 공부할 때 나오는 에러는 정말 가뭄의 단비처럼 소중하게 생각하세요!</div>
+        <div>실무에서 나오면 큰일나니까..</div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div>다시 httpd.conf파일을 메모장으로 열어 아래와 같이 이메일과 <span style="font-weight: bold;">서버 이름</span>을 적어주세요.(이메일은 모르겠는데
+          서버이름을<span
+            style="font-size: medium; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(0, 0, 0); font-variant-caps: normal; font-variant-ligatures: normal;">(localhost
+            or 127.0.0.1)</span> 안적게되면 오류가 발생합니다.--&gt;<a
+            href="https://www.google.com/search?q=ah00558+apache2+%EC%97%90%EB%9F%AC&amp;oq=ah&amp;aqs=chrome.1.69i57j69i59j69i61j0l3.1879j0j7&amp;sourceid=chrome&amp;ie=UTF-8">검색</a>)
+        </div>
+        <div><img src="../resources/APM1__files/9.jpg" type="image/jpeg" data-filename="9.jpg" /></div>
+        <div><br /></div>
+        <div><br /></div>
+        <div>그리고 혹시 모르니 &quot;httpd -k uninstall&quot;을 실행해줍니다. 깔끔하게.</div>
+        <div><br /></div>
+        <div><br /></div>
+        <div>그리고 다시 </div>
+        <div>&quot;httpd -k install&quot; &gt;</div>
+        <div>&quot;httpd -k start&quot; </div>
+        <div>를 차례대로 입력해줍니다.</div>
+        <div>
+          <font style="font-size: 16pt;"><br /></font>
+        </div>
+        <div><span style="font-size: 16pt; font-weight: bold;">**그리고 명령어에 대해선 cmd창에 &quot;httpd /?&quot;를 검색해주면 간단한 메뉴얼이
+            나옵니다.</span></div>
+        <div>
+          <font style="font-size: 16pt;"><br /></font>
+        </div>
+        <div>
+          <font style="font-size: 16pt;"><br /></font>
+        </div>
+        <div><br /></div>
+        <div>cmd 창 화면에 마치 아무일도 없었다는 듯이 새롭게 커서가 깜빡인다면 실행이 된겁니다.</div>
+        <div>아래를 클릭해주세요.</div>
+        <div><a href="about:blank">비어있는 새창열기!</a></div>
+        <div><br /></div>
+        <div>그리고 주소창에 127.0.0.1 혹은 localhost를 입력해줬을 때</div>
+        <div><img src="../resources/APM1__files/Image [1].png" type="image/png" data-filename="Image.png" /></div>
+        <div>위 텍스트가 페이지 상에 출력된다면 아파치 설치 성공입니다!</div>
+        <div><br /></div>
+        <div><br /></div>
+        <div>안된다면 그 이유는 차차 함께 찾아보죠. 저도 아무고토 모릅니다ㅎ</div>
+        <div>가독성 떨어지는 파일 읽느라 고생하셨습니다.</div>
+        <div><br /></div>
+        <div>다음챕터에선 PHP 설치를 해보겠습니다!</div>
+        <div><br /></div>
+        <div><br /></div>
+        <div><span style="font-weight: bold;">key word </span></div>
+        <div><span style="font-weight: bold;">httpd -k start / httpd -k stop</span></div>
+      </div>
+      <div><span style="font-weight: bold;">서버 시작 / 중지</span></div>
+      <div><br /></div>
+    </span>
+  </div>
+</body>
+
+</html>
