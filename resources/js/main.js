@@ -55,13 +55,13 @@ const setColor = (level, type)=>{
     //0.7    
     //bright
     if(type == "bgColor"){
-        if(colorLv > 5 && colorLv < 16){
+        if(colorLv > 6 && colorLv < 16){
             //시간이 흐를수록 높은 온도색
             rtnColor = color.map(item => Math.round(item/10) * (colorLv-5));
         }else if(level > 15 || level < 3){
             if(level < 24 && level > 15){
                 //시간이 흐를수록 낮은 온도색
-                rtnColor = color.map(item => Math.round(item/10) * (26-colorLv));
+                rtnColor = color.map(item => Math.round(item/10) * (23-colorLv));
             }else{
                 //24시부터 0이므로 연산방식 변경
                 rtnColor = color.map(item => Math.round(item/10) * (2-colorLv));

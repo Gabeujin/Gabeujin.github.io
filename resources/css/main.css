@@ -43,12 +43,22 @@ header span{
 header p{
     margin-bottom   : 0.5rem;
     padding-bottom  : 0.5rem;
-    font-size       : 1.2rem;
+    font-size       : 0.9rem;
     word-break      : break-word;
 }
 
 /*container section*/
-#container{
+nav{
+    text-align : center;
+}
+
+nav>button{
+    float : right;
+    margin-right : 5px;
+}
+
+/*container(section) section*/
+section{
     width               : 100%;
     box-sizing          : border-box;
     -webkit-box-sizing  : border-box;
