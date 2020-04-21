@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ParentNode type="test" master="kgj">
+    <metaInfo>
+        <name>hashTag</name>
+        <data>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus accusantium cum atque natus eius illo eveniet itaque laboriosam maiores nam reiciendis doloremque dicta, aliquid officia sit dignissimos? Vero, minima cumque.</data>
+    </metaInfo>
+    <text>
+        <top>머릿글</top>
+        <center>본문</center>
+        <bottom>꼬릿글</bottom>
+    </text>
+</ParentNode>

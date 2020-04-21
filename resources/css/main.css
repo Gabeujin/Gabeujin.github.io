@@ -47,7 +47,7 @@ header p{
     word-break      : break-word;
 }
 
-/*container section*/
+/*nav section*/
 nav{
     text-align : center;
 }
@@ -60,13 +60,26 @@ nav>button{
 /*container(section) section*/
 section{
     width               : 100%;
+    min-height          : 1vh;
     box-sizing          : border-box;
     -webkit-box-sizing  : border-box;
 }
 
+section contents{
+    width       : 80%;
+    margin      : 0 auto;
+    display     : block;
+    text-align  : center;
+}
+
+contents metaInfo{
+    display: block;
+    margin : 4rem 1rem;
+}
+
 /* footer section */
 footer{
-    position        : absolute;
+    position        : relative;
     bottom          : 0rem;
     width           : 100%;
     margin-bottom   : 0rem;

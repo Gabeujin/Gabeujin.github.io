@@ -17,4 +17,5 @@ let fnReady = function(){
         clock.style.color = setColor( Number(clock.innerText.split("일 ")[1].split("시")[0]), "font" );
     },1000);
 
+    includeSection();
 };
