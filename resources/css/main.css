@@ -1,0 +1,69 @@
+html{
+    cursor      : default;
+    height      : 100%;
+    overflow    : auto;
+}
+
+body{
+    margin  : 0 auto;
+    width   : 100%;
+    height  : 100%;
+    transition: 0.4s;
+}
+
+/* header section */
+header{
+    padding-left        : 1.2rem;
+    background-color    : #564848;
+    color               : #d9b1b1;
+}
+
+header .pageTitle{
+    margin      : 0 0 0.5rem 0;
+}
+
+header span{
+    font-size   : 4rem;
+    word-break  : break-word;
+    color       : #ececec;
+    text-shadow : 
+    0.10rem 0 0 #d9b1b1,
+    0.20rem 0 0 #caa6a6,
+    0.30rem 0 0 #b19191,
+    0.40rem 0 0 #947878,
+    0.50rem 0 0 #7c6565,
+    0.60rem 0 0 #725d5d,
+    0.70rem 0 0 #695656,
+    0.85rem 0 0 #635151,
+    0.90rem 0 0 #5e4d4d,
+    0.95rem 0 0 #564848
+    ;
+}
+
+header p{
+    margin-bottom   : 0.5rem;
+    padding-bottom  : 0.5rem;
+    font-size       : 1.2rem;
+    word-break      : break-word;
+}
+
+/*container section*/
+#container{
+    width               : 100%;
+    box-sizing          : border-box;
+    -webkit-box-sizing  : border-box;
+}
+
+/* footer section */
+footer{
+    position        : absolute;
+    bottom          : 0rem;
+    width           : 100%;
+    margin-bottom   : 0rem;
+}
+
+footer p{
+    text-align  : center;
+    margin      : 0 auto;
+    padding     : 5px 0px 5px 0px;
+}
