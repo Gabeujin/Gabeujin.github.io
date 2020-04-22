@@ -55,6 +55,12 @@ nav{
 nav>button{
     float : right;
     margin-right : 5px;
+    border : 2px outset #eedada;
+}
+
+nav>button#lhTest{
+    background-color : #caa6a6;
+
 }
 
 /*container(section) section*/

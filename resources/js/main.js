@@ -23,7 +23,7 @@ const goHref = (a,b,c)=>{
         ,target     = isNull(b) != "" ? b : ""
         ;feature    = isNull(c) != "" ? c : "";
 
-    if(url.indexOf( "https://github.com/") > -1 ){
+    if(url.indexOf( "https://github.com/") > -1 || url.indexOf("developers.google.com") > -1 ){
         window.open(a);
         return;
     }

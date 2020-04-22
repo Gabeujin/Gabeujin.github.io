@@ -5,6 +5,11 @@ let fnReady = function(){
         goHref("https://github.com/Gabeujin/Gabeujin.github.io/issues/new");
     });
 
+    document.querySelector("#lhTest").addEventListener("click", (e)=>{
+        e.stopPropagation();
+        goHref("https://developers.google.com/speed/pagespeed/insights/?hl=ko&url=https://gabeujin.github.io");
+    });
+
     //footer clock setting
     let clock = document.querySelector("#clockTag");
     clock.innerText = setClock();
