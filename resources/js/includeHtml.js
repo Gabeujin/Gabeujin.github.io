@@ -60,7 +60,6 @@ let includeSection = ()=>{
               docFrag = document.createDocumentFragment();
               docFrag.innerHTML = "Page not found.";
               z.appendChild(docFrag);
-              isFind = false;
               return;
             }
 
@@ -70,7 +69,7 @@ let includeSection = ()=>{
         file += ".xml";
         
         try {
-          xhttp.open("POST", "/views/contents/" + file, true);
+          xhttp.open("GET", "/views/contents/" + file, true);
           xhttp.send();
         } catch (e) {
           console.log(e);
