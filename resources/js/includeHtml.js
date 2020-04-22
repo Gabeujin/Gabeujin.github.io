@@ -56,13 +56,21 @@ let includeSection = ()=>{
               z.appendChild(docFrag);
               z.appendChild(document.createElement("hr"));
             }
+            if (this.status == 403) {
+              return;
+            }
             if (this.status == 404) {
               docFrag = document.createDocumentFragment();
               docFrag.innerHTML = "Page not found.";
               z.appendChild(docFrag);
               return;
             }
-
+            if (this.status == 405) {
+              return;
+            }
+            if (this.status == 500) {
+              return;
+            }
             includeSection();
           }
         }
