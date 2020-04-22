@@ -1,5 +1,5 @@
-var includeHTML = ()=>{
-    var z, i, elmnt, file, xhttp;
+let includeHTML = ()=>{
+    let z, i, elmnt, file, xhttp;
     /* Loop through a collection of all HTML elements: */
     z = document.querySelectorAll("body>*");
     for (i = 0; i < z.length; i++) {
@@ -37,6 +37,7 @@ var includeHTML = ()=>{
       }
     }
 }
+
 let i = 1;
 let isFind = true;
 let includeSection = ()=>{
@@ -51,7 +52,7 @@ let includeSection = ()=>{
             if (this.status == 200) {
               docXml = this.responseXML;
               docFrag = document.createDocumentFragment();
-              docFrag.appendChild(docXml.querySelector("metaInfo"));
+              docFrag.appendChild(getFeature.thumbnail( docXml.querySelector("metaInfo") ));
               z.appendChild(docFrag);
               z.appendChild(document.createElement("hr"));
             }
@@ -69,7 +70,7 @@ let includeSection = ()=>{
         file += ".xml";
         
         try {
-          xhttp.open("GET", "/views/contents/" + file, true);
+          xhttp.open("POST", "/views/contents/" + file, true);
           xhttp.send();
         } catch (e) {
           console.log(e);

@@ -81,3 +81,52 @@ const setColor = (level, type)=>{
     return rtnColor;
     }
 }
+
+/**
+ * @description get Dom element
+ * @param {type|string} tagNm
+ * @param {attribute|object} op
+ */
+const getTag = (tagNm, op)=>{
+    if( isNull(op) != "" ){
+        let tag = document.createElement(tagNm);
+
+        tag.id          = isNull(op.id) != "" ? op.id : "";
+        tag.className   = isNull(op.class) != "" ? op.class : "";
+        tag.title       = isNull(op.title) != "" ? op.title : "";
+
+        return tag;
+    }else{
+        return document.createElement(tagNm);
+    }
+}
+
+/**
+ * @description get feature / structure
+ */
+const getFeature = {
+    /**
+     * @description get default Dom section 
+     * @param {Dom Object|element} xmlDomTree
+     */
+    thumbnail : (xmlDomTree)=>{
+        let dom = isNull(xmlDomTree) != "" ? xmlDomTree : "";
+        if(dom == "") return dom;
+
+        let title       = getTag("summary", {class : "thumbTitle" , title : isNull(dom.querySelector("metaInfo>title").textContent) != "" ? dom.querySelector("metaInfo>title").textContent : "" })
+            ,hashTag    = getTag("p", {class : "thumbTag" , title : "hashTag"})
+            ,detailTag  = getTag("details", {class:"thumbnail"});
+        
+        let docFrag = document.createDocumentFragment();
+        let hashTags = dom.querySelector("hashTag").textContent.split(",").map(item => "#" + item).toString().replace(/[,]/g ,' ');
+        hashTag.textContent = hashTags;
+        title.textContent = title.title;
+        
+        detailTag.appendChild(title);
+        detailTag.appendChild(hashTag);
+
+        docFrag.appendChild(detailTag);
+       
+        return docFrag;
+    }
+}
