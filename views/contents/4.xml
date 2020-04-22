@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ParentNode type="test" master="kgj">
     <metaInfo>
-        <name>hashTag</name>
-        <data>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti a odit nihil aut ea non. Laudantium rerum quos odit, ut, blanditiis beatae consequuntur deleniti accusantium possimus eos, aspernatur nesciunt quas.</data>
+        <title>nodeJS</title>
+        <hashTag>NODEJS,SERVERSIDEJAVASCRIPT,JAVASCRIPT,NPM,NODE,JSFRAMEWORK</hashTag>
     </metaInfo>
-    <text>
+    <contents>
         <top>머릿글</top>
-        <center>본문</center>
+        <middle>본문</middle>
         <bottom>꼬릿글</bottom>
-    </text>
+    </contents>
 </ParentNode>

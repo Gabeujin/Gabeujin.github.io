@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ParentNode type="test" master="kgj">
     <metaInfo>
-        <name>hashTag</name>
-        <data>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad corrupti sapiente ducimus impedit sint adipisci numquam sit quos pariatur perspiciatis cupiditate vitae cum nulla, ab labore minus ea facere totam.</data>
+        <title>XML</title>
+        <hashTag>XML,HTML,XML구조,XML문법,XML로페이지만들기,MARKUP,MARKUPLANGUAGE,확장형HTML</hashTag>
     </metaInfo>
-    <text>
+    <contents>
         <top>머릿글</top>
-        <center>본문</center>
+        <middle>본문</middle>
         <bottom>꼬릿글</bottom>
-    </text>
+    </contents>
 </ParentNode>

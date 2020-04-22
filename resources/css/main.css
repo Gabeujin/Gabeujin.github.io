@@ -60,7 +60,7 @@ nav>button{
 /*container(section) section*/
 section{
     width               : 100%;
-    min-height          : 1vh;
+    min-height          : 50vh;
     box-sizing          : border-box;
     -webkit-box-sizing  : border-box;
 }
@@ -72,9 +72,14 @@ section contents{
     text-align  : center;
 }
 
-contents metaInfo{
-    display: block;
-    margin : 4rem 1rem;
+section contents metaInfo{
+    display : block;
+    margin  : 4rem 1rem;
+}
+
+details summary{
+    text-align  : left;
+    font-size   : 1.6rem;
 }
 
 /* footer section */
