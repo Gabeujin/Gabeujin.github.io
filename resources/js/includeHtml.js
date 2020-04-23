@@ -5,7 +5,7 @@ let includeHTML = ()=>{
     for (i = 0; i < z.length; i++) {
       elmnt = z[i];
       /*search for elements with a certain atrribute:*/
-      file = elmnt.getAttribute("include-html");
+      file = elmnt.getAttribute("in-ht");
       if (file) {
         /* Make an HTTP request using the attribute value as the file name: */
         xhttp = new XMLHttpRequest();
@@ -25,7 +25,7 @@ let includeHTML = ()=>{
             }
             /* Remove the attribute, and call this function once more: */
             
-            elmnt.removeAttribute("include-html");
+            elmnt.removeAttribute("in-ht");
             includeHTML();
           }
         }

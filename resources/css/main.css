@@ -5,11 +5,12 @@ html{
 }
 
 body{
-    margin  : 0 auto;
-    width   : 100%;
-    height  : 100%;
-    transition: 0.4s;
+    margin      : 0 auto;
+    width       : 100%;
+    height      : 100%;
+    animation   : fadeIn 1.1s ease-out;
 }
+
 
 /* header section */
 header{
@@ -49,13 +50,19 @@ header p{
 
 /*nav section*/
 nav{
-    text-align : center;
+    text-align  : center;
+    height      : 5%;
+}
+
+nav form.srchForm{
+    float       : left;
+    margin-left : 5px;
 }
 
 nav>button{
-    float : right;
-    margin-right : 5px;
-    border : 2px outset #eedada;
+    float           : right;
+    margin-right    : 5px;
+    border          : 2px outset #eedada;
 }
 
 nav>button#lhTest{
@@ -65,8 +72,9 @@ nav>button#lhTest{
 
 /*container(section) section*/
 section{
+    clear               : both;
     width               : 100%;
-    min-height          : 50vh;
+    min-height          : 60vh;
     box-sizing          : border-box;
     -webkit-box-sizing  : border-box;
 }
@@ -84,8 +92,38 @@ section contents metaInfo{
 }
 
 details summary{
-    text-align  : left;
-    font-size   : 1.6rem;
+    text-align      : left;
+    font-size       : 1.6rem;
+    user-select     : none;
+}
+
+details p a.hashTag{
+    text-decoration : none;
+    margin          : 2px 8px;
+    display         : inline-block;
+    color           : #756060;
+    cursor          : pointer;
+}
+
+a.hashTag:hover{
+    color       : #000;
+    font-weight : bold;
+}
+
+details[open] summary{
+    font-weight : bold;
+}
+
+details[open] summary ~ *{
+    animation-name              : fadeIn,slideIn_top;
+    animation-duration          : 0.5s,0.5s;
+    animation-delay             : 0s,0s;
+    animation-timing-function   : ease-out;
+}
+
+details[open] p{
+    user-select : none;
+    word-break  : break-all;
 }
 
 /* footer section */
@@ -100,4 +138,19 @@ footer p{
     text-align  : center;
     margin      : 0 auto;
     padding     : 5px 0px 5px 0px;
+}
+
+/* animation section (keyFrame) */
+@keyframes fadeIn{
+    from{opacity: 0;}
+    to  {opacity: 1;}
+}
+
+@keyframes slideIn_top{
+    from{position: relative;
+        top: -20px;
+    }
+    to  {position: relative;
+        top: 0px;
+    }
 }
