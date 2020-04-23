@@ -23,10 +23,19 @@ const goHref = (a,b,c)=>{
         ,target     = isNull(b) != "" ? b : ""
         ;feature    = isNull(c) != "" ? c : "";
 
-    if(url.indexOf( "https://github.com/") > -1 || url.indexOf("developers.google.com") > -1 ){
+    if(target == "gSearch"){
+        url = url.replace(/[view\/]/g,'')
+        url = "https://www.google.com/search?q=" + url;
+    }
+
+    if(url.indexOf( "github.com") > -1 || url.indexOf("developers.google.com") > -1 ){
         window.open(a);
         return;
+    }else if( url.indexOf("www.google.com/search") > -1 ){
+        window.open(url);
+        return;
     }
+
     if(target == "" && feature == ""){
         window.open(basePath + url);
     }else{
@@ -117,9 +126,23 @@ const getFeature = {
             ,hashTag    = getTag("p", {class : "thumbTag" , title : "hashTag"})
             ,detailTag  = getTag("details", {class:"thumbnail"});
         
-        let docFrag = document.createDocumentFragment();
-        let hashTags = dom.querySelector("hashTag").textContent.split(",").map(item => "#" + item).toString().replace(/[,]/g ,' ');
-        hashTag.textContent = hashTags;
+        let docFrag     = document.createDocumentFragment();
+        let hashTags    = dom.querySelector("hashTag").textContent.split(",").map(item => "#" + item);
+        
+        let aTag = getTag("a"),
+            tempTag;
+
+        aTag.className = "hashTag";
+
+        hashTags.forEach(el => {
+            tempTag             = aTag.cloneNode();
+            tempTag.textContent = el;
+            tempTag.title       = el.replace(/#/g,"");
+            hashTag.appendChild( tempTag );
+        });
+
+        hashTag.addEventListener("click",e=>goHref(e.target.textContent.replace(/#/g,''),"gSearch"));
+
         title.textContent = title.title;
         
         detailTag.appendChild(title);
@@ -128,5 +151,8 @@ const getFeature = {
         docFrag.appendChild(detailTag);
        
         return docFrag;
+    },
+    hashTagEvent : (pNode)=>{
+        let target = pNode.querySelectorAll(".thumbTag");
     }
 }
