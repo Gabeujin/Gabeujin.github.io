@@ -115,7 +115,7 @@ const getTag = (tagNm, op)=>{
  */
 const getFeature = {
     /**
-     * @description get default Dom section 
+     * @description get default Dom section
      * @param {Dom Object|element} xmlDomTree
      */
     thumbnail : (xmlDomTree)=>{
@@ -124,7 +124,7 @@ const getFeature = {
 
         let title       = getTag("summary", {class : "thumbTitle" , title : isNull(dom.querySelector("metaInfo>title").textContent) != "" ? dom.querySelector("metaInfo>title").textContent : "" })
             ,hashTag    = getTag("p", {class : "thumbTag" , title : "hashTag"})
-            ,detailTag  = getTag("details", {class:"thumbnail"});
+            ,detailTag  = getTag("details", {class : "thumbnail"});
         
         let docFrag     = document.createDocumentFragment();
         let hashTags    = dom.querySelector("hashTag").textContent.split(",").map(item => "#" + item);
@@ -140,19 +140,39 @@ const getFeature = {
             tempTag.title       = el.replace(/#/g,"");
             hashTag.appendChild( tempTag );
         });
-
-        hashTag.addEventListener("click",e=>goHref(e.target.textContent.replace(/#/g,''),"gSearch"));
+        //hashTag click event(google search)
+        hashTag.addEventListener("click", e => e.target.title != "hashTag" ? goHref(e.target.textContent.replace(/#/g,''), "gSearch") : false );
 
         title.textContent = title.title;
         
         detailTag.appendChild(title);
         detailTag.appendChild(hashTag);
+        detailTag.appendChild(getFeature.detailBtn());
 
         docFrag.appendChild(detailTag);
        
         return docFrag;
     },
-    hashTagEvent : (pNode)=>{
-        let target = pNode.querySelectorAll(".thumbTag");
-    }
+    /**
+     * @description get default detail button
+     * @param none
+     */
+    detailBtn : ()=>{
+        let btn         = getTag("button",{ class : "thumbBtn", title : "contentDetail" });
+        btn.textContent = "Detail";
+        btn.type        = "button";
+        btn.addEventListener("click", e => {e.stopPropagation(); alert("준비중입니다.")})
+        //addevent
+        return btn;
+    },
+     /**
+     * @description toast alert
+     * @param {alert text|String} textContents
+     */
+    // getToast : (str)=>{
+    //     let toastAlert = getTag("div",{ class : "toastAlert" , title : "alert" });
+
+    // }
+
+
 }
