@@ -105,6 +105,21 @@ details p a.hashTag{
     cursor          : pointer;
 }
 
+details button.thumbBtn{
+    width               : 40%;
+    height              : 4%;
+    border              : 2px outset #eedada;
+    background-color    : #eedada;
+    cursor              : pointer;
+}
+
+details button.thumbBtn:hover{
+
+    background-color    : #756060;
+    color               : #ffffff;
+    transition          : 0.15s ease-out;
+}
+
 a.hashTag:hover{
     color       : #000;
     font-weight : bold;
@@ -140,6 +155,20 @@ footer p{
     padding     : 5px 0px 5px 0px;
 }
 
+/* toast section */
+/* div.toastAlert{
+    position                    : fixed;
+    display                     : none;
+    width                       : 50%;
+    height                      : 5%;
+    bottom                      : 0px;
+    animation                   : fadeIn, slideIn_bottom;
+    animation-duration          : 0.2s, 0.4s;
+    animation-delay             : 0s;
+    animation-timing-function   : linear;
+} */
+
+
 /* animation section (keyFrame) */
 @keyframes fadeIn{
     from{opacity: 0;}
@@ -153,4 +182,9 @@ footer p{
     to  {position: relative;
         top: 0px;
     }
+}
+
+@keyframes slideIn_bottom{
+    from{bottom: -10%;}
+    to  {bottom: 0%;}
 }
