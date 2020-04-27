@@ -55,8 +55,18 @@ nav{
 }
 
 nav form.srchForm{
-    float       : left;
-    margin-left : 5px;
+    float           : left;
+    margin-left     : 5px;
+    margin-bottom   : 0px;
+    width           : 40%;
+}
+
+nav form.srchForm input[type='search']{
+    float           : left;
+    width           : 60%;
+}
+nav form.srchForm input[type='submit']{
+    width           : 30%;
 }
 
 nav>button{
