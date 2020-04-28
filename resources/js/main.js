@@ -161,7 +161,7 @@ const getFeature = {
         let btn         = getTag("button",{ class : "thumbBtn", title : "contentDetail" });
         btn.textContent = "Detail";
         btn.type        = "button";
-        btn.addEventListener("click", e => {e.stopPropagation(); alert("준비중입니다.")})
+        btn.addEventListener("click", e => {e.stopPropagation(); getFeature.getToast("준비중입니다.");})
         //addevent
         return btn;
     },
@@ -169,10 +169,26 @@ const getFeature = {
      * @description toast alert
      * @param {alert text|String} textContents
      */
-    // getToast : (str)=>{
-    //     let toastAlert = getTag("div",{ class : "toastAlert" , title : "alert" });
+    getToast : (str)=>{
+        let toastAlert  = getTag("div",{ class : "toastAlert" , title : "toast" })
+            ,printStr   = isNull(str) != "" ? str : "";
+            
+        if( document.querySelectorAll(".toastAlert").length > 5 ){
+            return false;
+        }
 
-    // }
+        toastAlert.textContent = printStr;
+        document.body.appendChild(toastAlert);
+        
+         setTimeout((e)=>{
+             toastAlert.className = "toastAlert on";
+            setTimeout((e)=>{
+                toastAlert.className = "toastAlert off";
+                setTimeout((e)=>{document.body.removeChild(toastAlert);
+                },400);
+            },3000);
+         },100);
+    }
 
 
 }

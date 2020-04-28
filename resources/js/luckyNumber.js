@@ -13,6 +13,6 @@ const luckyNum = (isRtn)=>{
   console.log('%c오늘도 좋은 하루:D\t\t\t\t\t'+'\nlucky Number : '+number.toString()+'\t\t','font-size:20px;color:#80c475;background-color:black;');
   
   if(isNull(isRtn) != "" && typeof isRtn == "boolean" ){
-    return alert(number.toString());
+    return alert("행운번호\n" + number.toString());
   }
 }

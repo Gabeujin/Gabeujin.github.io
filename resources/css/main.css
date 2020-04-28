@@ -166,18 +166,35 @@ footer p{
 }
 
 /* toast section */
-/* div.toastAlert{
-    position                    : fixed;
-    display                     : none;
-    width                       : 50%;
-    height                      : 5%;
-    bottom                      : 0px;
-    animation                   : fadeIn, slideIn_bottom;
-    animation-duration          : 0.2s, 0.4s;
-    animation-delay             : 0s;
-    animation-timing-function   : linear;
-} */
+div.toastAlert{
+    position            : fixed;
+    z-index             : 100;
+    left                : 0;
+    right               : 0;
+    bottom              : 0%;
+    margin              : 0 auto;
+    width               : 40vw;
+    height              : 6vh;
+    opacity             : 0;
+    text-align          : center;
+    color               : #ececec;
+    line-height         : 6vh;
+    font-weight         : bolder;
+    background-color    : #414141;
+    border-radius       : 4px;
+}
 
+.toastAlert.on{
+    opacity     : 1;
+    bottom      : 3%;
+    transition  : linear 0.3s;
+}
+
+.toastAlert.off{
+    opacity     : 0;
+    bottom      : 0%;
+    transition  : linear 0.2s;
+}
 
 /* animation section (keyFrame) */
 @keyframes fadeIn{
@@ -192,9 +209,4 @@ footer p{
     to  {position: relative;
         top: 0px;
     }
-}
-
-@keyframes slideIn_bottom{
-    from{bottom: -10%;}
-    to  {bottom: 0%;}
 }
