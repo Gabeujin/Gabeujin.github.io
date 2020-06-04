@@ -40,6 +40,7 @@ const goHref = (a,b,c)=>{
         var pageTitle = document.querySelector("body>header>h1>span");
         pageTitle.innerHTML = "&#127968;";
         pageTitle.classList.add("goHome");
+        ContentClear();
         includePage(url);
         getFeature.getToast("준비중입니다.");
     }else{
@@ -115,6 +116,10 @@ const getTag = (tagNm, op)=>{
     }else{
         return document.createElement(tagNm);
     }
+}
+
+const ContentClear = ()=>{
+    document.querySelector("body>section>contents").innerHTML = "";
 }
 
 /**

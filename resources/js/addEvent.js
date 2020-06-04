@@ -22,7 +22,7 @@ let fnReady = function(){
         pageTitle.classList.remove("goHome");
         pageTitle.innerHTML = "Memory Repo";
 
-        document.querySelector("body>section>contents").innerHTML = "";
+        ContentClear();
         includeSection(1,true);
     });
 
