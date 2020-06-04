@@ -19,7 +19,9 @@ let fnReady = function(){
         e.stopPropagation();
         var pageTitle = document.querySelector("body>header>h1>span");
         if(pageTitle.textContent == "Memory Repo") return false;
+        pageTitle.classList.remove("goHome");
         pageTitle.innerHTML = "Memory Repo";
+
         document.querySelector("body>section>contents").innerHTML = "";
         includeSection(1,true);
     });
