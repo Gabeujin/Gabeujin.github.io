@@ -32,7 +32,7 @@ header .pageTitle{
 }
 
 header span{
-    cursor      : pointer;
+    cursor      : default;
     font-size   : 4rem;
     word-break  : break-word;
     color       : #ececec;
@@ -48,7 +48,10 @@ header span{
     0.90rem 0 0 #5e4d4d,
     0.95rem 0 0 #564848
     ;
-    
+}
+
+header span.goHome {
+    cursor : pointer;
 }
 
 header p{

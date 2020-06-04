@@ -37,7 +37,9 @@ const goHref = (a,b,c)=>{
     }
 
     if(target == "" && feature == ""){
-        document.querySelector("body>header>h1>span").innerHTML = "&#127968;";
+        var pageTitle = document.querySelector("body>header>h1>span");
+        pageTitle.innerHTML = "&#127968;";
+        pageTitle.classList.add("goHome");
         includePage(url);
         getFeature.getToast("준비중입니다.");
     }else{
