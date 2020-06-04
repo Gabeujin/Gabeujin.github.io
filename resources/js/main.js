@@ -18,17 +18,17 @@ const isNull = (a)=>{
  * @param {window.open|[args feature(width,height..)]|string} c 
  */
 const goHref = (a,b,c)=>{
-    let basePath    = "https://gabeujin.github.io/"
-        ,url        = isNull(a) != "" ? "view/".concat(a) : ""
+    let basePath    = location.href.indexOf(":8081") > -1 ? "http://localhost:8081/" : "https://gabeujin.github.io/"
+        ,url        = isNull(a) != "" ? "views/" + a : ""
         ,target     = isNull(b) != "" ? b : ""
         ;feature    = isNull(c) != "" ? c : "";
 
     if(target == "gSearch"){
-        url = url.replace(/[view\/]/g,'')
+        url = url.replace(/views\//g,'');
         url = "https://www.google.com/search?q=" + url;
     }
 
-    if(url.indexOf( "github.com") > -1 || url.indexOf("developers.google.com") > -1 ){
+    if(url.indexOf("github.com") > -1 || url.indexOf("developers.google.com") > -1 ){
         window.open(a);
         return;
     }else if( url.indexOf("www.google.com/search") > -1 ){
@@ -37,9 +37,13 @@ const goHref = (a,b,c)=>{
     }
 
     if(target == "" && feature == ""){
-        window.open(basePath + url);
+        includePage(url);
+        getFeature.getToast("준비중입니다.");
     }else{
-        window.open(basePath + url,target,feature);
+        if(url.indexOf("youtube.com") > -1)
+            window.open(a,target,feature);
+        else
+            window.open(basePath + url,target,feature);
     }
     return;
 };
@@ -118,13 +122,13 @@ const getFeature = {
      * @description get default Dom section
      * @param {Dom Object|element} xmlDomTree
      */
-    thumbnail : (xmlDomTree)=>{
+    thumbnail : (xmlDomTree, xmlLink, num)=>{
         let dom = isNull(xmlDomTree) != "" ? xmlDomTree : "";
         if(dom == "") return dom;
 
         let title       = getTag("summary", {class : "thumbTitle" , title : isNull(dom.querySelector("metaInfo>title").textContent) != "" ? dom.querySelector("metaInfo>title").textContent : "" })
             ,hashTag    = getTag("p", {class : "thumbTag" , title : "hashTag"})
-            ,detailTag  = getTag("details", {class : "thumbnail"});
+            ,detailTag  = getTag("details", typeof num != "undefined" ? {id : num, class : "thumbnail"} : {class : "thumbnail"} );
         
         let docFrag     = document.createDocumentFragment();
         let hashTags    = dom.querySelector("hashTag").textContent.split(",").map(item => "#" + item);
@@ -147,7 +151,7 @@ const getFeature = {
         
         detailTag.appendChild(title);
         detailTag.appendChild(hashTag);
-        detailTag.appendChild(getFeature.detailBtn());
+        detailTag.appendChild(getFeature.detailBtn(xmlLink));
 
         docFrag.appendChild(detailTag);
        
@@ -157,11 +161,21 @@ const getFeature = {
      * @description get default detail button
      * @param none
      */
-    detailBtn : ()=>{
+    detailBtn : (link)=>{
         let btn         = getTag("button",{ class : "thumbBtn", title : "contentDetail" });
         btn.textContent = "Detail";
         btn.type        = "button";
-        btn.addEventListener("click", e => {e.stopPropagation(); getFeature.getToast("준비중입니다.");})
+        btn.addEventListener("click", e => {
+            e.stopPropagation(); 
+            if( link.textContent.indexOf("www") > -1 )
+                goHref("https://"+link.textContent.trim(),"_blank");
+            else
+                goHref(link.textContent.trim() + ".html");
+            
+        
+            //getFeature.getToast("준비중입니다.");
+            
+        });
         //addevent
         return btn;
     },

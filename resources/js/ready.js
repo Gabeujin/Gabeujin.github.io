@@ -1,2 +1,2 @@
 includeHTML();
-luckyNum(true);
+luckyNum();

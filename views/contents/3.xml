@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ParentNode type="test" master="kgj">
     <metaInfo>
-        <title>CSS</title>
-        <hashTag>CSS,STYLESHEET,HTML,DESIGN,WEBDESIGN,FRONTEND</hashTag>
+        <title>코딩공부</title>
+        <hashTag>생활코딩,조코딩,프로그래머스,인프런,구름level</hashTag>
     </metaInfo>
-    <contents>
-        <top>머릿글</top>
-        <middle>본문</middle>
-        <bottom>꼬릿글</bottom>
-    </contents>
+    <link>
+        www.youtube.com/channel/UCQNE2JmbasNYbjGAcuBiRRg
+    </link>
 </ParentNode>

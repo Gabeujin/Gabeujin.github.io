@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ParentNode type="test" master="kgj">
     <metaInfo>
-        <title>JAVA/JSP</title>
-        <hashTag>JAVA,SERVERSIDE,JSP,SERVERSIDELANGUEAGE,CODING,PROGRAMMING,SPRING,EGOVFRAMEWORK</hashTag>
+        <title>동물상 테스트</title>
+        <hashTag>조코딩,웹앱만들기,동물상테스트,teachable machine</hashTag>
     </metaInfo>
-    <contents>
-        <top>머릿글</top>
-        <middle>본문</middle>
-        <bottom>꼬릿글</bottom>
-    </contents>
+    <link>
+        app/animal-test
+    </link>
 </ParentNode>

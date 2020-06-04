@@ -10,6 +10,12 @@ let fnReady = function(){
         goHref("https://developers.google.com/speed/pagespeed/insights/?hl=ko&url=https://gabeujin.github.io");
     });
 
+    document.querySelector(".pageTitle span").addEventListener("click", (e)=>{
+        e.stopPropagation();
+        document.querySelector("body>section>contents").innerHTML = "";
+        includeSection(1,true);
+    });
+
     //footer clock setting
     let clock = document.querySelector("#clockTag");
     clock.innerText = setClock();
@@ -22,5 +28,5 @@ let fnReady = function(){
         clock.style.color = setColor( Number(clock.innerText.split("일 ")[1].split("시")[0]), "font" );
     },1000);
 
-    includeSection();
+    includeSection(1,true);
 };

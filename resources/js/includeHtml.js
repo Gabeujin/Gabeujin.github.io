@@ -38,10 +38,8 @@ let includeHTML = ()=>{
     }
 }
 
-let i = 1;
-let isFind = true;
-let includeSection = ()=>{
-  let z, file, xhttp, docXml, docFrag;
+let includeSection = (i,j)=>{
+  let z, file, xhttp, docXml, docFrag, fileNum;
   z = document.querySelector("body>section>contents");
     do{
       file = i;
@@ -52,28 +50,28 @@ let includeSection = ()=>{
             if (this.status == 200) {
               docXml = this.responseXML;
               docFrag = document.createDocumentFragment();
-              docFrag.appendChild(getFeature.thumbnail( docXml.querySelector("metaInfo") ));
+              fileNum = docXml.baseURI.split("contents/")[1].replace(".xml","").replace("html","");
+              docFrag.appendChild( getFeature.thumbnail( docXml.querySelector("metaInfo"), docXml.querySelector("link") , fileNum ) );
               z.appendChild(docFrag);
               z.appendChild(document.createElement("hr"));
             }
-            if (this.status == 403) {
-              return;
+            else if (this.status == 403) {
+              return false;
             }
-            if (this.status == 404) {
-              docFrag = document.createDocumentFragment();
-              docFrag.innerHTML = "Page not found.";
-              z.appendChild(docFrag);
-              return;
+            else if (this.status == 404) {
+              return false;
             }
-            if (this.status == 405) {
-              return;
+            else if (this.status == 405) {
+              return false;
             }
-            if (this.status == 500) {
-              return;
+            else if (this.status == 500) {
+              return false;
             }
-            includeSection();
+            if(i == 3) return false;
+            includeSection(i+1, j);
           }
         }
+        if(i == 4) return false;
         file += ".xml";
         
         try {
@@ -83,8 +81,39 @@ let includeSection = ()=>{
           console.log(e);
         }
         
-        i++;
-        return;
+        // i++;
+        return false;
       }
-    }while(isFind);
+    }while(true);
+}
+
+let includePage = (file)=>{
+  let z, elmnt, xhttp;
+  z = document.querySelector("body>section>contents");
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4) {
+      if (this.readyState == 4) {
+        if (this.status == 200) {
+          z.innerHTML = this.responseText;
+        }
+        else if (this.status == 403) {
+          return false;
+        }
+        else if (this.status == 404) {
+          return false;
+        }
+        else if (this.status == 405) {
+          return false;
+        }
+        else if (this.status == 500) {
+          return false;
+        }
+      }
+    }
+  }
+xhttp.open("GET", "/" + file, true);
+xhttp.send();
+/* Exit the function: */
+return;
 }
