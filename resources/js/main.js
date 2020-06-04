@@ -28,7 +28,7 @@ const goHref = (a,b,c)=>{
         url = "https://www.google.com/search?q=" + url;
     }
 
-    if(url.indexOf("github.com") > -1 || url.indexOf("developers.google.com") > -1 ){
+    if(url.indexOf("github.com") > -1 || url.indexOf("developers.google") > -1 || url.indexOf("w3schools") > -1 ){
         window.open(a);
         return;
     }else if( url.indexOf("www.google.com/search") > -1 ){
@@ -37,6 +37,7 @@ const goHref = (a,b,c)=>{
     }
 
     if(target == "" && feature == ""){
+        document.querySelector("body>header>h1>span").innerHTML = "&#127968;";
         includePage(url);
         getFeature.getToast("준비중입니다.");
     }else{
@@ -163,7 +164,7 @@ const getFeature = {
      */
     detailBtn : (link)=>{
         let btn         = getTag("button",{ class : "thumbBtn", title : "contentDetail" });
-        btn.textContent = "Detail";
+        btn.textContent = "S T A R T";
         btn.type        = "button";
         btn.addEventListener("click", e => {
             e.stopPropagation(); 

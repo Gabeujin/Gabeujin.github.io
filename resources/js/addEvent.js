@@ -10,8 +10,16 @@ let fnReady = function(){
         goHref("https://developers.google.com/speed/pagespeed/insights/?hl=ko&url=https://gabeujin.github.io");
     });
 
+    document.querySelector("#charsets").addEventListener("click", (e)=>{
+        e.stopPropagation();
+        goHref("https://www.w3schools.com/charsets/");
+    });
+
     document.querySelector(".pageTitle span").addEventListener("click", (e)=>{
         e.stopPropagation();
+        var pageTitle = document.querySelector("body>header>h1>span");
+        if(pageTitle.textContent == "Memory Repo") return false;
+        pageTitle.innerHTML = "Memory Repo";
         document.querySelector("body>section>contents").innerHTML = "";
         includeSection(1,true);
     });
