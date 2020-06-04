@@ -1,29 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ParentNode type="test" master="kgj">
     <metaInfo>
-        <title>XML</title>
-        <hashTag>XML,HTML,XML구조,XML문법,XML로페이지만들기,MARKUP,MARKUPLANGUAGE,확장형HTML</hashTag>
+        <title>과일상 테스트</title>
+        <hashTag>조코딩,웹앱만들기,과일상테스트,teachable machine</hashTag>
     </metaInfo>
-    <contents>
-        <top>반갑습니다. XML 기초입니다.</top>
-        <middle>
-            생각보다 xml은 간단합니다. java를 먼저 배웠더라면 쵸큼 어려울 수도 있죠.
-            java를 시작으로 프레임워크를 배울때면 web.xml, pom.xml 같은 설정파일을
-            만나게 됩니다. 
-            이건 도대체 어떻게 쓰는거지..?
-            라는 생각이 머리속을 지배하죠. 그렇게 xml에 대해 '어렵다'라는 인식이
-            박히는 순간부터 우리는 '이런 걸 왜쓰는거야..'라고 생각하게 됩니다.
-            
-            인간의 첫인상은 처음 3초라는 말도 있고 7초라는 말도 있죠.
-            3초안에 우리가 마주하는 것은 외적인 것이 전부입니다.
-            머리스타일, 얼굴, 표정, 체격, 스타일.
-            하지만, 모두가 알고있듯이 알아가면 알아갈수록 매력이 보입니다.
-
-            의미를 가지는 커스텀 태그들로 화면을 구성하면 오히려 웹 접근성에 좋습니다.
-            TTS(텍스트를 음성으로 출력하는 접근성 도구)를 활용해 웹 페이지를 자동으로
-            읽는 사람들은 태그의 의미를 듣고 '이 부분이 본문을 뜻하는구나'라고 
-            이해할 수 있습니다.
-        </middle>
-        <bottom>아시겠쥬?</bottom>
-    </contents>
+    <link>
+        app/fruit-test
+    </link>
 </ParentNode>
