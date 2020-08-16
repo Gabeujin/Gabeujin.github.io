@@ -17,11 +17,28 @@ let fnReady = function(){
 
     document.querySelector(".pageTitle span").addEventListener("click", (e)=>{
         e.stopPropagation();
-        var pageTitle = document.querySelector("body>header>h1>span");
-        if(pageTitle.textContent == "Memory Repo") return false;
+        let pageTitle = document.querySelector("body>header>h1>span");
+        if(pageTitle.textContent === "Memory Repo") return false;
         pageTitle.classList.remove("goHome");
         pageTitle.innerHTML = "Memory Repo";
 
+        const section = document.querySelector("body>section");
+        section.style.background = "none";
+
+        let mainSection = pageTitle.parentNode.parentNode.parentNode.querySelector("section");
+        mainSection.classList.remove("setFadeIn");
+        mainSection.classList.add("setDpNone");
+        if(mainSection.classList.contains("setDpNone")){
+            setTimeout(function(){
+                mainSection.classList.add("setFadeIn");
+                mainSection.classList.remove("setDpNone");
+            },100);
+            
+        }
+
+        for ( let i = 0; i < INTERVAL_ARR.length; i++ )
+            clearInterval(INTERVAL_ARR[i]);
+            
         ContentClear();
         includeSection(1,true);
     });

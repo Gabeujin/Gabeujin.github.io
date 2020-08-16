@@ -1,7 +1,26 @@
 /**
- * 2020.04.08
+ * 2020.08.16
  *
 */
+
+/**
+ * delveloper Management Section
+ */
+
+// last content page number : 콘텐츠 인덱스 마지막 넘버 기입
+const LAST_PAGE = "5"; 
+
+// show apps for user : 사용할 앱(보여질 앱)
+// check 'includeSection', 'goHref'
+const SHOW_APP = {
+    4 : "momontom"
+    //,5 : "calculator"
+}
+
+let INTERVAL_ARR = [];
+/**
+ * END delveloper Management Section
+ */
 
 /**
  * @description null check
@@ -42,7 +61,10 @@ const goHref = (a,b,c)=>{
         pageTitle.classList.add("goHome");
         ContentClear();
         includePage(url);
-        getFeature.getToast("준비중입니다.");
+        //check Apps
+        if( !Object.values(SHOW_APP).includes(url.replace(/views\/app\/|.html/g,'')) ){
+            getFeature.getToast("준비중입니다.");
+        }
     }else{
         if(url.indexOf("youtube.com") > -1)
             window.open(a,target,feature);
@@ -118,8 +140,10 @@ const getTag = (tagNm, op)=>{
     }
 }
 
+//2020.08.16
 const ContentClear = ()=>{
-    document.querySelector("body>section>contents").innerHTML = "";
+    const masterEl = document.querySelector("body>section>contents");
+    masterEl.innerHTML = "";
 }
 
 /**
@@ -179,8 +203,6 @@ const getFeature = {
                 goHref("https://"+link.textContent.trim(),"_blank");
             else
                 goHref(link.textContent.trim() + ".html");
-            
-        
             //getFeature.getToast("준비중입니다.");
             
         });

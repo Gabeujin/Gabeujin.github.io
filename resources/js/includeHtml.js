@@ -40,6 +40,7 @@ let includeHTML = ()=>{
 
 let includeSection = (i,j)=>{
   let z, file, xhttp, docXml, docFrag, fileNum;
+  const doNotRead = "0,1,2,3";
   z = document.querySelector("body>section>contents");
     do{
       file = i;
@@ -51,9 +52,12 @@ let includeSection = (i,j)=>{
               docXml = this.responseXML;
               docFrag = document.createDocumentFragment();
               fileNum = docXml.baseURI.split("contents/")[1].replace(".xml","").replace("html","");
-              docFrag.appendChild( getFeature.thumbnail( docXml.querySelector("metaInfo"), docXml.querySelector("link") , fileNum ) );
-              z.appendChild(docFrag);
-              z.appendChild(document.createElement("hr"));
+              //check Apps
+              if(SHOW_APP.hasOwnProperty(fileNum)){
+                docFrag.appendChild( getFeature.thumbnail( docXml.querySelector("metaInfo"), docXml.querySelector("link") , fileNum ) );
+                z.appendChild(docFrag);
+                z.appendChild(document.createElement("hr"));
+              }
             }
             else if (this.status == 403) {
               return false;
@@ -67,21 +71,23 @@ let includeSection = (i,j)=>{
             else if (this.status == 500) {
               return false;
             }
-            if(i == 3) return false;
+            //last content number;
+            if(i == LAST_PAGE) return false;
+
             includeSection(i+1, j);
           }
         }
-        if(i == 4) return false;
+        //last content + 1;
+        if(i == (LAST_PAGE + 1)) return false;
         file += ".xml";
         
         try {
-          xhttp.open("GET", "/views/contents/" + file, true);
-          xhttp.send();
+            xhttp.open("GET", "/views/contents/" + file, true);
+            xhttp.send();
         } catch (e) {
           console.log(e);
         }
         
-        // i++;
         return false;
       }
     }while(true);
@@ -96,6 +102,7 @@ let includePage = (file)=>{
       if (this.readyState == 4) {
         if (this.status == 200) {
           z.innerHTML = this.responseText;
+          includeJsInit(z.querySelector("article").id);
         }
         else if (this.status == 403) {
           return false;
@@ -116,4 +123,13 @@ xhttp.open("GET", "/" + file, true);
 xhttp.send();
 /* Exit the function: */
 return;
+}
+
+let includeJsInit = (appId)=>{
+  if(typeof appId !== "undefined"){
+    //it used app
+    if(Object.values(SHOW_APP).includes(appId.replace(/app/g,'').replace(/^./g,(a)=>a.toLowerCase()))){
+      momontomInit();
+    }
+  }
 }
