@@ -1,2 +1,3 @@
+
 includeHTML();
 luckyNum();
