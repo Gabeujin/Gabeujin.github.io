@@ -44,7 +44,6 @@ article#appCalculator h1 b{
 #mainWrap>article{
   flex-wrap : wrap;  
   width     : 60vw;
-  min-width : 500px;
   margin    : auto;
   background-color: #322e2e;
   border-radius: 0.5rem;
@@ -69,7 +68,7 @@ article#appCalculator h1 b{
   padding-right : 1.4rem;
   text-align    : right;
   color         : #ffffff;
-  font-size     : 3rem;
+  font-size     : 2rem;
 }
 #mainWrap>article>header button{
   width : 20%;
