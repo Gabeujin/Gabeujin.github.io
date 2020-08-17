@@ -1,0 +1,131 @@
+article#appCalculator {
+  font-family: sans-serif;
+  color: #ffffff;
+  padding-top: 1rem;
+}
+
+article#appCalculator h1{
+  text-align: center;
+  font-size: xxx-large;
+}
+
+article#appCalculator h1 b{
+  color: #8e2341;
+}
+
+/* common */
+#mainWrap{
+  width : 100%;
+  height: 80%;
+}
+
+#mainWrap>article,
+#mainWrap>article>header,
+#mainWrap>article>section,
+#mainWrap>article>section article,
+#mainWrap>article>section article div,
+#mainWrap>article>section aside{
+  display         : flex;
+  justify-content : space-around;
+
+}
+
+#mainWrap>article>header,
+#mainWrap>article>section{
+  flex-grow: 1;
+}
+
+#mainWrap>article,
+#mainWrap>article>section article,
+#mainWrap>article>section aside{
+  flex-flow: column;
+}
+
+#mainWrap>article{
+  flex-wrap : wrap;  
+  width     : 60vw;
+  min-width : 500px;
+  margin    : auto;
+  background-color: #322e2e;
+  border-radius: 0.5rem;
+  padding   : 5px;
+}
+
+#mainWrap>article>section article{
+  flex: 0.8;
+}
+
+#mainWrap>article>section aside{
+  flex: 0.2;
+}
+
+/* header */
+#mainWrap>article>header input{
+  width         : 79.5%;
+  margin        : 1px;
+  border        : none;
+  border-radius : 0.4rem;
+  background    : none;
+  padding-right : 1.4rem;
+  text-align    : right;
+  color         : #ffffff;
+  font-size     : 3rem;
+}
+#mainWrap>article>header button{
+  width : 20%;
+  
+}
+
+/* section */
+#mainWrap>article>section article div,
+#mainWrap>article>section aside button{
+  flex: 1;
+}
+
+/* button default */
+button.kgjBtn{
+  height : 5rem;
+  margin: 2px;
+  border : none;
+  border-radius: 0.4rem;
+  color: #ffffff;
+  font-size : 1.5rem;
+  box-shadow: 2px 2px #9b8282;
+  outline: none;
+}
+
+button.kgjBtn:active{
+  box-shadow: 1px 1px #9b8282;
+  transform: translateX(1px) translateY(1px);
+}
+
+button.kgjBtn.number,
+button.kgjBtn.result{
+  width: 33.3%;
+  background-color: #675252;
+  
+}
+
+button.kgjBtn.reset{
+  background-color: #8e2341;
+}
+
+button.kgjBtn.oper{
+  color: rgb(61, 59, 59);
+  font-size: 2.3rem;
+}
+
+article div:last-child>button.number{
+  width: 66.6%;
+}
+
+@keyframes smallSmall{
+  from{font-size:3rem}
+  to{font-size:2rem}
+}
+
+#mainWrap>article>header input.smallText{
+  animation: ease-in-out smallSmall 0.3s;
+  font-size:2rem;
+}
+

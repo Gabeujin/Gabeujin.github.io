@@ -33,17 +33,17 @@ body{
 }
 
 /* header section */
-header{
+body>header{
     padding-left        : 1.2rem;
     background-color    : #564848;
     color               : #d9b1b1;
 }
 
-header .pageTitle{
+body>header .pageTitle{
     margin      : 0 0 0.5rem 0;
 }
 
-header span{
+body>header span{
     cursor      : default;
     font-size   : 4rem;
     word-break  : break-word;
@@ -62,11 +62,11 @@ header span{
     ;
 }
 
-header span.goHome {
+body>header span.goHome {
     cursor : pointer;
 }
 
-header p{
+body>header p{
     margin-bottom   : 0.5rem;
     padding-bottom  : 0.5rem;
     font-size       : 0.9rem;
@@ -74,39 +74,39 @@ header p{
 }
 
 /*nav section*/
-nav{
+body>nav{
     text-align  : center;
     height      : 5%;
 }
 
-nav form.srchForm{
+body>nav form.srchForm{
     float           : left;
     margin-left     : 5px;
     margin-bottom   : 0px;
     width           : 40%;
 }
 
-nav form.srchForm input[type='search']{
+body>nav form.srchForm input[type='search']{
     float           : left;
     width           : 60%;
 }
-nav form.srchForm input[type='submit']{
+body>nav form.srchForm input[type='submit']{
     width           : 30%;
 }
 
-nav>button{
+body>nav>button{
     float           : right;
     margin-right    : 5px;
     border          : 2px outset #eedada;
 }
 
-nav>button#lhTest{
+body>nav>button#lhTest{
     background-color : #caa6a6;
 
 }
 
 /*container(section) section*/
-section{
+body>section{
     clear               : both;
     width               : 100%;
     min-height          : 60vh;
@@ -114,7 +114,7 @@ section{
     -webkit-box-sizing  : border-box;
 }
 
-section contents{
+body>section contents{
     width       : 80%;
     margin      : 0 auto;
     display     : block;
@@ -122,22 +122,22 @@ section contents{
     animation   : fadeIn 1.1s ease-out;
 }
 
-section contents metaInfo{
+body>section contents metaInfo{
     display : block;
     margin  : 4rem 1rem;
 }
 
-section contents>article{
+body>section contents>article{
     animation : fadeIn 1.1s ease-out;
 }
 
-details summary{
+details.thumbnail summary{
     text-align      : left;
     font-size       : 1.6rem;
     user-select     : none;
 }
 
-details p a.hashTag{
+details.thumbnail p a.hashTag{
     text-decoration : none;
     margin          : 2px 8px;
     display         : inline-block;
@@ -145,7 +145,7 @@ details p a.hashTag{
     cursor          : pointer;
 }
 
-details button.thumbBtn{
+details.thumbnail button.thumbBtn{
     width               : 40%;
     height              : 4%;
     border              : 2px outset #eedada;
@@ -153,7 +153,7 @@ details button.thumbBtn{
     cursor              : pointer;
 }
 
-details button.thumbBtn:hover{
+details.thumbnail button.thumbBtn:hover{
 
     background-color    : #756060;
     color               : #ffffff;
@@ -165,31 +165,31 @@ a.hashTag:hover{
     font-weight : bold;
 }
 
-details[open] summary{
+details.thumbnail[open] summary{
     font-weight : bold;
 }
 
-details[open] summary ~ *{
+details.thumbnail[open] summary ~ *{
     animation-name              : fadeIn,slideIn_top;
     animation-duration          : 0.5s,0.5s;
     animation-delay             : 0s,0s;
     animation-timing-function   : ease-out;
 }
 
-details[open] p{
+details.thumbnail[open] p{
     user-select : none;
     word-break  : break-all;
 }
 
 /* footer section */
-footer{
+body>footer{
     position        : relative;
     bottom          : 0rem;
     width           : 100%;
     margin-bottom   : 0rem;
 }
 
-footer p{
+body>footer p{
     text-align  : center;
     margin      : 0 auto;
     padding     : 5px 0px 5px 0px;

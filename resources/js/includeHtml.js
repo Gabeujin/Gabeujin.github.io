@@ -125,11 +125,16 @@ xhttp.send();
 return;
 }
 
-let includeJsInit = (appId)=>{
+const includeJsInit = (appId)=>{
   if(typeof appId !== "undefined"){
     //it used app
-    if(Object.values(SHOW_APP).includes(appId.replace(/app/g,'').replace(/^./g,(a)=>a.toLowerCase()))){
-      momontomInit();
+    const app = appId.replace(/app/g,'').replace(/^./g,(a)=>a.toLowerCase());
+    if(Object.values(SHOW_APP).includes(app)){
+      if(app === "momontom"){
+        momontomInit();
+      }else if(app === "calculator"){
+        calculatorInit();
+      }
     }
   }
 }
