@@ -2,7 +2,57 @@
  * 2020.08.16
  *
 */
+////////////////////// ⭐⭐⭐⭐⭐ ///////////////////
 
+/**
+ * @name UseYn
+ * @param {*} a 
+ * @description 파라미터 사용가능 여부 체크(파라미터가 안넘어오면 undefined이므로 undefined체크와 같다)
+ */
+const _useYn = function(a){
+    return typeof a === "undefined" ? false : true;
+  };
+  
+  /**
+   * @name gTag
+   * @param {string} selector 
+   * @param {boolean} isAll 
+   * @description querySelector 기능 정의
+   */
+  const _gTag = function(selector, isAll){
+    if(_useYn(selector)){
+      const tag = !_useYn(isAll) ? document.querySelector(selector) : ( isAll === true ? document.querySelectorAll(selector) : document.querySelector(selector) );
+      return tag !== null ? tag : null;
+    }else{
+      return null;
+    }
+  };
+  
+  /**
+   * @name ls
+   * @param {string} nm
+   * @description get/set localStroage. 로컬스토리지에서 데이터 input / output
+   * @default getItem
+   */
+  const _ls = function(nm,stream,item){
+    if(_useYn(nm)){
+      return  _useYn(stream) ? ( stream === "set" ? localStorage.setItem(nm,item) : localStorage.getItem(nm) ) : localStorage.getItem(nm);
+    }
+  }
+  
+  
+  /**
+   * @name stopAllInterval
+   * @description delete all interval. (전역)interval 전부 삭제
+   */
+  const _stopAllInterval = function(){
+    for ( let i = 0; i < INTERVAL_ARR.length; i++ )
+      clearInterval(INTERVAL_ARR[i]);
+  };
+  
+  
+  
+  ////////////////////// ⭐⭐⭐⭐⭐ ///////////////////
 /**
  * delveloper Management Section
  */
@@ -14,7 +64,7 @@ const LAST_PAGE = "5";
 // check 'includeSection', 'goHref'
 const SHOW_APP = {
     4 : "momontom"
-    //,5 : "calculator"
+    ,5 : "calculator"
 }
 
 let INTERVAL_ARR = [];
@@ -194,7 +244,7 @@ const getFeature = {
      * @param none
      */
     detailBtn : (link)=>{
-        let btn         = getTag("button",{ class : "thumbBtn", title : "contentDetail" });
+        let btn         = getTag("button",{ class : "thumbBtn", title : "" });
         btn.textContent = "S T A R T";
         btn.type        = "button";
         btn.addEventListener("click", e => {
