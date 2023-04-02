@@ -58,13 +58,14 @@ const _useYn = function(a){
  */
 
 // last content page number : 콘텐츠 인덱스 마지막 넘버 기입
-const LAST_PAGE = "5"; 
+const LAST_PAGE = "6"; 
 
 // show apps for user : 사용할 앱(보여질 앱)
 // check 'includeSection', 'goHref'
 const SHOW_APP = {
     4 : "momontom"
     ,5 : "calculator"
+    ,6 : "sprtGpt"
 }
 
 let INTERVAL_ARR = [];
