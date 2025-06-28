@@ -1,0 +1,60 @@
+:root {
+  --bg-color: #f8f9fa;
+  --primary-color: #343a40;
+  --accent-color: #0d6efd;
+  --text-color: #212529;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
+
+body>header {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body>header span {
+  font-size: 2.5rem;
+  text-shadow: none;
+  color: #fff;
+}
+
+body>nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: #e9ecef;
+}
+
+body>nav>button {
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.3rem 0.75rem;
+  cursor: pointer;
+}
+
+body>nav>button:hover {
+  background-color: #0b5ed7;
+}
+
+body>footer p {
+  background-color: #e9ecef;
+  padding: 0.5rem;
+}
+
+.toastAlert {
+  background-color: #343a40;
+  color: #fff;
+}

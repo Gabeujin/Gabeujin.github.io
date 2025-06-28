@@ -12,6 +12,9 @@ const GEO_APIKEY  =
 
 if (!GEO_APIKEY) {
   console.error("Weather API key is not configured. Set WEATHER_API_KEY in weatherConfig.js or as an environment variable.");
+  if (window.getFeature && getFeature.getToast) {
+    getFeature.getToast("날씨 정보를 불러올 수 없습니다");
+  }
 }
 //////////////////////
 
@@ -23,14 +26,20 @@ function setGeoTemp(obj){
   }
 }
 
-function getWeather(obj){
-  fetch(
-    `https://api.openweathermap.org/data/2.5/onecall?lat=${obj.lat}&lon=${obj.long}&appid=${GEO_APIKEY}&units=metric`
-    ).then(function(res){
-        return res.json();
-    }).then(function(json){
-      setGeoTemp(json);
-    });
+async function getWeather(obj){
+  try{
+    const res = await fetch(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${obj.lat}&lon=${obj.long}&appid=${GEO_APIKEY}&units=metric`
+    );
+    if(!res.ok) throw new Error('Weather fetch failed');
+    const json = await res.json();
+    setGeoTemp(json);
+  } catch(err){
+    console.error(err);
+    if (window.getFeature && getFeature.getToast) {
+      getFeature.getToast('날씨 정보를 불러오지 못했습니다');
+    }
+  }
 }
 
 
