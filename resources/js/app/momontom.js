@@ -28,8 +28,8 @@ function getTime() {
  * @name deleteTodo
  * @description 할일 삭제
  */
-function deleteTodo() {
-  const targetBtn     = event.target //해당 삭제버튼
+function deleteTodo(e) {
+  const targetBtn     = e.target //해당 삭제버튼
         ,targetLi     = targetBtn.parentNode //삭제 대상 li
         ,targetUl     = targetLi.parentNode // 삭제대상 ul
         ,targetValue  = targetLi.querySelector("span");//삭제할 할일
@@ -111,9 +111,9 @@ function setDpTodo(){
  * @name setUser
  * @description 사용자정보 localStorage에 저장
  */
-function setUser(){
+function setUser(e){
   //event 기존 정의된 기능 초기화(기존 기능 삭제)
-  event.preventDefault();
+  e.preventDefault();
 
   /*form태그는 객체에서 데이터를 가져오는 것처럼
   ex. 
@@ -124,7 +124,7 @@ function setUser(){
   form 안에 생성되어 있는 태그들의 name 속성으로 가져올 수 있다.
   아래의 경우, <input ... name="usrNm" ...  /> 으로 정의되어 있는 경우다.
   */
-  const thisForm  = event.target
+  const thisForm  = e.target
         ,usrNm    = thisForm.usrNm;
   
   //usrNm 변수에 사용가능한 값이 들어있는 경우.
@@ -140,9 +140,9 @@ function setUser(){
  * @name setTodoList
  * @description 할일 정보 localStorage에 저장
  */
-function setTodoList(){
+function setTodoList(e){
   //event 기존 정의된 기능 초기화(기존 기능 삭제)
-  event.preventDefault();
+  e.preventDefault();
 
   /*form태그는 객체에서 데이터를 가져오는 것처럼
   ex. 
@@ -153,7 +153,7 @@ function setTodoList(){
   form 안에 생성되어 있는 태그들의 name 속성으로 가져올 수 있다.
   아래의 경우, <input ... name="usrNm" ...  /> 으로 정의되어 있는 경우다.
   */
-  const thisForm  = event.target
+  const thisForm  = e.target
         ,usrTodo  = thisForm.todo;
 
   //usrNm 변수에 사용가능한 값이 들어있는 경우.
