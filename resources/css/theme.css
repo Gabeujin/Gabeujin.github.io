@@ -1,93 +1,158 @@
 :root {
-  --bg-color: #f8f9fa;
-  --primary-color: #343a40;
-  --accent-color: #0d6efd;
-  --text-color: #212529;
+	--bg-color: #f8f9fa;
+	--primary-color: #343a40;
+	--accent-color: #0d6efd;
+	--text-color: #212529;
 }
 
 body {
-  margin: 0;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: 'Inter', sans-serif;
-  line-height: 1.6;
+	margin: 0;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	font-family: 'Inter', sans-serif;
+	line-height: 1.6;
 }
 
 body>header {
-  background-color: var(--primary-color);
-  color: #fff;
-  padding: 1rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	background-color: var(--primary-color);
+	color: #fff;
+	padding: 1rem 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 body>header span {
-  font-size: 2.5rem;
-  text-shadow: none;
-  color: #fff;
+	font-size: 2.5rem;
+	text-shadow: none;
+	color: #fff;
 }
 
-
-body>footer p {
-  background-color: #e9ecef;
-  padding: 0.5rem;
+/* --- [master 브랜치] 네비게이션 바 스타일 시작 --- */
+body>nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.5rem 1rem; /* padding: 1rem; 에서 수정하여 상하 여백 조정 */
+	background-color: #e9ecef;
 }
 
-.toastAlert {
-  background-color: #343a40;
-  color: #fff;
+body>nav .external-links {
+	display: flex;
+	gap: 0.5rem;
 }
 
+body>nav .external-links button,
+body>nav .external-links button:hover {
+	background-color: var(--accent-color);
+	color: #fff;
+	border: none;
+	border-radius: 0.25rem;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+}
 
-/* main app grid */
-body > section contents.app-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  padding: 1rem;
+body>nav .external-links button:hover {
+	background-color: #0b5ed7;
+}
+
+body>nav .app-links {
+	list-style: none;
+	display: flex;
+	gap: 0.5rem;
+	margin: 0;
+	padding: 0;
+}
+
+body>nav .app-links a {
+	text-decoration: none;
+	color: var(--text-color);
+	padding: 0.3rem 0.75rem;
+	border-radius: 0.25rem;
+	transition: all 0.2s ease-in-out;
+}
+
+body>nav .app-links a:hover {
+	background-color: var(--accent-color);
+	color: #fff;
+}
+/* --- [master 브랜치] 네비게이션 바 스타일 끝 --- */
+
+
+/* --- [Feature 브랜치] 메인 앱 그리드 스타일 시작 --- */
+/* 'body > section contents.app-grid' -> 'body > section .app-grid' 로 셀렉터 수정 제안 */
+body > section .app-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem;
+	padding: 1rem;
 }
 
 .app-card {
-  background: #fff;
-  border: 1px solid #dee2e6;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  width: 260px;
-  padding: 1rem;
-  text-align: center;
-  transition: transform 0.2s ease;
+	background: #fff;
+	border: 1px solid #dee2e6;
+	border-radius: 0.5rem;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+	width: 260px;
+	padding: 1rem;
+	text-align: center;
+	transition: transform 0.2s ease;
 }
 
 .app-card:hover {
-  transform: translateY(-4px);
+	transform: translateY(-4px);
 }
 
 .app-card h3 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
+	margin-top: 0;
+	margin-bottom: 0.5rem;
 }
 
 .app-card p {
-  margin: 0 0 1rem 0;
+	margin: 0 0 1rem 0;
+	color: #495057; /* 텍스트 가독성 개선 */
 }
 
 .app-card .hashTag {
-  text-decoration: none;
-  color: var(--accent-color);
-  margin: 0 0.25rem;
+	text-decoration: none;
+	color: var(--accent-color);
+	margin: 0 0.25rem;
+	font-size: 0.9em; /* 해시태그 폰트 사이즈 조정 */
 }
 
 .app-card button {
-  background-color: var(--accent-color);
-  color: #fff;
-  border: none;
-  border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
+	background-color: var(--accent-color);
+	color: #fff;
+	border: none;
+	border-radius: 0.25rem;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
 }
 
 .app-card button:hover {
-  background-color: #0b5ed7;
+	background-color: #0b5ed7;
+}
+/* --- [Feature 브랜치] 메인 앱 그리드 스타일 끝 --- */
+
+
+/* --- 공통 스타일 (중복 제거) --- */
+body>footer p {
+	background-color: #e9ecef;
+	padding: 1rem; /* 여백 통일성 확보 */
+	text-align: center; /* 중앙 정렬 추가 */
+}
+
+.toastAlert {
+	background-color: #343a40;
+	color: #fff;
+	/* 추가: 화면 하단에 고정되는 알림 스타일 */
+	position: fixed;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 1rem 1.5rem;
+	border-radius: 0.5rem;
+	z-index: 1000;
 }
