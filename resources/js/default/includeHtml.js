@@ -44,9 +44,8 @@ const includeSection = async () => {
   container.classList.add("app-grid");
 
   try {
-    const ids = Object.keys(SHOW_APP);
     const responses = await Promise.all(
-      ids.map(id => fetch(`/views/contents/${id}.xml`))
+      APP_LIST.map(app => fetch(`/views/contents/${app.id}.xml`))
     );
 
     for (const res of responses) {
@@ -70,7 +69,8 @@ let includePage = (file)=>{
     if (this.readyState == 4) {
       if (this.status == 200) {
         z.innerHTML = this.responseText;
-        includeJsInit(z.querySelector("article").id);
+        const article = z.querySelector("article");
+        if(article) includeJsInit(article.id);
       }
       else if (this.status == 403) {
         return false;
@@ -92,16 +92,33 @@ xhttp.send();
 return;
 }
 
-const includeJsInit = (appId)=>{
-  if(typeof appId !== "undefined"){
-    //it used app
-    const app = appId.replace(/app/g,'').replace(/^./g,(a)=>a.toLowerCase());
-    if(Object.values(SHOW_APP).includes(app)){
-      if(app === "momontom"){
-        momontomInit();
-      }else if(app === "calculator"){
-        calculatorInit();
-      }
-    }
+const includeJsInit = async (appId) => {
+  if(!appId) return;
+  const appName = appId.replace(/app/g,'').replace(/^./, a => a.toLowerCase());
+  const info = APP_LIST.find(a => a.name === appName);
+  if(!info) return;
+
+  if(info.css && !document.querySelector(`link[data-app="${appName}"]`)){
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = info.css;
+    link.dataset.app = appName;
+    document.head.appendChild(link);
+  }
+
+  if(info.script && !document.querySelector(`script[data-app="${appName}"]`)){
+    await new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = info.script;
+      s.defer = true;
+      s.dataset.app = appName;
+      s.onload = resolve;
+      s.onerror = reject;
+      document.body.appendChild(s);
+    });
+  }
+
+  if(typeof window[info.init] === 'function'){
+    window[info.init]();
   }
 }
