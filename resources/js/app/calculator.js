@@ -36,11 +36,11 @@ const calEvtHdlr = {
     }
   }
 
-  ,setNum : function(num){
-    if(typeof num !== "object"){
-      calArr.push(num);
+  ,setNum : function(e){
+    if(typeof e !== "object"){
+      calArr.push(e);
     }else{
-      calArr.push(event.target.innerText);
+      calArr.push(e.target.innerText);
     }
     showDp();
   }
