@@ -240,6 +240,39 @@ const getFeature = {
        
         return docFrag;
     },
+
+    /**
+     * @description create card style for app list
+     */
+    appCard : (xmlDomTree, xmlLink) => {
+        const dom = isNull(xmlDomTree) !== "" ? xmlDomTree : "";
+        if(dom === "") return dom;
+
+        const card = getTag("div", {class : "app-card"});
+        const title = getTag("h3");
+        title.textContent = dom.querySelector("metaInfo>title").textContent;
+
+        const tagWrap = getTag("p", {class : "thumbTag", title : "hashTag"});
+        const hashTags = dom.querySelector("hashTag").textContent.split(',').map(t => "#"+t);
+        const aTemp = getTag("a");
+        aTemp.className = "hashTag";
+        let t;
+        hashTags.forEach(el => {
+            t = aTemp.cloneNode();
+            t.textContent = el;
+            t.title = el.replace(/#/g,'');
+            tagWrap.appendChild(t);
+        });
+        tagWrap.addEventListener("click", e => e.target.title != "hashTag" ? goHref(e.target.textContent.replace(/#/g,''), "gSearch") : false );
+
+        const btn = getFeature.detailBtn(xmlLink);
+
+        card.appendChild(title);
+        card.appendChild(tagWrap);
+        card.appendChild(btn);
+
+        return card;
+    },
     /**
      * @description get default detail button
      * @param none
