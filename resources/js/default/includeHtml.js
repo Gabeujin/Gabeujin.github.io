@@ -70,7 +70,7 @@ let includePage = (file)=>{
       if (this.status == 200) {
         z.innerHTML = this.responseText;
         const article = z.querySelector("article");
-        if(article) includeJsInit(article.id);
+        if(article) includeJsInit(article);
       }
       else if (this.status == 403) {
         return false;
@@ -92,9 +92,9 @@ xhttp.send();
 return;
 }
 
-const includeJsInit = async (appId) => {
-  if(!appId) return;
-  const appName = appId.replace(/app/g,'').replace(/^./, a => a.toLowerCase());
+const includeJsInit = async (article) => {
+  if(!article) return;
+  const appName = article.id.replace(/app/g,'').replace(/^./, a => a.toLowerCase());
   const info = APP_LIST.find(a => a.name === appName);
   if(!info) return;
 
@@ -117,6 +117,10 @@ const includeJsInit = async (appId) => {
       document.body.appendChild(s);
     });
   }
+
+  AppManager.register(appName, article, { lsKeys: info.lsKeys });
+
+  showWindowControls();
 
   if(typeof window[info.init] === 'function'){
     window[info.init]();

@@ -159,5 +159,46 @@ body > section .app-grid {
 }
 
 .app-card button:hover {
-	background-color: #0b5ed7;
+        background-color: #0b5ed7;
+}
+
+/* --- app launch overlay --- */
+.app-launch-overlay {
+        position: absolute;
+        background: #fff;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        z-index: 200;
+        transition: all 0.4s ease-in-out;
+}
+
+.app-launch-overlay.expand {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+}
+
+.window-controls {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        display: flex;
+        gap: 0.3rem;
+        z-index: 50;
+}
+
+.window-controls button {
+        width: 1.5rem;
+        height: 1.5rem;
+        line-height: 1.5rem;
+        font-size: 1rem;
+        border: none;
+        background: #ccc;
+        cursor: pointer;
+}
+
+.window-controls button:hover {
+        background: #bbb;
 }
