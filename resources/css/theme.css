@@ -30,13 +30,19 @@ body>header span {
 
 body>nav {
   display: flex;
-  justify-content: center;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
   padding: 0.5rem;
   background-color: #e9ecef;
 }
 
-body>nav>button {
+body>nav .external-links {
+  display: flex;
+  gap: 0.5rem;
+}
+
+body>nav .external-links button {
   background-color: var(--accent-color);
   color: #fff;
   border: none;
@@ -45,8 +51,28 @@ body>nav>button {
   cursor: pointer;
 }
 
-body>nav>button:hover {
+body>nav .external-links button:hover {
   background-color: #0b5ed7;
+}
+
+body>nav .app-links {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+body>nav .app-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  padding: 0.3rem 0.75rem;
+  border-radius: 0.25rem;
+}
+
+body>nav .app-links a:hover {
+  background-color: var(--accent-color);
+  color: #fff;
 }
 
 body>footer p {
@@ -58,3 +84,4 @@ body>footer p {
   background-color: #343a40;
   color: #fff;
 }
+
