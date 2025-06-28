@@ -38,60 +38,28 @@ let includeHTML = ()=>{
     }
 }
 
-let includeSection = (i,j)=>{
-  let z, file, xhttp, docXml, docFrag, fileNum;
-  const doNotRead = "0,1,2,3";
-  z = document.querySelector("body>section>contents");
-    do{
-      file = i;
-      if (file) {
-        xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4) {
-            if (this.status == 200) {
-              docXml = this.responseXML;
-              docFrag = document.createDocumentFragment();
-              fileNum = docXml.baseURI.split("contents/")[1].replace(".xml","").replace("html","");
-              //check Apps
-              if(SHOW_APP.hasOwnProperty(fileNum)){
-                docFrag.appendChild( getFeature.thumbnail( docXml.querySelector("metaInfo"), docXml.querySelector("link") , fileNum ) );
-                z.appendChild(docFrag);
-                z.appendChild(document.createElement("hr"));
-              }
-            }
-            else if (this.status == 403) {
-              return false;
-            }
-            else if (this.status == 404) {
-              return false;
-            }
-            else if (this.status == 405) {
-              return false;
-            }
-            else if (this.status == 500) {
-              return false;
-            }
-            //last content number;
-            if(i == LAST_PAGE) return false;
+const includeSection = async () => {
+  const container = document.querySelector("body>section>contents");
+  container.innerHTML = "";
+  container.classList.add("app-grid");
 
-            includeSection(i+1, j);
-          }
-        }
-        //last content + 1;
-        if(i == (LAST_PAGE + 1)) return false;
-        file += ".xml";
-        
-        try {
-            xhttp.open("GET", "/views/contents/" + file, true);
-            xhttp.send();
-        } catch (e) {
-          console.log(e);
-        }
-        
-        return false;
-      }
-    }while(true);
-}
+  try {
+    const responses = await Promise.all(
+      APP_LIST.map(app => fetch(`/views/contents/${app.id}.xml`))
+    );
+
+    for (const res of responses) {
+      if(!res.ok) continue;
+      const text = await res.text();
+      const xml = new DOMParser().parseFromString(text, "application/xml");
+      container.appendChild(
+        getFeature.appCard(xml.querySelector("metaInfo"), xml.querySelector("link"))
+      );
+    }
+  } catch(e) {
+    console.log(e);
+  }
+};
 
 let includePage = (file)=>{
   let z, elmnt, xhttp;
@@ -123,16 +91,33 @@ xhttp.send();
 return;
 }
 
-const includeJsInit = (appId)=>{
-  if(typeof appId !== "undefined"){
-    //it used app
-    const app = appId.replace(/app/g,'').replace(/^./g,(a)=>a.toLowerCase());
-    if(Object.values(SHOW_APP).includes(app)){
-      if(app === "momontom"){
-        momontomInit();
-      }else if(app === "calculator"){
-        calculatorInit();
-      }
-    }
+const includeJsInit = async (appId) => {
+  if(!appId) return;
+  const appName = appId.replace(/app/g,'').replace(/^./, a => a.toLowerCase());
+  const info = APP_LIST.find(a => a.name === appName);
+  if(!info) return;
+
+  if(info.css && !document.querySelector(`link[data-app="${appName}"]`)){
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = info.css;
+    link.dataset.app = appName;
+    document.head.appendChild(link);
+  }
+
+  if(info.script && !document.querySelector(`script[data-app="${appName}"]`)){
+    await new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = info.script;
+      s.defer = true;
+      s.dataset.app = appName;
+      s.onload = resolve;
+      s.onerror = reject;
+      document.body.appendChild(s);
+    });
+  }
+
+  if(typeof window[info.init] === 'function'){
+    window[info.init]();
   }
 }

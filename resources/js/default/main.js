@@ -57,15 +57,7 @@ const _useYn = function(a){
  * delveloper Management Section
  */
 
-// last content page number : 콘텐츠 인덱스 마지막 넘버 기입
-const LAST_PAGE = "6"; 
-
-// show apps for user : 사용할 앱(보여질 앱)
-// check 'includeSection', 'goHref'
-const SHOW_APP = {
-    4 : "momontom"
-    ,5 : "calculator"
-    ,6 : "sprtGpt"
+// application list is defined in APP_LIST (see config/appList.js)
 }
 
 let INTERVAL_ARR = [];
@@ -112,8 +104,8 @@ const goHref = (a,b,c)=>{
         pageTitle.classList.add("goHome");
         ContentClear();
         includePage(url);
-        //check Apps
-        if( !Object.values(SHOW_APP).includes(url.replace(/views\/app\/|.html/g,'')) ){
+        //check app availability
+        if(!APP_LIST.some(ap => ap.name === url.replace(/views\/app\/|.html/g,''))){
             getFeature.getToast("준비중입니다.");
         }
     }else{
@@ -129,8 +121,14 @@ const goHref = (a,b,c)=>{
  * @description set timeStamp fotter's clock
  */
 const setClock = ()=>{
-    let nowDate = new Date();
-    return nowDate.getFullYear() + "년 " + (nowDate.getMonth() + 1) + "월 " + nowDate.getDate() + "일 " + nowDate.getHours() + "시 " + nowDate.getMinutes() + "분 " + nowDate.getSeconds() + "초";
+    const nowDate = new Date();
+    const y = nowDate.getFullYear();
+    const m = String(nowDate.getMonth() + 1).padStart(2,'0');
+    const d = String(nowDate.getDate()).padStart(2,'0');
+    const h = String(nowDate.getHours()).padStart(2,'0');
+    const min = String(nowDate.getMinutes()).padStart(2,'0');
+    const s = String(nowDate.getSeconds()).padStart(2,'0');
+    return `${y}-${m}-${d} ${h}:${min}:${s}`;
 }
 
 /**
@@ -239,6 +237,39 @@ const getFeature = {
         docFrag.appendChild(detailTag);
        
         return docFrag;
+    },
+
+    /**
+     * @description create card style for app list
+     */
+    appCard : (xmlDomTree, xmlLink) => {
+        const dom = isNull(xmlDomTree) !== "" ? xmlDomTree : "";
+        if(dom === "") return dom;
+
+        const card = getTag("div", {class : "app-card"});
+        const title = getTag("h3");
+        title.textContent = dom.querySelector("metaInfo>title").textContent;
+
+        const tagWrap = getTag("p", {class : "thumbTag", title : "hashTag"});
+        const hashTags = dom.querySelector("hashTag").textContent.split(',').map(t => "#"+t);
+        const aTemp = getTag("a");
+        aTemp.className = "hashTag";
+        let t;
+        hashTags.forEach(el => {
+            t = aTemp.cloneNode();
+            t.textContent = el;
+            t.title = el.replace(/#/g,'');
+            tagWrap.appendChild(t);
+        });
+        tagWrap.addEventListener("click", e => e.target.title != "hashTag" ? goHref(e.target.textContent.replace(/#/g,''), "gSearch") : false );
+
+        const btn = getFeature.detailBtn(xmlLink);
+
+        card.appendChild(title);
+        card.appendChild(tagWrap);
+        card.appendChild(btn);
+
+        return card;
     },
     /**
      * @description get default detail button
