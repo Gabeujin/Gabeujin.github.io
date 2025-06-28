@@ -58,7 +58,6 @@ const _useYn = function(a){
  */
 
 // application list is defined in APP_LIST (see config/appList.js)
-}
 
 let INTERVAL_ARR = [];
 /**
@@ -100,8 +99,10 @@ const goHref = (a,b,c)=>{
 
     if(target == "" && feature == ""){
         var pageTitle = document.querySelector("body>header>h1>span");
-        pageTitle.innerHTML = "&#127968;";
-        pageTitle.classList.add("goHome");
+        if(pageTitle){
+            pageTitle.innerHTML = "&#127968;";
+            pageTitle.classList.add("goHome");
+        }
         ContentClear();
         includePage(url);
         //check app availability

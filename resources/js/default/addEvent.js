@@ -24,33 +24,39 @@ let fnReady = function(){
         });
     }
 
-    document.querySelector(".pageTitle span").addEventListener("click", (e)=>{
-        e.stopPropagation();
-        let pageTitle = document.querySelector("body>header>h1>span");
-        if(pageTitle.textContent === "Memory Repo") return false;
-        pageTitle.classList.remove("goHome");
-        pageTitle.innerHTML = "Memory Repo";
+    const titleSpan = document.querySelector(".pageTitle span");
+    if(titleSpan){
+        titleSpan.addEventListener("click", (e)=>{
+            e.stopPropagation();
+            let pageTitle = document.querySelector("body>header>h1>span");
+            if(pageTitle && pageTitle.textContent === "Memory Repo") return false;
+            if(pageTitle){
+                pageTitle.classList.remove("goHome");
+                pageTitle.innerHTML = "Memory Repo";
+            }
 
-        const section = document.querySelector("body>section");
-        section.style.background = "none";
+            const section = document.querySelector("body>section");
+            if(section) section.style.background = "none";
 
-        let mainSection = pageTitle.parentNode.parentNode.parentNode.querySelector("section");
-        mainSection.classList.remove("setFadeIn");
-        mainSection.classList.add("setDpNone");
-        if(mainSection.classList.contains("setDpNone")){
-            setTimeout(function(){
-                mainSection.classList.add("setFadeIn");
-                mainSection.classList.remove("setDpNone");
-            },100);
-            
-        }
+            let mainSection = pageTitle ? pageTitle.parentNode.parentNode.parentNode.querySelector("section") : null;
+            if(mainSection){
+                mainSection.classList.remove("setFadeIn");
+                mainSection.classList.add("setDpNone");
+                if(mainSection.classList.contains("setDpNone")){
+                    setTimeout(function(){
+                        mainSection.classList.add("setFadeIn");
+                        mainSection.classList.remove("setDpNone");
+                    },100);
+                }
+            }
 
-        for ( let i = 0; i < INTERVAL_ARR.length; i++ )
-            clearInterval(INTERVAL_ARR[i]);
-            
-        ContentClear();
-        includeSection();
-    });
+            for ( let i = 0; i < INTERVAL_ARR.length; i++ )
+                clearInterval(INTERVAL_ARR[i]);
+
+            ContentClear();
+            includeSection();
+        });
+    }
 
     //footer clock setting
     let clock = document.querySelector("#clockTag");
