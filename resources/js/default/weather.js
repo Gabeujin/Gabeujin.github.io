@@ -3,8 +3,16 @@
 ////////////////////// ⭐⭐⭐⭐⭐ ///////////////////
 
 ///🚫고정 상수 정의////
-const GEO_LS      = "COORDS"//사용자 이름 localStorage
-const GEO_APIKEY  = "99e04192dab563a6b0a2c140437ebec2"//사용자 apiKey
+const GEO_LS      = "COORDS"; //사용자 이름 localStorage
+// API key는 환경 변수 또는 config 파일(resources/js/config/weatherConfig.js)
+// 에서 제공되는 WEATHER_API_KEY 전역 변수에서 읽어옵니다.
+const GEO_APIKEY  =
+  (typeof WEATHER_API_KEY !== "undefined" && WEATHER_API_KEY) ||
+  (typeof process !== "undefined" && process.env && process.env.WEATHER_API_KEY);
+
+if (!GEO_APIKEY) {
+  console.error("Weather API key is not configured. Set WEATHER_API_KEY in weatherConfig.js or as an environment variable.");
+}
 //////////////////////
 
 function setGeoTemp(obj){
