@@ -99,23 +99,21 @@ let includePage = (file)=>{
   xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4) {
-      if (this.readyState == 4) {
-        if (this.status == 200) {
-          z.innerHTML = this.responseText;
-          includeJsInit(z.querySelector("article").id);
-        }
-        else if (this.status == 403) {
-          return false;
-        }
-        else if (this.status == 404) {
-          return false;
-        }
-        else if (this.status == 405) {
-          return false;
-        }
-        else if (this.status == 500) {
-          return false;
-        }
+      if (this.status == 200) {
+        z.innerHTML = this.responseText;
+        includeJsInit(z.querySelector("article").id);
+      }
+      else if (this.status == 403) {
+        return false;
+      }
+      else if (this.status == 404) {
+        return false;
+      }
+      else if (this.status == 405) {
+        return false;
+      }
+      else if (this.status == 500) {
+        return false;
       }
     }
   }
