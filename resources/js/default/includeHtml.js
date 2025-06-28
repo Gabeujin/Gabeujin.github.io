@@ -69,7 +69,8 @@ let includePage = (file)=>{
     if (this.readyState == 4) {
       if (this.status == 200) {
         z.innerHTML = this.responseText;
-        includeJsInit(z.querySelector("article").id);
+        const article = z.querySelector("article");
+        if(article) includeJsInit(article.id);
       }
       else if (this.status == 403) {
         return false;
