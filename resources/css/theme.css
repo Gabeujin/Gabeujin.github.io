@@ -99,8 +99,14 @@ body > nav .app-links a {
 }
 
 body > nav .app-links a:hover {
-	background-color: var(--accent-color);
-	color: #fff;
+        background-color: var(--accent-color);
+        color: #fff;
+}
+
+/* --- app container --- */
+body > section {
+        position: relative;
+        overflow: hidden;
 }
 
 /* --- app grid --- */

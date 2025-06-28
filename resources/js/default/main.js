@@ -253,6 +253,8 @@ const getFeature = {
         if(dom === "") return dom;
 
         const card = getTag("div", {class : "app-card"});
+        const linkPath = xmlLink.textContent.trim();
+        card.dataset.app = linkPath.split('/').pop();
         const title = getTag("h3");
         title.textContent = dom.querySelector("metaInfo>title").textContent;
 
@@ -330,6 +332,7 @@ const launchApp = (card, page) => {
         goHref(page);
         return;
     }
+    AppManager.launching = card.dataset.app;
     const rect = card.getBoundingClientRect();
     const secRect = section.getBoundingClientRect();
     const overlay = document.createElement('div');
