@@ -130,7 +130,7 @@ const goHref = (a,b,c)=>{
  */
 const setClock = ()=>{
     let nowDate = new Date();
-    return nowDate.getFullYear() + "년 " + nowDate.getMonth() + "월 " + nowDate.getDate() + "일 " + nowDate.getHours() + "시 " + nowDate.getMinutes() + "분 " + nowDate.getSeconds() + "초";
+    return nowDate.getFullYear() + "년 " + (nowDate.getMonth() + 1) + "월 " + nowDate.getDate() + "일 " + nowDate.getHours() + "시 " + nowDate.getMinutes() + "분 " + nowDate.getSeconds() + "초";
 }
 
 /**
