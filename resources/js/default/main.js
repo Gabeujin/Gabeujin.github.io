@@ -46,13 +46,8 @@ const _useYn = function(a){
    * @description delete all interval. (전역)interval 전부 삭제
    */
   const _stopAllInterval = function(){
-    if(AppManager && AppManager.current){
-      AppManager.clearIntervals(AppManager.current);
-    } else if(Array.isArray(INTERVAL_ARR)) {
-      for ( let i = 0; i < INTERVAL_ARR.length; i++ )
-        clearInterval(INTERVAL_ARR[i]);
-      INTERVAL_ARR = [];
-    }
+    for ( let i = 0; i < INTERVAL_ARR.length; i++ )
+      clearInterval(INTERVAL_ARR[i]);
   };
   
   
@@ -286,15 +281,15 @@ const getFeature = {
         btn.textContent = "S T A R T";
         btn.type        = "button";
         btn.addEventListener("click", e => {
-            e.stopPropagation();
-            const url = link.textContent.trim();
-            if( url.indexOf("www") > -1 ){
-                goHref("https://"+url,"_blank");
-            }else{
-                const card = e.currentTarget.closest('.app-card');
-                launchApp(card, url + ".html");
-            }
+            e.stopPropagation(); 
+            if( link.textContent.indexOf("www") > -1 )
+                goHref("https://"+link.textContent.trim(),"_blank");
+            else
+                goHref(link.textContent.trim() + ".html");
+            //getFeature.getToast("준비중입니다.");
+            
         });
+        //addevent
         return btn;
     },
      /**
@@ -324,42 +319,3 @@ const getFeature = {
 
 
 }
-const launchApp = (card, page) => {
-    const section = document.querySelector('body>section');
-    if(!section){
-        goHref(page);
-        return;
-    }
-    const rect = card.getBoundingClientRect();
-    const secRect = section.getBoundingClientRect();
-    const overlay = document.createElement('div');
-    overlay.className = 'app-launch-overlay';
-    overlay.style.top = (rect.top - secRect.top) + 'px';
-    overlay.style.left = (rect.left - secRect.left) + 'px';
-    overlay.style.width = rect.width + 'px';
-    overlay.style.height = rect.height + 'px';
-    section.appendChild(overlay);
-    requestAnimationFrame(()=> overlay.classList.add('expand'));
-    overlay.addEventListener('transitionend', () => {
-        if(overlay.parentNode) overlay.parentNode.removeChild(overlay);
-        goHref(page);
-    }, {once:true});
-};
-
-const showWindowControls = () => {
-    const section = document.querySelector('body>section');
-    if(!section) return;
-    let controls = section.querySelector('.window-controls');
-    if(controls) controls.remove();
-    controls = document.createElement('div');
-    controls.className = 'window-controls';
-    const min = document.createElement('button');
-    min.textContent = '—';
-    const close = document.createElement('button');
-    close.textContent = '×';
-    min.addEventListener('click', () => AppManager.minimize());
-    close.addEventListener('click', () => AppManager.close());
-    controls.appendChild(min);
-    controls.appendChild(close);
-    section.appendChild(controls);
-};

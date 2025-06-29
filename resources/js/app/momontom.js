@@ -189,7 +189,7 @@ function momontomInit() {
 
   //init D-day setting. 시계 설정 및 1초마다 반복 실행 interval 설정.
   getTime();
-  AppManager.addInterval(setInterval(getTime, 1000));
+  INTERVAL_ARR.push(setInterval(getTime, 1000));
 
   //할일(localStorage) 을 변수로 담기 = 초기화
   if(usrTodo !== null){
