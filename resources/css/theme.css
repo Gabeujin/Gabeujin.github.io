@@ -159,5 +159,17 @@ body > section .app-grid {
 }
 
 .app-card button:hover {
-	background-color: #0b5ed7;
+        background-color: #0b5ed7;
+}
+
+/* --- app close button --- */
+body > section .app-close-btn {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background: transparent;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--text-color);
 }
