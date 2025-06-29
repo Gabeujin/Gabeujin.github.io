@@ -61,6 +61,33 @@ const includeSection = async () => {
   }
 };
 
+const showMain = () => {
+  const title = document.querySelector('body>header>h1>span');
+  if(title){
+    title.classList.remove('goHome');
+    title.textContent = 'Memory Repo';
+  }
+
+  const section = document.querySelector('body>section');
+  if(section) section.style.background = 'none';
+
+  if(section){
+    section.classList.remove('setFadeIn');
+    section.classList.add('setDpNone');
+    setTimeout(() => {
+      section.classList.add('setFadeIn');
+      section.classList.remove('setDpNone');
+    }, 100);
+  }
+
+  if(typeof _stopAllInterval === 'function') _stopAllInterval();
+  ContentClear();
+  includeSection();
+
+  const close = document.querySelector('.app-close-btn');
+  if(close) close.remove();
+};
+
 let includePage = (file)=>{
   let z, elmnt, xhttp;
   z = document.querySelector("body>section>contents");
@@ -71,6 +98,14 @@ let includePage = (file)=>{
         z.innerHTML = this.responseText;
         const article = z.querySelector("article");
         if(article) includeJsInit(article.id);
+
+        if(!document.querySelector('.app-close-btn')){
+          const closeBtn = document.createElement('button');
+          closeBtn.className = 'app-close-btn';
+          closeBtn.innerHTML = '&times;';
+          closeBtn.addEventListener('click', showMain);
+          document.querySelector('body>section').appendChild(closeBtn);
+        }
       }
       else if (this.status == 403) {
         return false;
