@@ -187,30 +187,6 @@ class LoanCalculator {
     }
 }
 
-// 애플리케이션 초기화
-// document.addEventListener('DOMContentLoaded', () => {
-//     const calculator = new LoanCalculator();
-    
-//     // 전역에서 접근 가능하도록 설정 (테스트용)
-//     window.loanCalculator = calculator;
-    
-//     // 예시 시나리오 버튼 추가 (선택사항)
-//     const addExampleButtons = () => {
-//         const examples = [
-//             { deposit: 150000000, loanRatio: 80, description: '안정형 계획' },
-//             { deposit: 200000000, loanRatio: 80, description: '최대형 계획' }
-//         ];
-        
-//         // 예시 버튼은 UI에 추가하지 않고 콘솔에서 테스트 가능하도록 함
-//         console.log('사용 가능한 예시 시나리오:');
-//         examples.forEach((example, index) => {
-//             console.log(`${index + 1}. ${example.description}: loanCalculator.setScenario(${example.deposit}, ${example.loanRatio})`);
-//         });
-//     };
-    
-//     addExampleButtons();
-// });
-
 // 수정된 코드
 function loanCalculatorInit() {
 	const calculator = new LoanCalculator();
