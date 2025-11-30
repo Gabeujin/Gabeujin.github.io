@@ -1,27 +1,36 @@
 # Gabeujin.github.io
 
-homePage
-https://Gabeujin.github.io
+Personal homepage built with Vite.
 
-## Weather API Configuration
+🔗 https://gabeujin.github.io
 
-The weather widget requires an OpenWeather API key. The application reads this
-key from a global variable named `WEATHER_API_KEY`. You can provide the key in
-two ways:
+## Projects
 
-1. **Local development** – create a file
-   `resources/js/config/weatherConfig.js` and define the key:
+- [📚 Edu Platform](/edu-platform) - 교육 플랫폼
+- [💰 Wedding Money Manager](/wedding-money-manager) - 축의금 관리 서비스
 
-   ```javascript
-   // resources/js/config/weatherConfig.js
-   window.WEATHER_API_KEY = 'your-openweather-key';
-   ```
+## Development
 
-   Ensure this file is loaded before `weather.js` in your HTML.
+```bash
+# Install dependencies
+npm install
 
-2. **Deployment** – set the environment variable `WEATHER_API_KEY` during your
-   build or hosting process. The script falls back to this environment variable
-   if the global variable is not defined.
+# Start development server
+npm run dev
 
-If the key is missing, a warning is printed in the browser console and weather
-information will not load.
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## Deployment
+
+This project uses GitHub Actions for automatic deployment to GitHub Pages.
+
+Push to the `main` branch to trigger deployment.
+
+## License
+
+MIT License · Copyright (c) 2020 Gabeujin
