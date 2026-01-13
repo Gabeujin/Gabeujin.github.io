@@ -9,7 +9,7 @@ Personal homepage built with Vite.
 - [📚 Edu Platform](/edu-platform) - 교육 플랫폼
 - [💰 Wedding Money Manager](/wedding-money-manager) - 축의금 관리 서비스
 - [🎯 Quiz Master](/quiz-master) - 카드형식의 퀴즈 웹앱
-- [💼 SQL Biz Quiz](/sql-biz-quiz) - 비지니스 도메인 SQL 문제 풀이 웹앱
+- [💼 SQL Biz Quiz](/sql-biz-quiz) - 비즈니스 도메인 SQL 문제 풀이 웹앱
 
 ## Development
 
