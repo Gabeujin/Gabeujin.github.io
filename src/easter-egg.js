@@ -3,16 +3,46 @@
  * Implements hidden features triggered by specific user actions
  */
 
+// Easter egg timing constants
+const CLICK_SEQUENCE_TIMEOUT_MS = 500;
+const KONAMI_ANIMATION_DURATION_MS = 2000;
+const RAINBOW_EFFECT_DURATION_MS = 3000;
+const MATRIX_CANVAS_CLEANUP_DELAY_MS = 500;
+const MESSAGE_DISPLAY_DURATION_MS = 3000;
+
 export class EasterEgg {
   constructor() {
     this.konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     this.konamiIndex = 0;
     this.clickCount = 0;
     this.clickTimer = null;
-    this.activated = false;
     // Matrix animation constants
     this.MATRIX_ANIMATION_DURATION_MS = 5000;
     this.MATRIX_TARGET_FPS = 30;
+  }
+
+  /**
+   * Helper to inject a style element once
+   */
+  injectStyleOnce(id, css) {
+    if (!document.getElementById(id)) {
+      const style = document.createElement('style');
+      style.id = id;
+      style.textContent = css;
+      document.head.appendChild(style);
+      return style;
+    }
+    return document.getElementById(id);
+  }
+
+  /**
+   * Helper to remove a style element
+   */
+  removeStyle(id) {
+    const style = document.getElementById(id);
+    if (style) {
+      style.remove();
+    }
   }
 
   /**
@@ -52,7 +82,10 @@ export class EasterEgg {
    */
   initLogoClick() {
     const logo = document.querySelector('header h1');
-    if (!logo) return;
+    if (!logo) {
+      console.warn('[EasterEgg] Logo element "header h1" not found; logo click easter egg disabled.');
+      return;
+    }
 
     logo.addEventListener('click', () => {
       this.clickCount++;
@@ -60,7 +93,7 @@ export class EasterEgg {
       clearTimeout(this.clickTimer);
       this.clickTimer = setTimeout(() => {
         this.clickCount = 0;
-      }, 500);
+      }, CLICK_SEQUENCE_TIMEOUT_MS);
 
       if (this.clickCount === 3) {
         this.triggerMatrixEffect();
@@ -106,30 +139,26 @@ export class EasterEgg {
     
     body.classList.add('konami-active');
     
-    // Add rotation animation
-    const style = document.createElement('style');
-    style.id = 'konami-style';
-    style.textContent = `
+    // Add rotation animation using helper
+    this.injectStyleOnce('konami-style', `
       .konami-active {
-        animation: konami-spin 2s ease-in-out;
+        animation: konami-spin ${KONAMI_ANIMATION_DURATION_MS}ms ease-in-out;
       }
       @keyframes konami-spin {
         0% { transform: rotate(0deg) scale(1); }
         50% { transform: rotate(360deg) scale(1.1); }
         100% { transform: rotate(720deg) scale(1); }
       }
-    `;
-    
-    if (!document.getElementById('konami-style')) {
-      document.head.appendChild(style);
-    }
+    `);
 
     // Show message
     this.showMessage('🎮 Konami Code Activated! 🎮');
 
     setTimeout(() => {
       body.classList.remove('konami-active');
-    }, 2000);
+      // Clean up style after animation
+      this.removeStyle('konami-style');
+    }, KONAMI_ANIMATION_DURATION_MS);
   }
 
   /**
@@ -184,7 +213,7 @@ export class EasterEgg {
       } else {
         setTimeout(() => {
           canvas.remove();
-        }, 500);
+        }, MATRIX_CANVAS_CLEANUP_DELAY_MS);
       }
     };
 
@@ -199,9 +228,8 @@ export class EasterEgg {
     const cards = document.querySelectorAll('.app-card');
     const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE'];
     
-    const style = document.createElement('style');
-    style.id = 'rainbow-style';
-    style.textContent = `
+    // Add rainbow animation using helper
+    this.injectStyleOnce('rainbow-style', `
       .rainbow-active {
         animation: rainbow-pulse 2s ease-in-out;
       }
@@ -209,11 +237,7 @@ export class EasterEgg {
         0%, 100% { transform: scale(1); }
         50% { transform: scale(1.05); }
       }
-    `;
-    
-    if (!document.getElementById('rainbow-style')) {
-      document.head.appendChild(style);
-    }
+    `);
 
     cards.forEach((card, index) => {
       card.classList.add('rainbow-active');
@@ -228,7 +252,9 @@ export class EasterEgg {
         card.classList.remove('rainbow-active');
         card.style.borderLeft = '';
       });
-    }, 3000);
+      // Clean up style after animation
+      this.removeStyle('rainbow-style');
+    }, RAINBOW_EFFECT_DURATION_MS);
   }
 
   /**
@@ -253,29 +279,25 @@ export class EasterEgg {
       font-size: 1.5rem;
       font-weight: bold;
       z-index: 10000;
-      animation: fadeInOut 3s ease-in-out;
+      animation: fadeInOut ${MESSAGE_DISPLAY_DURATION_MS}ms ease-in-out;
       text-align: center;
     `;
 
-    const style = document.createElement('style');
-    style.textContent = `
+    // Add fadeInOut animation using helper
+    this.injectStyleOnce('easter-egg-animation', `
       @keyframes fadeInOut {
         0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
         20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
         80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
         100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
       }
-    `;
-    if (!document.querySelector('style[data-easter-egg]')) {
-      style.setAttribute('data-easter-egg', 'true');
-      document.head.appendChild(style);
-    }
+    `);
 
     document.body.appendChild(message);
 
     setTimeout(() => {
       message.remove();
-    }, 3000);
+    }, MESSAGE_DISPLAY_DURATION_MS);
   }
 }
 

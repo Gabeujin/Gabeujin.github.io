@@ -3,6 +3,13 @@
  * Provides fuzzy search functionality with auto-completion
  */
 
+// Search configuration constants
+const SEARCH_DEBOUNCE_DELAY_MS = 200;
+const TITLE_DISTANCE_THRESHOLD = 3;
+const DESCRIPTION_DISTANCE_THRESHOLD = 5;
+const EXACT_TITLE_MATCH_BOOST = 100;
+const EXACT_DESCRIPTION_MATCH_BOOST = 50;
+
 export class SearchEngine {
   constructor(items) {
     this.items = items;
@@ -53,24 +60,43 @@ export class SearchEngine {
     query = query.toLowerCase().trim();
     
     const results = this.items.map(item => {
-      const titleMatch = item.title.toLowerCase().includes(query);
-      const descMatch = item.description.toLowerCase().includes(query);
+      const titleLower = item.title.toLowerCase();
+      const descLower = item.description.toLowerCase();
+      const titleMatch = titleLower.includes(query);
+      const descMatch = descLower.includes(query);
       
-      // Calculate fuzzy match scores
-      const titleDistance = this.levenshteinDistance(query, item.title);
-      const descDistance = this.levenshteinDistance(query, item.description);
+      // Calculate relevance score using edit distance:
+      // lower scores indicate better matches (0 = exact match).
+      // Note: we keep this as a "distance" metric rather than a "higher is better" score.
+      let score;
       
-      // Calculate relevance score (lower is better)
-      let score = Math.min(titleDistance, descDistance);
+      // Optimize by skipping Levenshtein calculation for exact matches
+      if (titleMatch || descMatch) {
+        score = 0;
+      } else {
+        // Calculate fuzzy match scores only when needed
+        const titleDistance = this.levenshteinDistance(query, item.title);
+        const descDistance = this.levenshteinDistance(query, item.description);
+        score = Math.min(titleDistance, descDistance);
+      }
       
-      // Boost exact matches
-      if (titleMatch) score -= 100;
-      if (descMatch) score -= 50;
+      // Boost exact matches by DECREASING the score.
+      // This intentionally uses negative adjustments so that:
+      //   - exact title matches are strongly preferred (score - 100)
+      //   - description matches get a smaller boost (score - 50)
+      // As a result, scores may become negative; this is expected and
+      // works with the ascending sort order below (smaller is more relevant).
+      if (titleMatch) score -= EXACT_TITLE_MATCH_BOOST;
+      if (descMatch) score -= EXACT_DESCRIPTION_MATCH_BOOST;
+      
+      // Calculate fuzzy match distances for threshold check if not already done
+      const titleDistance = titleMatch ? 0 : this.levenshteinDistance(query, item.title);
+      const descDistance = descMatch ? 0 : this.levenshteinDistance(query, item.description);
       
       return {
         item,
         score,
-        matches: titleMatch || descMatch || titleDistance <= 3 || descDistance <= 5
+        matches: titleMatch || descMatch || titleDistance <= TITLE_DISTANCE_THRESHOLD || descDistance <= DESCRIPTION_DISTANCE_THRESHOLD
       };
     });
 
@@ -97,17 +123,29 @@ export class SearchEngine {
   }
 
   /**
-   * Highlight matching text
+   * Highlight matching text - safely escapes HTML
    */
   highlightMatch(text, query) {
     if (!query || query.trim() === '') {
-      return text;
+      return this.escapeHtml(text);
     }
 
+    // Escape HTML first to prevent XSS
+    const escapedText = this.escapeHtml(text);
+    
     // Escape special regex characters to prevent regex injection
     const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(`(${escapedQuery})`, 'gi');
-    return text.replace(regex, '<mark>$1</mark>');
+    return escapedText.replace(regex, '<mark>$1</mark>');
+  }
+
+  /**
+   * Escape HTML to prevent XSS
+   */
+  escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
   }
 }
 
@@ -120,7 +158,14 @@ export function initSearch(searchEngine) {
   const appCards = document.querySelectorAll('.app-card');
   const noResults = document.getElementById('no-results');
 
+  // Validate required DOM elements
+  if (!searchInput || !searchSuggestions) {
+    console.warn('Search UI initialization skipped: required DOM elements not found.');
+    return;
+  }
+
   let debounceTimer;
+  let selectedSuggestionIndex = -1;
 
   // Debounced search function
   const performSearch = () => {
@@ -131,16 +176,19 @@ export function initSearch(searchEngine) {
     // Update suggestions
     if (query.trim() && suggestions.length > 0) {
       searchSuggestions.innerHTML = suggestions
-        .map(s => `
-          <div class="suggestion-item">
+        .map((s, index) => `
+          <div class="suggestion-item" role="option" data-index="${index}">
             <strong>${searchEngine.highlightMatch(s.title, query)}</strong>
             <span>${searchEngine.highlightMatch(s.description, query)}</span>
           </div>
         `)
         .join('');
       searchSuggestions.style.display = 'block';
+      searchInput.setAttribute('aria-expanded', 'true');
+      selectedSuggestionIndex = -1;
     } else {
       searchSuggestions.style.display = 'none';
+      searchInput.setAttribute('aria-expanded', 'false');
     }
 
     // Filter cards
@@ -163,11 +211,70 @@ export function initSearch(searchEngine) {
     }
   };
 
+  // Handle keyboard navigation
+  const handleKeyboardNavigation = (e) => {
+    const suggestionItems = searchSuggestions.querySelectorAll('.suggestion-item');
+    
+    if (suggestionItems.length === 0) return;
+
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        selectedSuggestionIndex = Math.min(selectedSuggestionIndex + 1, suggestionItems.length - 1);
+        updateSuggestionSelection(suggestionItems);
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        selectedSuggestionIndex = Math.max(selectedSuggestionIndex - 1, -1);
+        updateSuggestionSelection(suggestionItems);
+        break;
+      case 'Enter':
+        if (selectedSuggestionIndex >= 0) {
+          e.preventDefault();
+          selectSuggestion(suggestionItems[selectedSuggestionIndex]);
+        }
+        break;
+      case 'Escape':
+        searchSuggestions.style.display = 'none';
+        searchInput.setAttribute('aria-expanded', 'false');
+        selectedSuggestionIndex = -1;
+        break;
+    }
+  };
+
+  // Update suggestion selection styling
+  const updateSuggestionSelection = (items) => {
+    items.forEach((item, index) => {
+      if (index === selectedSuggestionIndex) {
+        item.classList.add('selected');
+        item.setAttribute('aria-selected', 'true');
+      } else {
+        item.classList.remove('selected');
+        item.setAttribute('aria-selected', 'false');
+      }
+    });
+  };
+
+  // Select a suggestion
+  const selectSuggestion = (suggestionItem) => {
+    const strongElement = suggestionItem.querySelector('strong');
+    if (strongElement) {
+      const title = strongElement.textContent;
+      searchInput.value = title;
+      performSearch();
+      searchSuggestions.style.display = 'none';
+      searchInput.setAttribute('aria-expanded', 'false');
+      selectedSuggestionIndex = -1;
+    }
+  };
+
   // Event listeners
   searchInput.addEventListener('input', () => {
     clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(performSearch, 200);
+    debounceTimer = setTimeout(performSearch, SEARCH_DEBOUNCE_DELAY_MS);
   });
+
+  searchInput.addEventListener('keydown', handleKeyboardNavigation);
 
   searchInput.addEventListener('focus', () => {
     if (searchInput.value.trim()) {
@@ -179,6 +286,7 @@ export function initSearch(searchEngine) {
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.search-container')) {
       searchSuggestions.style.display = 'none';
+      searchInput.setAttribute('aria-expanded', 'false');
     }
   });
 
@@ -186,13 +294,7 @@ export function initSearch(searchEngine) {
   searchSuggestions.addEventListener('click', (e) => {
     const suggestionItem = e.target.closest('.suggestion-item');
     if (suggestionItem) {
-      const strongElement = suggestionItem.querySelector('strong');
-      if (strongElement) {
-        const title = strongElement.textContent;
-        searchInput.value = title;
-        performSearch();
-        searchSuggestions.style.display = 'none';
-      }
+      selectSuggestion(suggestionItem);
     }
   });
 }

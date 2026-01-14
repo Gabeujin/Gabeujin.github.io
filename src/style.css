@@ -98,7 +98,8 @@ header p {
   border-bottom: none;
 }
 
-.suggestion-item:hover {
+.suggestion-item:hover,
+.suggestion-item.selected {
   background-color: #f8f9fa;
 }
 
