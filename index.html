@@ -15,33 +15,49 @@
   <header>
     <h1>Memory Repo</h1>
     <p>MIT License · Copyright (c) 2020 Gabeujin</p>
+    <div class="search-container">
+      <input 
+        type="text" 
+        id="search-input" 
+        placeholder="🔍 프로젝트 검색..." 
+        autocomplete="off"
+        aria-label="Search projects"
+        aria-expanded="false"
+        aria-controls="search-suggestions"
+      />
+      <div id="search-suggestions" class="search-suggestions" role="listbox"></div>
+    </div>
   </header>
 
   <main>
     <div class="app-links">
-      <article class="app-card">
+      <article class="app-card" data-id="edu-platform">
         <h2>📚 Edu Platform</h2>
         <p>교육 플랫폼으로 이동합니다.</p>
         <a href="/edu-platform">바로가기</a>
       </article>
 
-      <article class="app-card">
+      <article class="app-card" data-id="wedding-money-manager">
         <h2>💰 Wedding Money Manager</h2>
         <p>축의금 관리 서비스로 이동합니다.</p>
         <a href="/wedding-money-manager">바로가기</a>
       </article>
 
-      <article class="app-card">
+      <article class="app-card" data-id="quiz-master">
         <h2>🎯 Quiz Master</h2>
         <p>카드형식의 퀴즈를 풀 수 있는 웹앱입니다.</p>
         <a href="/quiz-master">바로가기</a>
       </article>
 
-      <article class="app-card">
+      <article class="app-card" data-id="sql-biz-quiz">
         <h2>💼 SQL Biz Quiz</h2>
         <p>비즈니스 도메인을 중심으로 SQL 문제를 풀 수 있는 웹앱입니다.</p>
         <a href="/sql-biz-quiz">바로가기</a>
       </article>
+    </div>
+    <div id="no-results" class="no-results" style="display: none;">
+      <p>😕 검색 결과가 없습니다.</p>
+      <p>다른 키워드로 검색해보세요.</p>
     </div>
   </main>
 
