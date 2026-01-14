@@ -4,6 +4,20 @@ Personal homepage built with Vite.
 
 🔗 https://gabeujin.github.io
 
+## Features
+
+### 🔍 Search Functionality
+- **Real-time Search**: Search projects as you type with instant results
+- **Auto-completion**: Get suggestions while typing
+- **Fuzzy Search**: Finds results even with typos using Levenshtein distance algorithm
+- **Smart Filtering**: Filters project cards based on title and description matches
+
+### 🎉 Easter Eggs
+Discover hidden surprises! Try these:
+- **Triple-click** the "Memory Repo" logo for a Matrix effect 💚
+- Type **"secret"** anywhere on the page for a rainbow surprise 🌈
+- Enter the **Konami Code** (↑↑↓↓←→←→BA) for a special animation 🎮
+
 ## Projects
 
 - [📚 Edu Platform](/edu-platform) - 교육 플랫폼

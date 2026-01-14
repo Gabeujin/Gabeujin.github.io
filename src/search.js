@@ -104,7 +104,9 @@ export class SearchEngine {
       return text;
     }
 
-    const regex = new RegExp(`(${query})`, 'gi');
+    // Escape special regex characters to prevent regex injection
+    const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`(${escapedQuery})`, 'gi');
     return text.replace(regex, '<mark>$1</mark>');
   }
 }
@@ -184,10 +186,13 @@ export function initSearch(searchEngine) {
   searchSuggestions.addEventListener('click', (e) => {
     const suggestionItem = e.target.closest('.suggestion-item');
     if (suggestionItem) {
-      const title = suggestionItem.querySelector('strong').textContent;
-      searchInput.value = title;
-      performSearch();
-      searchSuggestions.style.display = 'none';
+      const strongElement = suggestionItem.querySelector('strong');
+      if (strongElement) {
+        const title = strongElement.textContent;
+        searchInput.value = title;
+        performSearch();
+        searchSuggestions.style.display = 'none';
+      }
     }
   });
 }

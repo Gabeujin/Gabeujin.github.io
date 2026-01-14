@@ -10,6 +10,9 @@ export class EasterEgg {
     this.clickCount = 0;
     this.clickTimer = null;
     this.activated = false;
+    // Matrix animation constants
+    this.MATRIX_ANIMATION_DURATION_MS = 5000;
+    this.MATRIX_TARGET_FPS = 30;
   }
 
   /**
@@ -26,7 +29,12 @@ export class EasterEgg {
    */
   initKonamiCode() {
     document.addEventListener('keydown', (e) => {
-      if (e.key === this.konamiCode[this.konamiIndex]) {
+      // Normalize key values for consistency
+      const key = e.key === 'b' || e.key === 'B' ? 'b' : 
+                  e.key === 'a' || e.key === 'A' ? 'a' : 
+                  e.key;
+      
+      if (key === this.konamiCode[this.konamiIndex]) {
         this.konamiIndex++;
         
         if (this.konamiIndex === this.konamiCode.length) {
@@ -151,7 +159,7 @@ export class EasterEgg {
     const drops = Array(Math.floor(columns)).fill(1);
 
     let frameCount = 0;
-    const maxFrames = 150; // Run for ~5 seconds at 30fps
+    const maxFrames = (this.MATRIX_ANIMATION_DURATION_MS / 1000) * this.MATRIX_TARGET_FPS;
 
     const draw = () => {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
