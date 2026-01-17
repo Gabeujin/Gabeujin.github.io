@@ -32,7 +32,7 @@ const appData = [
   {
     id: 'toeic-picnic',
     title: '📖 TOEIC Vocabulary',
-    description: '토익 vocabulary'
+    description: '토익 단어 학습 웹앱입니다.'
   }
 ];
 
