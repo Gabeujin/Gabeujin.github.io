@@ -27,7 +27,7 @@ const appData = [
   {
     id: 'flash-game',
     title: '🎮 Flash Game Collection',
-    description: '플래시게임 모음집'
+    description: '플래시게임 모음집입니다.'
   },
   {
     id: 'toeic-picnic',
