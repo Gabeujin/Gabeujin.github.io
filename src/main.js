@@ -23,6 +23,16 @@ const appData = [
     id: 'sql-biz-quiz',
     title: '💼 SQL Biz Quiz',
     description: '비즈니스 도메인을 중심으로 SQL 문제를 풀 수 있는 웹앱입니다.'
+  },
+  {
+    id: 'flash-game',
+    title: '🎮 Flash Game Collection',
+    description: '플래시게임 모음집입니다.'
+  },
+  {
+    id: 'toeic-picnic',
+    title: '📖 TOEIC Vocabulary',
+    description: '토익 단어 학습 웹앱입니다.'
   }
 ];
 
