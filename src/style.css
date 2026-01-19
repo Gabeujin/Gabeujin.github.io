@@ -206,14 +206,8 @@ main {
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color var(--transition-speed) ease;
   opacity: 0;
   animation: fadeInUp 0.5s ease forwards;
+  animation-delay: calc(var(--card-index, 0) * 0.1s);
 }
-
-.app-card:nth-child(1) { animation-delay: 0.1s; }
-.app-card:nth-child(2) { animation-delay: 0.2s; }
-.app-card:nth-child(3) { animation-delay: 0.3s; }
-.app-card:nth-child(4) { animation-delay: 0.4s; }
-.app-card:nth-child(5) { animation-delay: 0.5s; }
-.app-card:nth-child(6) { animation-delay: 0.6s; }
 
 @keyframes fadeInUp {
   from {
@@ -336,7 +330,7 @@ footer {
 }
 
 [data-theme="dark"] #search-input::placeholder {
-  color: #adb5bd;
+  color: var(--muted-color);
 }
 
 [data-theme="dark"] .search-suggestions {

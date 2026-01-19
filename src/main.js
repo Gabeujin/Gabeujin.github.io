@@ -47,6 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize scroll effect
   initScrollEffect();
 
+  // Set card animation delays dynamically
+  const appCards = document.querySelectorAll('.app-card');
+  appCards.forEach((card, index) => {
+    card.style.setProperty('--card-index', index + 1);
+  });
+
   // Initialize search
   const searchEngine = new SearchEngine(appData);
   initSearch(searchEngine);
