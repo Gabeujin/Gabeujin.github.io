@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Set card animation delays dynamically
   const appCards = document.querySelectorAll('.app-card');
   appCards.forEach((card, index) => {
-    card.style.setProperty('--card-index', index + 1);
+    card.style.setProperty('--card-index', index);
   });
 
   // Initialize search
