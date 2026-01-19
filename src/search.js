@@ -157,6 +157,7 @@ export function initSearch(searchEngine) {
   const searchSuggestions = document.getElementById('search-suggestions');
   const appCards = document.querySelectorAll('.app-card');
   const noResults = document.getElementById('no-results');
+  const searchCount = document.getElementById('search-count');
 
   // Validate required DOM elements
   if (!searchInput || !searchSuggestions) {
@@ -208,6 +209,16 @@ export function initSearch(searchEngine) {
     // Show/hide no results message
     if (noResults) {
       noResults.style.display = visibleCount === 0 && query.trim() !== '' ? 'block' : 'none';
+    }
+
+    // Update search count
+    if (searchCount) {
+      if (query.trim() !== '' && visibleCount > 0) {
+        searchCount.textContent = `🔍 ${visibleCount}개의 프로젝트를 찾았습니다.`;
+        searchCount.style.display = 'block';
+      } else {
+        searchCount.style.display = 'none';
+      }
     }
   };
 
