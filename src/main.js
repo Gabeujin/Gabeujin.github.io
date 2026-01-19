@@ -1,6 +1,7 @@
 import './style.css'
 import { SearchEngine, initSearch } from './search.js'
 import { initEasterEgg } from './easter-egg.js'
+import { initTheme, initScrollEffect } from './theme.js'
 
 // App data
 const appData = [
@@ -40,6 +41,12 @@ const appData = [
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Gabeujin Homepage loaded');
 
+  // Initialize theme (dark mode)
+  initTheme();
+
+  // Initialize scroll effect
+  initScrollEffect();
+
   // Initialize search
   const searchEngine = new SearchEngine(appData);
   initSearch(searchEngine);
@@ -47,5 +54,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize easter eggs
   initEasterEgg();
 
-  console.log('✨ Search and Easter Eggs initialized!');
+  console.log('✨ All features initialized!');
 })
