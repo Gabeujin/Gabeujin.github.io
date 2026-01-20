@@ -293,8 +293,8 @@ main {
 }
 
 .app-card a:hover::before {
-  width: 300px;
-  height: 300px;
+  width: 200%;
+  height: 200%;
 }
 
 .app-card a:hover {
