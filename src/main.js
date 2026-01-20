@@ -34,6 +34,11 @@ const appData = [
     id: 'toeic-picnic',
     title: '📖 TOEIC Vocabulary',
     description: '토익 단어 학습 웹앱입니다.'
+  },
+  {
+    id: 'budget-book',
+    title: '💵 간편 가계부',
+    description: '간편하게 수입과 지출을 관리할 수 있는 가계부 앱입니다.'
   }
 ];
 
