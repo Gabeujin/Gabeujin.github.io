@@ -313,8 +313,9 @@ main {
 }
 
 .app-card a:focus-visible {
-  outline: 3px solid #ffffff;
+  outline: 3px solid var(--accent-color);
   outline-offset: 2px;
+  box-shadow: 0 0 0 5px rgba(13, 110, 253, 0.2);
 }
 
 footer {
