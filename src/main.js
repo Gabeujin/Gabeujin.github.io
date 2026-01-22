@@ -39,6 +39,11 @@ const appData = [
     id: 'budget-book',
     title: '💵 간편 가계부',
     description: '간편하게 수입과 지출을 관리할 수 있는 가계부 앱입니다.'
+  },
+  {
+    id: 'kfc-lab',
+    title: '📊 KFC-Lab',
+    description: '코스피, 환율 등을 취합해서 그래프로 통계를 내는 사이트입니다.'
   }
 ];
 
