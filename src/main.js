@@ -64,6 +64,12 @@ const appData = [
     title: '📊 KFC-Lab',
     description: '코스피, 환율 등을 취합해서 그래프로 통계를 내는 사이트입니다.',
     dateAdded: '2026-01-15'
+  },
+  {
+    id: 'wedding-framework',
+    title: '💒 Wedding Framework',
+    description: '결혼식 준비 과정을 일련의 프레임워크로 구성한 웹앱입니다.',
+    dateAdded: '2026-01-23'
   }
 ];
 
