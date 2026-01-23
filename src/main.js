@@ -11,6 +11,10 @@ import {
   isExpanded 
 } from './app-manager.js'
 
+// Constants
+const MOBILE_BREAKPOINT = 640; // px - must match CSS media query
+const RESIZE_DEBOUNCE_DELAY = 100; // ms
+
 // App data with dateAdded (format: YYYY-MM-DD)
 const appData = [
   {
@@ -88,13 +92,13 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-      if (window.innerWidth > 640) {
+      if (window.innerWidth > MOBILE_BREAKPOINT) {
         // Collapse all expanded cards when transitioning to desktop
         document.querySelectorAll('.app-card.expanded').forEach(card => {
           card.classList.remove('expanded');
         });
       }
-    }, 100);
+    }, RESIZE_DEBOUNCE_DELAY);
   });
 
   console.log('✨ All features initialized!');
@@ -130,14 +134,20 @@ function updateCardsOrder() {
   const sortedApps = sortApps(appData);
   const existingCards = Array.from(container.querySelectorAll('.app-card'));
 
+  // Use DocumentFragment to minimize reflows
+  const fragment = document.createDocumentFragment();
+  
   // Reorder existing cards based on sorted data
   sortedApps.forEach((app, index) => {
     const card = existingCards.find(c => c.dataset.id === app.id);
     if (card) {
       card.style.setProperty('--card-index', index);
-      container.appendChild(card); // Move to end, which reorders in DOM
+      fragment.appendChild(card);
     }
   });
+  
+  // Apply all changes at once
+  container.appendChild(fragment);
 }
 
 /**
@@ -239,7 +249,7 @@ function createAppCard(app, index) {
     }
     
     // Only expand on mobile (check window width)
-    if (window.innerWidth <= 640) {
+    if (window.innerWidth <= MOBILE_BREAKPOINT) {
       const wasExpanded = article.classList.contains('expanded');
       
       // Collapse all other cards
