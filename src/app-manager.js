@@ -10,15 +10,24 @@ const EXPANDED_STORAGE_KEY = 'app-expanded-state';
  * Get favorites from localStorage
  */
 export function getFavorites() {
-  const stored = localStorage.getItem(FAVORITES_STORAGE_KEY);
-  return stored ? JSON.parse(stored) : [];
+  try {
+    const stored = localStorage.getItem(FAVORITES_STORAGE_KEY);
+    return stored ? JSON.parse(stored) : [];
+  } catch (error) {
+    console.warn('Failed to get favorites from localStorage:', error);
+    return [];
+  }
 }
 
 /**
  * Save favorites to localStorage
  */
 export function saveFavorites(favorites) {
-  localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favorites));
+  try {
+    localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favorites));
+  } catch (error) {
+    console.warn('Failed to save favorites to localStorage:', error);
+  }
 }
 
 /**
@@ -54,8 +63,12 @@ export function isNew(dateAdded) {
   
   const addedDate = new Date(dateAdded);
   const now = new Date();
-  const oneMonthAgo = new Date();
-  oneMonthAgo.setMonth(now.getMonth() - 1);
+  
+  // Don't show NEW badge for future dates
+  if (addedDate > now) return false;
+  
+  // Use 30-day calculation to avoid edge cases with setMonth
+  const oneMonthAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
   
   return addedDate >= oneMonthAgo;
 }
@@ -85,15 +98,24 @@ export function sortApps(apps) {
  * Get expanded state from localStorage
  */
 export function getExpandedState() {
-  const stored = localStorage.getItem(EXPANDED_STORAGE_KEY);
-  return stored ? JSON.parse(stored) : {};
+  try {
+    const stored = localStorage.getItem(EXPANDED_STORAGE_KEY);
+    return stored ? JSON.parse(stored) : {};
+  } catch (error) {
+    console.warn('Failed to get expanded state from localStorage:', error);
+    return {};
+  }
 }
 
 /**
  * Save expanded state to localStorage
  */
 export function saveExpandedState(state) {
-  localStorage.setItem(EXPANDED_STORAGE_KEY, JSON.stringify(state));
+  try {
+    localStorage.setItem(EXPANDED_STORAGE_KEY, JSON.stringify(state));
+  } catch (error) {
+    console.warn('Failed to save expanded state to localStorage:', error);
+  }
 }
 
 /**

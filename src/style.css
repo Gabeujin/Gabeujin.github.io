@@ -577,7 +577,11 @@ footer {
     flex-direction: column;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: padding 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                min-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                z-index 0s;
   }
 
   /* Hide some content in compact mode */
@@ -590,7 +594,7 @@ footer {
   }
 
   .app-card:not(.expanded) .minimize-btn {
-    display: none !important;
+    display: none;
   }
 
   .app-card:not(.expanded) h2 {
@@ -632,7 +636,7 @@ footer {
   }
 
   .app-card.expanded .minimize-btn {
-    display: flex !important;
+    display: flex;
   }
 
   /* Move badge to avoid overlap with minimize button */

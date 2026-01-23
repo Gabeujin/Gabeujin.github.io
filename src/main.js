@@ -83,6 +83,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize easter eggs
   initEasterEgg();
 
+  // Handle window resize to collapse cards when switching from mobile to desktop
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      if (window.innerWidth > 640) {
+        // Collapse all expanded cards when transitioning to desktop
+        document.querySelectorAll('.app-card.expanded').forEach(card => {
+          card.classList.remove('expanded');
+        });
+      }
+    }, 100);
+  });
+
   console.log('✨ All features initialized!');
 })
 
@@ -107,6 +121,26 @@ function renderAppCards() {
 }
 
 /**
+ * Update cards order without full re-render (smarter approach)
+ */
+function updateCardsOrder() {
+  const container = document.querySelector('.app-links');
+  if (!container) return;
+
+  const sortedApps = sortApps(appData);
+  const existingCards = Array.from(container.querySelectorAll('.app-card'));
+
+  // Reorder existing cards based on sorted data
+  sortedApps.forEach((app, index) => {
+    const card = existingCards.find(c => c.dataset.id === app.id);
+    if (card) {
+      card.style.setProperty('--card-index', index);
+      container.appendChild(card); // Move to end, which reorders in DOM
+    }
+  });
+}
+
+/**
  * Create an app card element
  */
 function createAppCard(app, index) {
@@ -114,6 +148,7 @@ function createAppCard(app, index) {
   article.className = 'app-card';
   article.dataset.id = app.id;
   article.style.setProperty('--card-index', index);
+  article.setAttribute('tabindex', '0');
   
   // Check if expanded (mobile)
   if (isExpanded(app.id)) {
@@ -123,9 +158,10 @@ function createAppCard(app, index) {
   // Create star button
   const starBtn = document.createElement('button');
   starBtn.className = 'star-btn';
-  starBtn.setAttribute('aria-label', 'Toggle favorite');
-  starBtn.innerHTML = isFavorite(app.id) ? '⭐' : '☆';
-  if (isFavorite(app.id)) {
+  const isFav = isFavorite(app.id);
+  starBtn.setAttribute('aria-label', isFav ? 'Remove from favorites' : 'Add to favorites');
+  starBtn.textContent = isFav ? '⭐' : '☆';
+  if (isFav) {
     starBtn.classList.add('favorited');
   }
   
@@ -133,35 +169,34 @@ function createAppCard(app, index) {
   starBtn.addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const isFav = toggleFavorite(app.id);
-    starBtn.innerHTML = isFav ? '⭐' : '☆';
-    starBtn.classList.toggle('favorited', isFav);
+    const nowFavorited = toggleFavorite(app.id);
+    starBtn.textContent = nowFavorited ? '⭐' : '☆';
+    starBtn.setAttribute('aria-label', nowFavorited ? 'Remove from favorites' : 'Add to favorites');
+    starBtn.classList.toggle('favorited', nowFavorited);
     
     // Add sparkle animation
-    if (isFav) {
+    if (nowFavorited) {
       starBtn.classList.add('sparkle');
       setTimeout(() => starBtn.classList.remove('sparkle'), 600);
     }
     
-    // Re-render to update sort order
-    renderAppCards();
+    // Update cards order without full re-render
+    updateCardsOrder();
   });
 
   // Create NEW badge if app is new
-  let newBadge = '';
+  const newBadge = document.createElement('span');
   if (isNew(app.dateAdded)) {
-    const badge = document.createElement('span');
-    badge.className = 'new-badge';
-    badge.textContent = 'NEW';
-    newBadge = badge.outerHTML;
+    newBadge.className = 'new-badge';
+    newBadge.textContent = 'NEW';
   }
 
   // Create minimize button (mobile only)
   const minimizeBtn = document.createElement('button');
   minimizeBtn.className = 'minimize-btn';
-  minimizeBtn.setAttribute('aria-label', 'Minimize card');
-  minimizeBtn.innerHTML = '×';
-  minimizeBtn.style.display = 'none'; // Hidden by default, shown when expanded on mobile
+  minimizeBtn.setAttribute('aria-label', 'Collapse card');
+  minimizeBtn.setAttribute('role', 'button');
+  minimizeBtn.textContent = '×';
   
   // Minimize button click handler
   minimizeBtn.addEventListener('click', (e) => {
@@ -171,22 +206,35 @@ function createAppCard(app, index) {
     article.classList.remove('expanded');
   });
 
-  // Card content
-  const content = `
-    ${newBadge}
-    <h2>${app.title}</h2>
-    <p>${app.description}</p>
-    <a href="/${app.id}">바로가기</a>
-  `;
+  // Create title element safely
+  const titleEl = document.createElement('h2');
+  titleEl.textContent = app.title;
 
-  article.innerHTML = content;
-  article.insertBefore(starBtn, article.firstChild);
-  article.insertBefore(minimizeBtn, article.firstChild);
+  // Create description element safely
+  const descriptionEl = document.createElement('p');
+  descriptionEl.textContent = app.description;
+
+  // Create link element safely
+  const linkEl = document.createElement('a');
+  linkEl.href = `/${app.id}`;
+  linkEl.textContent = '바로가기';
+
+  // Append elements in visual order (left to right, top to bottom)
+  article.appendChild(starBtn);
+  if (isNew(app.dateAdded)) {
+    article.appendChild(newBadge);
+  }
+  article.appendChild(minimizeBtn);
+  article.appendChild(titleEl);
+  article.appendChild(descriptionEl);
+  article.appendChild(linkEl);
 
   // Card click handler (mobile expand)
-  article.addEventListener('click', (e) => {
-    // Don't expand if clicking on buttons or links
-    if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A') {
+  const handleExpand = (e) => {
+    // Don't expand if clicking on buttons or links (including their child elements)
+    const clickedButton = e.target.closest('button');
+    const clickedLink = e.target.closest('a');
+    if (clickedButton || clickedLink) {
       return;
     }
     
@@ -207,6 +255,16 @@ function createAppCard(app, index) {
         toggleExpanded(app.id);
         article.classList.add('expanded');
       }
+    }
+  };
+
+  article.addEventListener('click', handleExpand);
+  
+  // Add keyboard accessibility for expansion
+  article.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleExpand(e);
     }
   });
 
