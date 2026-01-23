@@ -635,9 +635,9 @@ footer {
     display: flex !important;
   }
 
-  /* Adjust badge position for expanded cards */
+  /* Move badge to avoid overlap with minimize button */
   .app-card.expanded .new-badge {
-    display: none; /* Hide when minimize button is shown */
+    display: none;
   }
 
   /* Smaller star button on mobile */
