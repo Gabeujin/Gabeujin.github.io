@@ -10,65 +10,51 @@ import {
   toggleExpanded, 
   isExpanded 
 } from './app-manager.js'
+import { getLocale, getTranslations } from './i18n.js'
 
 // Constants
 const MOBILE_BREAKPOINT = 640; // px - must match CSS media query
 const RESIZE_DEBOUNCE_DELAY = 100; // ms
 
+// Global locale variable
+let currentLocale = 'en';
+
 // App data with dateAdded (format: YYYY-MM-DD)
 const appData = [
   {
     id: 'edu-platform',
-    title: '📚 Edu Platform',
-    description: '교육 플랫폼으로 이동합니다.',
     dateAdded: '2024-06-15'
   },
   {
     id: 'wedding-money-manager',
-    title: '💰 Wedding Money Manager',
-    description: '축의금 관리 서비스로 이동합니다.',
     dateAdded: '2024-08-20'
   },
   {
     id: 'quiz-master',
-    title: '🎯 Quiz Master',
-    description: '카드형식의 퀴즈를 풀 수 있는 웹앱입니다.',
     dateAdded: '2024-09-10'
   },
   {
     id: 'sql-biz-quiz',
-    title: '💼 SQL Biz Quiz',
-    description: '비즈니스 도메인을 중심으로 SQL 문제를 풀 수 있는 웹앱입니다.',
     dateAdded: '2024-10-05'
   },
   {
     id: 'flash-game',
-    title: '🎮 Flash Game Collection',
-    description: '플래시게임 모음집입니다.',
     dateAdded: '2024-11-12'
   },
   {
     id: 'toeic-picnic',
-    title: '📖 TOEIC Vocabulary',
-    description: '토익 단어 학습 웹앱입니다.',
     dateAdded: '2024-12-01'
   },
   {
     id: 'budget-book',
-    title: '💵 간편 가계부',
-    description: '간편하게 수입과 지출을 관리할 수 있는 가계부 앱입니다.',
     dateAdded: '2025-12-28'
   },
   {
     id: 'kfc-lab',
-    title: '📊 KFC-Lab',
-    description: '코스피, 환율 등을 취합해서 그래프로 통계를 내는 사이트입니다.',
     dateAdded: '2026-01-15'
   },
   {
     id: 'wedding-framework',
-    title: '💒 Wedding Framework',
-    description: '결혼식 준비 과정을 일련의 프레임워크로 구성한 웹앱입니다.',
     dateAdded: '2026-01-23'
   }
 ];
@@ -76,6 +62,19 @@ const appData = [
 // App initialization
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Gabeujin Homepage loaded');
+
+  // Detect and set locale with safe fallback
+  try {
+    currentLocale = getLocale();
+    console.log('Detected locale:', currentLocale);
+  } catch (error) {
+    console.error('Failed to detect locale, falling back to default "en":', error);
+    currentLocale = 'en';
+    console.log('Using fallback locale:', currentLocale);
+  }
+
+  // Update page metadata
+  updatePageMetadata();
 
   // Initialize theme (dark mode)
   initTheme();
@@ -87,8 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
   renderAppCards();
 
   // Initialize search
-  const searchEngine = new SearchEngine(appData);
-  initSearch(searchEngine);
+  const searchEngine = new SearchEngine(getLocalizedAppData());
+  initSearch(searchEngine, currentLocale);
 
   // Initialize easter eggs
   initEasterEgg();
@@ -111,14 +110,93 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 /**
+ * Update page metadata based on locale
+ */
+function updatePageMetadata() {
+  const translations = getTranslations(currentLocale);
+  
+  // Update HTML lang attribute for accessibility and proper language detection
+  const htmlElement = document.documentElement;
+  if (htmlElement && translations.htmlLang) {
+    htmlElement.setAttribute('lang', translations.htmlLang);
+  }
+  
+  // Update title
+  document.title = translations.pageTitle;
+  
+  // Update meta description
+  const metaDescription = document.querySelector('meta[name="description"]');
+  if (metaDescription) {
+    metaDescription.setAttribute('content', translations.pageDescription);
+  }
+  
+  // Update header subtitle
+  const headerSubtitle = document.querySelector('header p');
+  if (headerSubtitle) {
+    headerSubtitle.textContent = translations.headerSubtitle;
+  }
+  
+  // Update search placeholder
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) {
+    searchInput.placeholder = translations.searchPlaceholder;
+  }
+  
+  // Update theme toggle label
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.setAttribute('aria-label', translations.themeToggleLabel);
+    themeToggle.setAttribute('title', translations.themeToggleLabel);
+  }
+  
+  // Update no results message using textContent for security
+  const noResultsDiv = document.getElementById('no-results');
+  if (noResultsDiv) {
+    // Clear existing content
+    noResultsDiv.textContent = '';
+
+    const titleParagraph = document.createElement('p');
+    titleParagraph.textContent = translations.noResultsTitle;
+
+    const textParagraph = document.createElement('p');
+    textParagraph.textContent = translations.noResultsText;
+
+    noResultsDiv.appendChild(titleParagraph);
+    noResultsDiv.appendChild(textParagraph);
+  }
+  
+  // Update footer
+  const footerText = document.querySelector('footer p');
+  if (footerText) {
+    footerText.textContent = translations.footerCopyright;
+  }
+}
+
+/**
+ * Get localized app data
+ */
+function getLocalizedAppData() {
+  const translations = getTranslations(currentLocale);
+  
+  return appData.map(app => ({
+    ...app,
+    title: translations.apps[app.id]?.title || app.id,
+    description: translations.apps[app.id]?.description || ''
+  }));
+}
+
+/**
  * Render app cards dynamically
  */
 function renderAppCards() {
   const container = document.querySelector('.app-links');
   if (!container) return;
 
+  // Get localized app data
+  const localizedData = getLocalizedAppData();
+
   // Sort apps (favorites first, then by date)
-  const sortedApps = sortApps(appData);
+  const sortedApps = sortApps(localizedData);
 
   // Clear existing cards
   container.innerHTML = '';
@@ -137,7 +215,8 @@ function updateCardsOrder() {
   const container = document.querySelector('.app-links');
   if (!container) return;
 
-  const sortedApps = sortApps(appData);
+  const localizedData = getLocalizedAppData();
+  const sortedApps = sortApps(localizedData);
   const existingCards = Array.from(container.querySelectorAll('.app-card'));
 
   // Use DocumentFragment to minimize reflows
@@ -233,7 +312,8 @@ function createAppCard(app, index) {
   // Create link element safely
   const linkEl = document.createElement('a');
   linkEl.href = `/${app.id}`;
-  linkEl.textContent = '바로가기';
+  const translations = getTranslations(currentLocale);
+  linkEl.textContent = translations.buttonGoTo;
 
   // Append elements in visual order (left to right, top to bottom)
   article.appendChild(starBtn);

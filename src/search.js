@@ -152,7 +152,7 @@ export class SearchEngine {
 /**
  * Initialize search UI
  */
-export function initSearch(searchEngine) {
+export function initSearch(searchEngine, locale = 'en') {
   const searchInput = document.getElementById('search-input');
   const searchSuggestions = document.getElementById('search-suggestions');
   const appCards = document.querySelectorAll('.app-card');
@@ -167,6 +167,14 @@ export function initSearch(searchEngine) {
 
   let debounceTimer;
   let selectedSuggestionIndex = -1;
+
+  // Get localized search count message
+  const getSearchCountMessage = (count) => {
+    if (locale === 'ko') {
+      return `🔍 ${count}개의 프로젝트를 찾았습니다.`;
+    }
+    return `🔍 Found ${count} project${count !== 1 ? 's' : ''}.`;
+  };
 
   // Debounced search function
   const performSearch = () => {
@@ -214,7 +222,7 @@ export function initSearch(searchEngine) {
     // Update search count
     if (searchCount) {
       if (query.trim() !== '' && visibleCount > 0) {
-        searchCount.textContent = `🔍 ${visibleCount}개의 프로젝트를 찾았습니다.`;
+        searchCount.textContent = getSearchCountMessage(visibleCount);
         searchCount.style.display = 'block';
       } else {
         searchCount.style.display = 'none';
