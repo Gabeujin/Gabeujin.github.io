@@ -66,27 +66,27 @@ const translations = {
     // App descriptions
     apps: {
       'edu-platform': {
-        title: '📚 Edu Platform',
+        title: '📚 교육 플랫폼',
         description: '교육 플랫폼으로 이동합니다.'
       },
       'wedding-money-manager': {
-        title: '💰 Wedding Money Manager',
+        title: '💰 축의금 관리',
         description: '축의금 관리 서비스로 이동합니다.'
       },
       'quiz-master': {
-        title: '🎯 Quiz Master',
+        title: '🎯 퀴즈 마스터',
         description: '카드형식의 퀴즈를 풀 수 있는 웹앱입니다.'
       },
       'sql-biz-quiz': {
-        title: '💼 SQL Biz Quiz',
+        title: '💼 SQL 비즈 퀴즈',
         description: '비즈니스 도메인을 중심으로 SQL 문제를 풀 수 있는 웹앱입니다.'
       },
       'flash-game': {
-        title: '🎮 Flash Game Collection',
+        title: '🎮 플래시 게임 모음',
         description: '플래시게임 모음집입니다.'
       },
       'toeic-picnic': {
-        title: '📖 TOEIC Vocabulary',
+        title: '📖 토익 단어장',
         description: '토익 단어 학습 웹앱입니다.'
       },
       'budget-book': {
@@ -98,7 +98,7 @@ const translations = {
         description: '코스피, 환율 등을 취합해서 그래프로 통계를 내는 사이트입니다.'
       },
       'wedding-framework': {
-        title: '💒 Wedding Framework',
+        title: '💒 결혼 준비 프레임워크',
         description: '결혼식 준비 과정을 일련의 프레임워크로 구성한 웹앱입니다.'
       }
     },
