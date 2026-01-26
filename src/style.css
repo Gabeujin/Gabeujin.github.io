@@ -19,7 +19,7 @@
   --card-bg: #0f3460;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   --footer-bg: #16213e;
-  --muted-color: #adb5bd;
+  --muted-color: #c5c9cc;
 }
 
 * {
@@ -505,6 +505,18 @@ footer {
 }
 
 /* Dark mode specific adjustments */
+[data-theme="dark"] .app-card h2 {
+  color: #e9ecef;
+}
+
+[data-theme="dark"] .app-card:hover h2 {
+  color: #74c0fc;
+}
+
+[data-theme="dark"] .app-card p {
+  color: #c5c9cc;
+}
+
 [data-theme="dark"] #search-input {
   background: rgba(255, 255, 255, 0.1);
   color: var(--text-color);
