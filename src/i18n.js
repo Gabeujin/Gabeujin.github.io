@@ -6,13 +6,22 @@
 const LOCALE_STORAGE_KEY = 'locale-preference';
 
 /**
- * Detect user's locale based on browser settings and geolocation
+ * Supported locales
  */
-async function detectLocale() {
+const SUPPORTED_LOCALES = ['ko', 'en'];
+
+/**
+ * Detect user's locale based on stored preference, browser language, and timezone-based location inference (no Geolocation API).
+ */
+function detectLocale() {
   // Check stored preference first
-  const stored = localStorage.getItem(LOCALE_STORAGE_KEY);
-  if (stored) {
-    return stored;
+  try {
+    const stored = localStorage.getItem(LOCALE_STORAGE_KEY);
+    if (stored && SUPPORTED_LOCALES.includes(stored)) {
+      return stored;
+    }
+  } catch (error) {
+    console.warn('Failed to get locale from localStorage:', error);
   }
 
   // Try to detect from browser language
@@ -36,16 +45,33 @@ async function detectLocale() {
 /**
  * Get current locale
  */
-export async function getLocale() {
-  return await detectLocale();
+export function getLocale() {
+  return detectLocale();
 }
 
 /**
  * Set locale preference
+ * Note: Changing the locale will reload the page to apply changes throughout the app.
  */
 export function setLocale(locale) {
-  localStorage.setItem(LOCALE_STORAGE_KEY, locale);
-  window.location.reload();
+  // Validate locale
+  if (!SUPPORTED_LOCALES.includes(locale)) {
+    console.warn(`Unsupported locale: ${locale}. Supported locales are: ${SUPPORTED_LOCALES.join(', ')}`);
+    return;
+  }
+
+  // Check if locale is already set to avoid unnecessary reload
+  const currentLocale = detectLocale();
+  if (currentLocale === locale) {
+    return;
+  }
+
+  try {
+    localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+    window.location.reload();
+  } catch (error) {
+    console.warn('Failed to save locale to localStorage:', error);
+  }
 }
 
 /**
@@ -55,7 +81,8 @@ const translations = {
   ko: {
     // Page metadata
     pageTitle: '가브진의 기록하는 습관',
-    pageDescription: "Gabeujin's personal project hub",
+    pageDescription: '가브진의 개인 프로젝트 허브',
+    htmlLang: 'ko',
     
     // Header
     headerTitle: 'Memory Repo',
@@ -117,6 +144,7 @@ const translations = {
     // Page metadata
     pageTitle: "Gabeujin's Recording Habit",
     pageDescription: "Gabeujin's personal project hub",
+    htmlLang: 'en',
     
     // Header
     headerTitle: 'Memory Repo',
@@ -175,24 +203,6 @@ const translations = {
     footerCopyright: '© 2020 Gabeujin. All rights reserved.'
   }
 };
-
-/**
- * Get translation for a key
- */
-export function t(key, locale = 'en') {
-  const keys = key.split('.');
-  let value = translations[locale];
-  
-  for (const k of keys) {
-    if (value && typeof value === 'object') {
-      value = value[k];
-    } else {
-      return key; // Return key if translation not found
-    }
-  }
-  
-  return value || key;
-}
 
 /**
  * Get all translations for current locale

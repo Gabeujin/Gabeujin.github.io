@@ -10,7 +10,7 @@ import {
   toggleExpanded, 
   isExpanded 
 } from './app-manager.js'
-import { getLocale, t, getTranslations } from './i18n.js'
+import { getLocale, getTranslations } from './i18n.js'
 
 // Constants
 const MOBILE_BREAKPOINT = 640; // px - must match CSS media query
@@ -63,9 +63,15 @@ const appData = [
 document.addEventListener('DOMContentLoaded', async () => {
   console.log('Gabeujin Homepage loaded');
 
-  // Detect and set locale
-  currentLocale = await getLocale();
-  console.log('Detected locale:', currentLocale);
+  // Detect and set locale with safe fallback
+  try {
+    currentLocale = getLocale();
+    console.log('Detected locale:', currentLocale);
+  } catch (error) {
+    console.error('Failed to detect locale, falling back to default "en":', error);
+    currentLocale = 'en';
+    console.log('Using fallback locale:', currentLocale);
+  }
 
   // Update page metadata
   updatePageMetadata();
@@ -109,6 +115,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 function updatePageMetadata() {
   const translations = getTranslations(currentLocale);
   
+  // Update HTML lang attribute for accessibility and proper language detection
+  const htmlElement = document.documentElement;
+  if (htmlElement && translations.htmlLang) {
+    htmlElement.setAttribute('lang', translations.htmlLang);
+  }
+  
   // Update title
   document.title = translations.pageTitle;
   
@@ -137,13 +149,20 @@ function updatePageMetadata() {
     themeToggle.setAttribute('title', translations.themeToggleLabel);
   }
   
-  // Update no results message
+  // Update no results message using textContent for security
   const noResultsDiv = document.getElementById('no-results');
   if (noResultsDiv) {
-    noResultsDiv.innerHTML = `
-      <p>${translations.noResultsTitle}</p>
-      <p>${translations.noResultsText}</p>
-    `;
+    // Clear existing content
+    noResultsDiv.textContent = '';
+
+    const titleParagraph = document.createElement('p');
+    titleParagraph.textContent = translations.noResultsTitle;
+
+    const textParagraph = document.createElement('p');
+    textParagraph.textContent = translations.noResultsText;
+
+    noResultsDiv.appendChild(titleParagraph);
+    noResultsDiv.appendChild(textParagraph);
   }
   
   // Update footer
