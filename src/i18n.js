@@ -52,6 +52,7 @@ export function getLocale() {
 /**
  * Set locale preference
  * Note: Changing the locale will reload the page to apply changes throughout the app.
+ * @param {string} locale - The locale to set ('ko' or 'en')
  */
 export function setLocale(locale) {
   // Validate locale
@@ -206,6 +207,8 @@ const translations = {
 
 /**
  * Get all translations for current locale
+ * @param {string} locale - The locale to get translations for ('ko' or 'en')
+ * @returns {Object} Translation object for the specified locale
  */
 export function getTranslations(locale) {
   return translations[locale] || translations.en;
