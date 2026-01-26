@@ -60,7 +60,7 @@ const appData = [
 ];
 
 // App initialization
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
   console.log('Gabeujin Homepage loaded');
 
   // Detect and set locale with safe fallback
