@@ -128,6 +128,18 @@ const translations = {
       'wedding-framework': {
         title: '💒 결혼 준비 프레임워크',
         description: '결혼식 준비 과정을 일련의 프레임워크로 구성한 웹앱입니다.'
+      },
+      'shop-manager': {
+        title: '🏪 상점 매니저',
+        description: '상점의 재고, 매출, 고객을 효율적으로 관리할 수 있는 웹앱입니다.'
+      },
+      'my-photo-map': {
+        title: '📸 마이 포토 맵',
+        description: '사진으로 여행지를 기록하고 지도에서 추억을 되돌아볼 수 있는 웹앱입니다.'
+      },
+      'hd-membership-mockup': {
+        title: '🎫 통합 멤버십',
+        description: '다양한 서비스를 하나의 멤버십으로 통합 관리하는 목업 프로젝트입니다.'
       }
     },
     
@@ -190,6 +202,18 @@ const translations = {
       'wedding-framework': {
         title: '💒 Wedding Framework',
         description: 'A framework for wedding preparation process.'
+      },
+      'shop-manager': {
+        title: '🏪 Shop Manager',
+        description: 'Efficiently manage your shop inventory, sales, and customers.'
+      },
+      'my-photo-map': {
+        title: '📸 My Photo Map',
+        description: 'Record your travels with photos and revisit memories on the map.'
+      },
+      'hd-membership-mockup': {
+        title: '🎫 Integrated Membership',
+        description: 'A mockup project for managing multiple services with unified membership.'
       }
     },
     
