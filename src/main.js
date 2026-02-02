@@ -56,6 +56,18 @@ const appData = [
   {
     id: 'wedding-framework',
     dateAdded: '2026-01-23'
+  },
+  {
+    id: 'shop-manager',
+    dateAdded: '2026-02-02'
+  },
+  {
+    id: 'my-photo-map',
+    dateAdded: '2026-02-02'
+  },
+  {
+    id: 'hd-membership-mockup',
+    dateAdded: '2026-02-02'
   }
 ];
 
