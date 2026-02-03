@@ -316,7 +316,7 @@ main {
   cursor: pointer;
   z-index: 15;
   color: var(--text-color);
-  display: none; /* Hidden by default on larger screens */
+  display: none; /* Hidden by default on larger screens; flex alignment props used when mobile media query sets display to flex */
   align-items: center;
   justify-content: center;
   transition: background 0.2s ease, transform 0.2s ease;
