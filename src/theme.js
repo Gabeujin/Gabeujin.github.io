@@ -58,6 +58,8 @@ export function initTheme() {
   const themeToggle = document.getElementById('theme-toggle');
   if (themeToggle) {
     themeToggle.addEventListener('click', toggleTheme);
+    // Add haptic feedback attribute
+    themeToggle.setAttribute('data-haptic', 'circle');
   }
   
   // Listen for system theme changes

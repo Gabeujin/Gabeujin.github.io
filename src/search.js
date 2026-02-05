@@ -186,7 +186,7 @@ export function initSearch(searchEngine, locale = 'en') {
     if (query.trim() && suggestions.length > 0) {
       searchSuggestions.innerHTML = suggestions
         .map((s, index) => `
-          <div class="suggestion-item" role="option" data-index="${index}">
+          <div class="suggestion-item" role="option" data-index="${index}" data-haptic="list">
             <strong>${searchEngine.highlightMatch(s.title, query)}</strong>
             <span>${searchEngine.highlightMatch(s.description, query)}</span>
           </div>

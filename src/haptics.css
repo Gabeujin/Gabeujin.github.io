@@ -1,0 +1,360 @@
+/**
+ * Haptics CSS Module
+ * High-fidelity touch haptic feedback styles
+ */
+
+/* =========================================
+   [Physics Engine Variables]
+   ========================================= */
+:root {
+  /* Shadows for haptic feedback */
+  --haptic-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --haptic-shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --haptic-shadow-float: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --haptic-shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  
+  /* Overlay: reuse global overlay token with a safe fallback */
+  --haptic-overlay: var(--overlay, rgba(15, 23, 42, 0.4));
+  
+  /* Physics Easing */
+  --ease-press: cubic-bezier(0.1, 0, 0.2, 1);
+  --ease-release: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* =========================================
+   [Haptic Engine Core]
+   ========================================= */
+[data-haptic] {
+  transition: transform 0.35s var(--ease-release), 
+              background-color 0.3s ease,
+              box-shadow 0.3s ease,
+              filter 0.3s ease;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+[data-haptic].is-pressed {
+  transition: transform 0.08s var(--ease-press),
+              background-color 0.05s ease,
+              box-shadow 0.05s ease,
+              filter 0.05s ease;
+}
+
+/* =========================================
+   [Pattern 1: Scale - App Cards]
+   ========================================= */
+[data-haptic="scale"].is-pressed {
+  transform: scale(0.96);
+}
+
+/* Enhanced card press effect - pushes down relative to default state */
+.app-card[data-haptic="scale"].is-pressed {
+  transform: translateY(2px) scale(0.97);
+  box-shadow: var(--haptic-shadow-sm);
+}
+
+/* Icon shrink on press */
+.app-card[data-haptic="scale"].is-pressed h2 {
+  transform: scale(0.95);
+  transition: transform 0.1s var(--ease-press);
+}
+
+.app-card[data-haptic="scale"] h2 {
+  transition: transform 0.4s var(--ease-release), color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* =========================================
+   [Pattern 2: List - Suggestion Items]
+   ========================================= */
+[data-haptic="list"] {
+  transform-origin: center;
+}
+
+[data-haptic="list"].is-pressed {
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: scale(0.98);
+}
+
+[data-theme="dark"] [data-haptic="list"].is-pressed {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* =========================================
+   [Pattern 3: Button - Primary & Secondary]
+   ========================================= */
+/* Primary Button (3D Press) */
+[data-haptic="button-primary"] {
+  position: relative;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(0);
+}
+
+[data-haptic="button-primary"].is-pressed {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.2), 0 0 0 rgba(0, 0, 0, 0);
+  filter: brightness(0.95);
+}
+
+/* Secondary Button (Inset) */
+[data-haptic="button-secondary"] {
+  box-shadow: var(--haptic-shadow-card);
+}
+
+[data-haptic="button-secondary"].is-pressed {
+  transform: scale(0.95);
+  box-shadow: var(--haptic-shadow-inner);
+  filter: brightness(0.97);
+}
+
+/* Generic button haptic */
+[data-haptic="button"].is-pressed {
+  transform: scale(0.95);
+  filter: brightness(0.95);
+}
+
+/* =========================================
+   [Pattern 4: Circle - Theme Toggle]
+   ========================================= */
+[data-haptic="circle"].is-pressed {
+  transform: scale(0.85);
+}
+
+/* =========================================
+   [Modal Overlay System]
+   ========================================= */
+.haptic-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--haptic-overlay);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+}
+
+.haptic-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal Base */
+.haptic-modal {
+  background: var(--card-bg, #ffffff);
+  text-align: center;
+  box-shadow: var(--haptic-shadow-float);
+  position: relative;
+  will-change: transform, opacity;
+  color: var(--text-color, #212529);
+}
+
+.haptic-modal h2 {
+  margin: 16px 0 8px;
+  font-size: 1.25rem;
+  color: var(--text-color, #212529);
+}
+
+.haptic-modal p {
+  color: var(--muted-color, #6c757d);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+.haptic-modal-close {
+  width: 100%;
+  padding: 14px;
+  background: var(--accent-color, #0d6efd);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease-release), filter 0.2s ease;
+}
+
+.haptic-modal-close:hover {
+  filter: brightness(1.05);
+}
+
+.haptic-modal-close.is-pressed {
+  transform: scale(0.95);
+  filter: brightness(0.95);
+}
+
+/* Spring Pop Modal */
+.haptic-modal-spring {
+  width: 85vw;
+  max-width: 320px;
+  border-radius: 32px;
+  padding: 32px 24px;
+  opacity: 0;
+  transform: scale(0.8) translateY(20px);
+}
+
+.haptic-overlay.active .haptic-modal-spring {
+  animation: spring-pop 0.6s var(--ease-release) forwards;
+}
+
+@keyframes spring-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Bottom Sheet Modal */
+.haptic-modal-sheet {
+  width: 94vw;
+  max-width: 420px;
+  border-radius: 32px 32px 0 0;
+  padding: 32px 24px;
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.haptic-overlay.sheet-mode {
+  align-items: flex-end;
+  padding-bottom: 0;
+}
+
+.haptic-overlay.active .haptic-modal-sheet {
+  animation: slide-up 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(110%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sheet handle indicator */
+.haptic-modal-sheet::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 5px;
+  background: var(--muted-color, #e2e8f0);
+  border-radius: 10px;
+  margin: -10px auto 20px;
+  opacity: 0.5;
+}
+
+/* Closing animation */
+.haptic-overlay.closing .haptic-modal {
+  animation: fade-out 0.2s ease-out forwards !important;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* =========================================
+   [Search Suggestions Haptic Enhancement]
+   ========================================= */
+.suggestion-item[data-haptic="list"] {
+  /* Let base styles control background-color timing; only animate transform here */
+  transition: transform 0.2s var(--ease-release);
+}
+
+.suggestion-item[data-haptic="list"].is-pressed {
+  background-color: #e2e8f0;
+  transform: scale(0.98);
+}
+
+[data-theme="dark"] .suggestion-item[data-haptic="list"].is-pressed {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* =========================================
+   [Star Button Haptic]
+   ========================================= */
+.star-btn[data-haptic="circle"]:hover {
+  /* Slight hover scale for haptic star buttons to avoid fighting with press state */
+  transform: scale(1.1);
+}
+
+.star-btn[data-haptic="circle"].is-pressed {
+  transform: scale(0.75);
+}
+
+/* =========================================
+   [Link Button Haptic (Go to)]
+   ========================================= */
+.app-card a[data-haptic="button-primary"] {
+  /* Match the primary hover shadow from style.css to avoid visual conflicts */
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4);
+}
+
+.app-card a[data-haptic="button-primary"]:hover {
+  /* Slightly elevate the existing shadow for a smooth hover transition */
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.45), 0 6px 18px rgba(13, 110, 253, 0.35);
+}
+
+.app-card a[data-haptic="button-primary"].is-pressed {
+  transform: translateY(4px) scale(1);
+  /* Keep a reduced shadow instead of dropping to zero to avoid abrupt change */
+  box-shadow: 0 2px 8px rgba(13, 110, 253, 0.35);
+}
+
+/* =========================================
+   [Mobile Touch Optimizations]
+   ========================================= */
+@media (max-width: 640px) {
+  /* Faster touch response on mobile */
+  [data-haptic] {
+    transition: transform 0.25s var(--ease-release), 
+                background-color 0.2s ease,
+                box-shadow 0.2s ease;
+  }
+  
+  /* Slightly stronger press effect on mobile */
+  .app-card[data-haptic="scale"].is-pressed {
+    transform: scale(0.95);
+  }
+  
+  /* Compact card haptic */
+  .app-card:not(.expanded)[data-haptic="scale"].is-pressed {
+    transform: scale(0.93);
+  }
+}
+
+/* =========================================
+   [Accessibility - Reduced Motion]
+   ========================================= */
+@media (prefers-reduced-motion: reduce) {
+  [data-haptic],
+  .haptic-overlay,
+  .haptic-modal {
+    transition: none;
+    animation: none;
+  }
+  
+  [data-haptic].is-pressed {
+    transform: none;
+  }
+  
+  .haptic-overlay.active .haptic-modal-spring,
+  .haptic-overlay.active .haptic-modal-sheet {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
