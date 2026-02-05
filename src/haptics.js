@@ -1,13 +1,22 @@
 /**
  * Haptics Module
- * High-performance visual haptic feedback system for touch interactions
+ * High-performance visual feedback system for touch interactions
+ * Note: "Haptic" in this context refers to visual feedback mimicking physical interactions,
+ * not actual touch/vibration feedback.
  */
 
 // Timing constants - must match CSS transition durations in haptics.css
 const MODAL_CLOSE_DURATION_MS = 300; // matches .haptic-overlay transition duration
 
+// Module-level observer for cleanup
+let hapticObserver = null;
+
+// Counter for unique modal IDs
+let modalIdCounter = 0;
+
 /**
  * Initialize haptic feedback on all elements with data-haptic attribute
+ * @returns {Function} Cleanup function to disconnect the observer
  */
 export function initHaptics() {
   // Initialize on existing elements
@@ -15,7 +24,7 @@ export function initHaptics() {
   hapticElements.forEach(el => attachHapticListeners(el));
 
   // Observe for dynamically added elements
-  const observer = new MutationObserver((mutations) => {
+  hapticObserver = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       mutation.addedNodes.forEach((node) => {
         if (node.nodeType === Node.ELEMENT_NODE) {
@@ -31,21 +40,37 @@ export function initHaptics() {
     });
   });
 
-  observer.observe(document.body, {
+  hapticObserver.observe(document.body, {
     childList: true,
     subtree: true
   });
 
   console.log('🎯 Haptic feedback system initialized');
+
+  // Return cleanup function
+  return cleanupHaptics;
+}
+
+/**
+ * Cleanup function to disconnect the MutationObserver
+ * Call this when reinitializing or when the haptic system is no longer needed
+ */
+export function cleanupHaptics() {
+  if (hapticObserver) {
+    hapticObserver.disconnect();
+    hapticObserver = null;
+  }
 }
 
 /**
  * Attach haptic listeners to an element
  */
 function attachHapticListeners(el) {
-  // Prevent double-binding
-  if (el.dataset.hapticBound) return;
-  el.dataset.hapticBound = 'true';
+  // Prevent double-binding using a marker data attribute
+  if (el.hasAttribute('data-haptic-bound')) {
+    return;
+  }
+  el.setAttribute('data-haptic-bound', '');
 
   // Touch events for mobile
   el.addEventListener('touchstart', () => el.classList.add('is-pressed'), { passive: true });
@@ -59,7 +84,8 @@ function attachHapticListeners(el) {
 }
 
 /**
- * Modal Controller for haptic popups
+ * Modal Controller for visual feedback popups
+ * Note: Named HapticModal for consistency with the module, but provides visual feedback only.
  */
 class HapticModal {
   constructor() {
@@ -67,6 +93,38 @@ class HapticModal {
     this.currentModal = null;
     this.isAnimating = false;
     this.onCloseCallback = null;
+    this.boundHandleKeydown = this.handleKeydown.bind(this);
+    this.boundHandleFocusTrap = this.handleFocusTrap.bind(this);
+  }
+
+  /**
+   * Handle keyboard events for modal
+   */
+  handleKeydown(e) {
+    if (e.key === 'Escape') {
+      this.close();
+    }
+  }
+
+  /**
+   * Trap focus within the modal
+   */
+  handleFocusTrap(e) {
+    if (e.key !== 'Tab' || !this.currentModal) return;
+
+    const focusableElements = this.currentModal.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (e.shiftKey && document.activeElement === firstElement) {
+      e.preventDefault();
+      lastElement.focus();
+    } else if (!e.shiftKey && document.activeElement === lastElement) {
+      e.preventDefault();
+      firstElement.focus();
+    }
   }
 
   /**
@@ -81,6 +139,7 @@ class HapticModal {
     this.overlay = document.createElement('div');
     this.overlay.id = 'haptic-overlay';
     this.overlay.className = 'haptic-overlay';
+    this.overlay.setAttribute('aria-hidden', 'true');
     this.overlay.addEventListener('click', (e) => {
       if (e.target === this.overlay) {
         this.close();
@@ -98,7 +157,7 @@ class HapticModal {
    * @param {string} options.title - Modal title
    * @param {string} options.message - Modal message (can include line breaks)
    * @param {string} options.buttonText - Close button text
-   * @param {string} options.buttonColor - Optional button background color
+   * @param {string} options.buttonColor - Optional button background color (CSS color value: hex, rgb(), hsl(), named color, etc.)
    * @param {Function} options.onClose - Optional callback when modal closes
    */
   open(options) {
@@ -120,18 +179,25 @@ class HapticModal {
     // Clear previous modal content
     this.overlay.innerHTML = '';
 
-    // Create modal element
+    // Create modal element with ARIA attributes
     const modal = document.createElement('div');
     modal.className = `haptic-modal haptic-modal-${type}`;
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modalIdCounter++;
+    const titleId = `haptic-modal-title-${modalIdCounter}`;
+    modal.setAttribute('aria-labelledby', titleId);
 
     // Icon
     const iconEl = document.createElement('div');
     iconEl.style.fontSize = '3rem';
     iconEl.style.marginBottom = '10px';
     iconEl.textContent = icon;
+    iconEl.setAttribute('aria-hidden', 'true');
 
     // Title
     const titleEl = document.createElement('h2');
+    titleEl.id = titleId;
     titleEl.textContent = title;
 
     // Message
@@ -154,9 +220,6 @@ class HapticModal {
     }
     buttonEl.addEventListener('click', () => this.close());
 
-    // Attach haptic to button
-    attachHapticListeners(buttonEl);
-
     // Assemble modal
     modal.appendChild(iconEl);
     modal.appendChild(titleEl);
@@ -176,9 +239,14 @@ class HapticModal {
     // Trigger reflow for animation
     void modal.offsetWidth;
 
-    // Show overlay
+    // Show overlay and update ARIA
     this.overlay.classList.add('active');
     this.overlay.classList.remove('closing');
+    this.overlay.setAttribute('aria-hidden', 'false');
+
+    // Add keyboard listeners for Escape key and focus trap
+    document.addEventListener('keydown', this.boundHandleKeydown);
+    document.addEventListener('keydown', this.boundHandleFocusTrap);
 
     // Focus the close button for accessibility
     setTimeout(() => buttonEl.focus(), 100);
@@ -195,6 +263,11 @@ class HapticModal {
     this.isAnimating = true;
     this.overlay.classList.add('closing');
     this.overlay.classList.remove('active');
+    this.overlay.setAttribute('aria-hidden', 'true');
+
+    // Remove keyboard listeners
+    document.removeEventListener('keydown', this.boundHandleKeydown);
+    document.removeEventListener('keydown', this.boundHandleFocusTrap);
 
     setTimeout(() => {
       this.overlay.classList.remove('closing', 'sheet-mode');

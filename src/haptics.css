@@ -13,8 +13,8 @@
   --haptic-shadow-float: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --haptic-shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
   
-  /* Overlay */
-  --haptic-overlay: rgba(15, 23, 42, 0.4);
+  /* Overlay: reuse global overlay token with a safe fallback */
+  --haptic-overlay: var(--overlay, rgba(15, 23, 42, 0.4));
   
   /* Physics Easing */
   --ease-press: cubic-bezier(0.1, 0, 0.2, 1);
@@ -30,7 +30,6 @@
               box-shadow 0.3s ease,
               filter 0.3s ease;
   cursor: pointer;
-  will-change: transform;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
 }
@@ -49,9 +48,9 @@
   transform: scale(0.96);
 }
 
-/* Enhanced card press effect */
+/* Enhanced card press effect - pushes down relative to default state */
 .app-card[data-haptic="scale"].is-pressed {
-  transform: translateY(-4px) scale(0.97);
+  transform: translateY(2px) scale(0.97);
   box-shadow: var(--haptic-shadow-sm);
 }
 
@@ -61,7 +60,7 @@
   transition: transform 0.1s var(--ease-press);
 }
 
-.app-card h2 {
+.app-card[data-haptic="scale"] h2 {
   transition: transform 0.4s var(--ease-release), color 0.3s ease, text-shadow 0.3s ease;
 }
 
@@ -271,11 +270,12 @@
    [Search Suggestions Haptic Enhancement]
    ========================================= */
 .suggestion-item[data-haptic="list"] {
-  transition: background-color 0.3s ease, transform 0.5s var(--ease-release);
+  /* Let base styles control background-color timing; only animate transform here */
+  transition: transform 0.2s var(--ease-release);
 }
 
 .suggestion-item[data-haptic="list"].is-pressed {
-  background-color: #f1f5f9;
+  background-color: #e2e8f0;
   transform: scale(0.98);
 }
 
@@ -286,6 +286,11 @@
 /* =========================================
    [Star Button Haptic]
    ========================================= */
+.star-btn[data-haptic="circle"]:hover {
+  /* Slight hover scale for haptic star buttons to avoid fighting with press state */
+  transform: scale(1.1);
+}
+
 .star-btn[data-haptic="circle"].is-pressed {
   transform: scale(0.75);
 }
@@ -294,16 +299,19 @@
    [Link Button Haptic (Go to)]
    ========================================= */
 .app-card a[data-haptic="button-primary"] {
-  box-shadow: 0 4px 0 rgba(13, 110, 253, 0.4), 0 8px 16px rgba(13, 110, 253, 0.25);
+  /* Match the primary hover shadow from style.css to avoid visual conflicts */
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4);
 }
 
 .app-card a[data-haptic="button-primary"]:hover {
-  box-shadow: 0 4px 0 rgba(13, 110, 253, 0.4), 0 10px 20px rgba(13, 110, 253, 0.3);
+  /* Slightly elevate the existing shadow for a smooth hover transition */
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.45), 0 6px 18px rgba(13, 110, 253, 0.35);
 }
 
 .app-card a[data-haptic="button-primary"].is-pressed {
   transform: translateY(4px) scale(1);
-  box-shadow: 0 0 0 rgba(13, 110, 253, 0.4), 0 0 0 rgba(13, 110, 253, 0);
+  /* Keep a reduced shadow instead of dropping to zero to avoid abrupt change */
+  box-shadow: 0 2px 8px rgba(13, 110, 253, 0.35);
 }
 
 /* =========================================

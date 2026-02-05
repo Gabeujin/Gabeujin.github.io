@@ -1,4 +1,5 @@
 import './style.css'
+// Import haptics.css after style.css to ensure proper cascade order
 import './haptics.css'
 import { SearchEngine, initSearch } from './search.js'
 import { initEasterEgg } from './easter-egg.js'
