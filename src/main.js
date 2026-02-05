@@ -1,4 +1,5 @@
 import './style.css'
+import './haptics.css'
 import { SearchEngine, initSearch } from './search.js'
 import { initEasterEgg } from './easter-egg.js'
 import { initTheme, initScrollEffect } from './theme.js'
@@ -11,6 +12,7 @@ import {
   isExpanded 
 } from './app-manager.js'
 import { getLocale, getTranslations } from './i18n.js'
+import { initHaptics } from './haptics.js'
 
 // Constants
 const MOBILE_BREAKPOINT = 640; // px - must match CSS media query
@@ -103,6 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize easter eggs
   initEasterEgg();
+
+  // Initialize haptic feedback system
+  initHaptics();
 
   // Handle window resize to collapse cards when switching from mobile to desktop
   let resizeTimeout;
@@ -256,6 +261,8 @@ function createAppCard(app, index) {
   article.dataset.id = app.id;
   article.style.setProperty('--card-index', index);
   article.setAttribute('tabindex', '0');
+  // Add haptic feedback to card
+  article.setAttribute('data-haptic', 'scale');
   
   // Check if expanded (mobile)
   if (isExpanded(app.id)) {
@@ -265,6 +272,8 @@ function createAppCard(app, index) {
   // Create star button
   const starBtn = document.createElement('button');
   starBtn.className = 'star-btn';
+  // Add haptic feedback to star button
+  starBtn.setAttribute('data-haptic', 'circle');
   const isFav = isFavorite(app.id);
   starBtn.setAttribute('aria-label', isFav ? 'Remove from favorites' : 'Add to favorites');
   starBtn.textContent = isFav ? '⭐' : '☆';
@@ -303,6 +312,8 @@ function createAppCard(app, index) {
   minimizeBtn.className = 'minimize-btn';
   minimizeBtn.setAttribute('aria-label', 'Collapse card');
   minimizeBtn.setAttribute('role', 'button');
+  // Add haptic feedback to minimize button
+  minimizeBtn.setAttribute('data-haptic', 'circle');
   minimizeBtn.textContent = '×';
   
   // Minimize button click handler
@@ -324,6 +335,8 @@ function createAppCard(app, index) {
   // Create link element safely
   const linkEl = document.createElement('a');
   linkEl.href = `/${app.id}`;
+  // Add haptic feedback to link button (3D press effect)
+  linkEl.setAttribute('data-haptic', 'button-primary');
   const translations = getTranslations(currentLocale);
   linkEl.textContent = translations.buttonGoTo;
 
