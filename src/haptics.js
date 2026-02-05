@@ -3,6 +3,9 @@
  * High-performance visual haptic feedback system for touch interactions
  */
 
+// Timing constants - must match CSS transition durations in haptics.css
+const MODAL_CLOSE_DURATION_MS = 300; // matches .haptic-overlay transition duration
+
 /**
  * Initialize haptic feedback on all elements with data-haptic attribute
  */
@@ -206,7 +209,7 @@ class HapticModal {
         this.onCloseCallback();
         this.onCloseCallback = null;
       }
-    }, 300);
+    }, MODAL_CLOSE_DURATION_MS);
   }
 
   /**

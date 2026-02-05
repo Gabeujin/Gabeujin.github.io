@@ -25,7 +25,7 @@
    [Haptic Engine Core]
    ========================================= */
 [data-haptic] {
-  transition: transform 0.5s var(--ease-release), 
+  transition: transform 0.35s var(--ease-release), 
               background-color 0.3s ease,
               box-shadow 0.3s ease,
               filter 0.3s ease;
@@ -312,9 +312,9 @@
 @media (max-width: 640px) {
   /* Faster touch response on mobile */
   [data-haptic] {
-    transition: transform 0.4s var(--ease-release), 
-                background-color 0.25s ease,
-                box-shadow 0.25s ease;
+    transition: transform 0.25s var(--ease-release), 
+                background-color 0.2s ease,
+                box-shadow 0.2s ease;
   }
   
   /* Slightly stronger press effect on mobile */
