@@ -65,6 +65,37 @@ header.scrolled {
   position: relative;
 }
 
+.locale-select {
+  position: absolute;
+  left: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.locale-select:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+}
+
+.locale-select:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.locale-select option {
+  background: var(--primary-color);
+  color: #fff;
+}
+
 .theme-toggle {
   position: absolute;
   right: 0;
@@ -719,6 +750,12 @@ footer {
   .theme-toggle {
     position: relative;
     right: auto;
+  }
+
+  .locale-select {
+    position: relative;
+    left: auto;
+    font-size: 0.8rem;
   }
 
   .search-container {

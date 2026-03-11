@@ -12,7 +12,7 @@ import {
   toggleExpanded, 
   isExpanded 
 } from './app-manager.js'
-import { getLocale, getTranslations } from './i18n.js'
+import { getLocale, setLocale, getTranslations } from './i18n.js'
 import { initHaptics } from './haptics.js'
 
 // Constants
@@ -92,6 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Update page metadata
   updatePageMetadata();
 
+  // Initialize locale selector
+  initLocaleSelector();
+
   // Initialize theme (dark mode)
   initTheme();
 
@@ -130,6 +133,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   console.log('✨ All features initialized!');
 })
+
+/**
+ * Initialize locale selector dropdown
+ */
+function initLocaleSelector() {
+  const localeSelect = document.getElementById('locale-select');
+  if (!localeSelect) return;
+
+  // Set current locale as selected value
+  localeSelect.value = currentLocale;
+
+  // Handle locale change
+  localeSelect.addEventListener('change', (e) => {
+    setLocale(e.target.value);
+  });
+}
 
 /**
  * Update page metadata based on locale
@@ -175,6 +194,12 @@ function updatePageMetadata() {
   const categoryFilter = document.getElementById('category-filter');
   if (categoryFilter) {
     categoryFilter.setAttribute('aria-label', translations.categoryFilterLabel);
+  }
+  
+  // Update locale selector label
+  const localeSelect = document.getElementById('locale-select');
+  if (localeSelect) {
+    localeSelect.setAttribute('aria-label', translations.localeSelectLabel);
   }
   
   // Update no results message using textContent for security
