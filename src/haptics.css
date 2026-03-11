@@ -120,6 +120,17 @@
   transform: scale(0.85);
 }
 
+/* Theme toggle: match active scale from style.css */
+.theme-toggle[data-haptic="circle"].is-pressed {
+  transform: scale(0.9);
+}
+
+/* Category buttons: match active scale from style.css */
+.category-btn[data-haptic="circle"].is-pressed {
+  transform: translateY(0) scale(0.95);
+  box-shadow: 0 1px 4px rgba(13, 110, 253, 0.2);
+}
+
 /* =========================================
    [Modal Overlay System]
    ========================================= */
@@ -299,11 +310,13 @@
    [Link Button Haptic (Go to)]
    ========================================= */
 .app-card a[data-haptic="button-primary"] {
-  /* Inherit the 3D push style from style.css base */
+  /* Override generic button-primary transform so the 3D lift from style.css takes effect */
+  transform: translateY(-3px);
   box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2), 0 6px 12px rgba(13, 110, 253, 0.2);
 }
 
 .app-card a[data-haptic="button-primary"]:hover {
+  transform: translateY(-4px);
   box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2), 0 8px 20px rgba(13, 110, 253, 0.4);
 }
 

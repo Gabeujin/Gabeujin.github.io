@@ -668,6 +668,44 @@ footer {
   color: var(--muted-color);
 }
 
+/* Reduced motion: disable 3D lifts and gloss sweep */
+@media (prefers-reduced-motion: reduce) {
+  .app-card a {
+    transform: none;
+  }
+
+  .app-card a:hover,
+  .app-card a:focus-visible {
+    transform: none;
+  }
+
+  .app-card a:active {
+    transform: none;
+    transition: none;
+  }
+
+  .app-card a::before {
+    transition: none;
+    display: none;
+  }
+
+  .theme-toggle:hover {
+    transform: none;
+  }
+
+  .theme-toggle:active {
+    transform: none;
+  }
+
+  .category-btn:hover {
+    transform: none;
+  }
+
+  .category-btn:active {
+    transform: none;
+  }
+}
+
 @media (max-width: 640px) {
   header h1 {
     font-size: 1.75rem;
