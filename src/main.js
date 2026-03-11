@@ -316,6 +316,7 @@ function createAppCard(app, index) {
   const article = document.createElement('article');
   article.className = 'app-card';
   article.dataset.id = app.id;
+  article.dataset.category = app.category;
   article.style.setProperty('--card-index', index);
   article.setAttribute('tabindex', '0');
   // Add haptic feedback to card

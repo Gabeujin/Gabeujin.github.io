@@ -8,6 +8,11 @@
   --footer-bg: #e9ecef;
   --muted-color: #6c757d;
   --transition-speed: 0.3s;
+  /* Category accent colors */
+  --category-wedding: #e91e63;
+  --category-learning: #1976d2;
+  --category-lifestyle: #2e7d32;
+  --category-game: #7b1fa2;
 }
 
 /* Dark mode theme */
@@ -264,6 +269,27 @@ main {
   will-change: transform, opacity;
   position: relative;
   overflow: hidden;
+  /* Flexbox layout for consistent button positioning */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Category color accent strip at the top of each card */
+.app-card[data-category="wedding"] {
+  border-top: 3px solid var(--category-wedding);
+}
+
+.app-card[data-category="learning"] {
+  border-top: 3px solid var(--category-learning);
+}
+
+.app-card[data-category="lifestyle"] {
+  border-top: 3px solid var(--category-lifestyle);
+}
+
+.app-card[data-category="game"] {
+  border-top: 3px solid var(--category-game);
 }
 
 /* Star button */
@@ -422,6 +448,9 @@ main {
   margin-bottom: 1rem;
   color: var(--primary-color);
   transition: color 0.3s ease, text-shadow 0.3s ease;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  width: 100%;
 }
 
 .app-card:hover h2 {
@@ -433,6 +462,14 @@ main {
   font-size: 0.95rem;
   color: var(--muted-color);
   margin-bottom: 1.5rem;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  flex-grow: 1;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .app-card a {
@@ -446,6 +483,8 @@ main {
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
+  margin-top: auto;
+  flex-shrink: 0;
 }
 
 .app-card a::before {
@@ -708,6 +747,8 @@ footer {
 
   .app-card.expanded p {
     display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
   }
 
   .app-card.expanded a {
