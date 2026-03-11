@@ -343,8 +343,8 @@ export const Button = ({ className, variant, size, isLoading, ...props }) =&gt; 
 			const code = document.getElementById('code-block').innerText;
 			navigator.clipboard.writeText(code).then(() => {
 				showToast();
-			}).catch(() => {
-				// Fallback for older browsers
+			}).catch((err) => {
+				console.warn('Clipboard API failed, using fallback:', err);
 				const textArea = document.createElement("textarea");
 				textArea.value = code;
 				textArea.style.position = "fixed";
