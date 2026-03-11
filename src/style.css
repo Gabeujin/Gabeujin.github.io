@@ -467,8 +467,11 @@ main {
   flex-grow: 1;
   width: 100%;
   display: -webkit-box;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  line-height: 1.4;
+  max-height: 2.8em;
   overflow: hidden;
 }
 
@@ -747,7 +750,9 @@ footer {
 
   .app-card.expanded p {
     display: block;
+    line-clamp: unset;
     -webkit-line-clamp: unset;
+    max-height: none;
     overflow: visible;
   }
 
