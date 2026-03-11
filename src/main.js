@@ -146,7 +146,31 @@ function initLocaleSelector() {
 
   // Handle locale change
   localeSelect.addEventListener('change', (e) => {
-    setLocale(e.target.value);
+    const newLocale = e.target.value;
+
+    // Attempt to persist the new locale preference
+    try {
+      setLocale(newLocale);
+    } catch (error) {
+      // If persistence fails (e.g., localStorage issues), still update the session
+      console.error('Failed to persist locale preference:', error);
+    }
+
+    // Always ensure the current session reflects the selected locale
+    if (currentLocale !== newLocale) {
+      currentLocale = newLocale;
+
+      // Update metadata for the new locale
+      updatePageMetadata();
+
+      // Re-render category filter and app cards with localized data
+      renderCategoryFilter();
+      renderAppCards();
+
+      // Reinitialize search with localized app data
+      searchEngineInstance = new SearchEngine(getLocalizedAppData());
+      initSearch(searchEngineInstance, currentLocale);
+    }
   });
 }
 
