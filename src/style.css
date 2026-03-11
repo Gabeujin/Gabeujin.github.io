@@ -183,9 +183,52 @@ header p {
 main {
   flex: 1;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   padding: 2rem 1rem;
+}
+
+/* Category Filter */
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 1400px;
+  width: 100%;
+  padding: 0 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.category-btn {
+  padding: 0.5rem 1.25rem;
+  border: 2px solid var(--accent-color);
+  border-radius: 2rem;
+  background: transparent;
+  color: var(--accent-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.category-btn:hover {
+  background: var(--accent-color);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}
+
+.category-btn:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.category-btn.active {
+  background: var(--accent-color);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
 }
 
 .app-links {
@@ -505,6 +548,17 @@ footer {
 }
 
 /* Dark mode specific adjustments */
+[data-theme="dark"] .category-btn {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+[data-theme="dark"] .category-btn:hover,
+[data-theme="dark"] .category-btn.active {
+  background: var(--accent-color);
+  color: #1a1a2e;
+}
+
 [data-theme="dark"] .app-card h2 {
   color: #e9ecef;
 }
@@ -573,6 +627,19 @@ footer {
 
   #search-input {
     font-size: 0.95rem;
+  }
+
+  /* Category filter mobile styles */
+  .category-filter {
+    gap: 0.4rem;
+    padding: 0 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .category-btn {
+    padding: 0.4rem 0.875rem;
+    font-size: 0.8rem;
+    border-width: 1.5px;
   }
 
   .app-links {

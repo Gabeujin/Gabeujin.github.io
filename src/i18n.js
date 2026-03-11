@@ -90,6 +90,7 @@ const translations = {
     headerSubtitle: 'MIT License · Copyright (c) 2020 Gabeujin',
     searchPlaceholder: '🔍 프로젝트 검색...',
     themeToggleLabel: '테마 변경',
+    categoryFilterLabel: '카테고리 필터',
     
     // App descriptions
     apps: {
@@ -105,10 +106,6 @@ const translations = {
         title: '🎯 퀴즈 마스터',
         description: '카드형식의 퀴즈를 풀 수 있는 웹앱입니다.'
       },
-      'sql-biz-quiz': {
-        title: '💼 SQL 비즈 퀴즈',
-        description: '비즈니스 도메인을 중심으로 SQL 문제를 풀 수 있는 웹앱입니다.'
-      },
       'flash-game': {
         title: '🎮 플래시 게임 모음',
         description: '플래시게임 모음집입니다.'
@@ -121,26 +118,19 @@ const translations = {
         title: '💵 간편 가계부',
         description: '간편하게 수입과 지출을 관리할 수 있는 가계부 앱입니다.'
       },
-      'kfc-lab': {
-        title: '📊 KFC-Lab',
-        description: '코스피, 환율 등을 취합해서 그래프로 통계를 내는 사이트입니다.'
-      },
       'wedding-framework': {
         title: '💒 결혼 준비 프레임워크',
         description: '결혼식 준비 과정을 일련의 프레임워크로 구성한 웹앱입니다.'
-      },
-      'shop-manager': {
-        title: '🏪 상점 매니저',
-        description: '상점의 재고, 매출, 고객을 효율적으로 관리할 수 있는 웹앱입니다.'
-      },
-      'my-photo-map': {
-        title: '📸 마이 포토 맵',
-        description: '사진으로 여행지를 기록하고 지도에서 추억을 되돌아볼 수 있는 웹앱입니다.'
-      },
-      'hd-membership-mockup': {
-        title: '🎫 통합 멤버십',
-        description: '다양한 서비스를 하나의 멤버십으로 통합 관리하는 목업 프로젝트입니다.'
       }
+    },
+
+    // Categories
+    categories: {
+      all: '전체',
+      wedding: '💒 결혼',
+      learning: '📚 학습',
+      lifestyle: '💰 생활',
+      game: '🎮 게임'
     },
     
     // Buttons
@@ -164,6 +154,7 @@ const translations = {
     headerSubtitle: 'MIT License · Copyright (c) 2020 Gabeujin',
     searchPlaceholder: '🔍 Search projects...',
     themeToggleLabel: 'Toggle theme',
+    categoryFilterLabel: 'Category filter',
     
     // App descriptions
     apps: {
@@ -179,10 +170,6 @@ const translations = {
         title: '🎯 Quiz Master',
         description: 'A web app for card-style quizzes.'
       },
-      'sql-biz-quiz': {
-        title: '💼 SQL Biz Quiz',
-        description: 'Practice SQL with business domain problems.'
-      },
       'flash-game': {
         title: '🎮 Flash Game Collection',
         description: 'A collection of classic flash games.'
@@ -195,26 +182,19 @@ const translations = {
         title: '💵 Simple Budget Book',
         description: 'Manage your income and expenses easily.'
       },
-      'kfc-lab': {
-        title: '📊 KFC-Lab',
-        description: 'Visualize statistics for KOSPI, exchange rates, and more.'
-      },
       'wedding-framework': {
         title: '💒 Wedding Framework',
         description: 'A framework for wedding preparation process.'
-      },
-      'shop-manager': {
-        title: '🏪 Shop Manager',
-        description: 'Efficiently manage your shop inventory, sales, and customers.'
-      },
-      'my-photo-map': {
-        title: '📸 My Photo Map',
-        description: 'Record your travels with photos and revisit memories on the map.'
-      },
-      'hd-membership-mockup': {
-        title: '🎫 Integrated Membership',
-        description: 'A mockup project for managing multiple services with unified membership.'
       }
+    },
+
+    // Categories
+    categories: {
+      all: 'All',
+      wedding: '💒 Wedding',
+      learning: '📚 Learning',
+      lifestyle: '💰 Lifestyle',
+      game: '🎮 Games'
     },
     
     // Buttons

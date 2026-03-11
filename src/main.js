@@ -22,55 +22,51 @@ const RESIZE_DEBOUNCE_DELAY = 100; // ms
 // Global locale variable
 let currentLocale = 'en';
 
-// App data with dateAdded (format: YYYY-MM-DD)
+// Active category filter ('all' = show all)
+let activeCategory = 'all';
+
+// Available categories (order matters for display)
+const CATEGORIES = ['all', 'wedding', 'learning', 'lifestyle', 'game'];
+
+// Module-level search engine reference
+let searchEngineInstance = null;
+
+// App data with dateAdded (format: YYYY-MM-DD) and category
 const appData = [
   {
     id: 'edu-platform',
-    dateAdded: '2024-06-15'
+    dateAdded: '2024-06-15',
+    category: 'learning'
   },
   {
     id: 'wedding-money-manager',
-    dateAdded: '2024-08-20'
+    dateAdded: '2024-08-20',
+    category: 'wedding'
   },
   {
     id: 'quiz-master',
-    dateAdded: '2024-09-10'
-  },
-  {
-    id: 'sql-biz-quiz',
-    dateAdded: '2024-10-05'
+    dateAdded: '2024-09-10',
+    category: 'learning'
   },
   {
     id: 'flash-game',
-    dateAdded: '2024-11-12'
+    dateAdded: '2024-11-12',
+    category: 'game'
   },
   {
     id: 'toeic-picnic',
-    dateAdded: '2024-12-01'
+    dateAdded: '2024-12-01',
+    category: 'learning'
   },
   {
     id: 'budget-book',
-    dateAdded: '2025-12-28'
-  },
-  {
-    id: 'kfc-lab',
-    dateAdded: '2026-01-15'
+    dateAdded: '2025-12-28',
+    category: 'lifestyle'
   },
   {
     id: 'wedding-framework',
-    dateAdded: '2026-01-23'
-  },
-  {
-    id: 'shop-manager',
-    dateAdded: '2026-02-02'
-  },
-  {
-    id: 'my-photo-map',
-    dateAdded: '2026-02-02'
-  },
-  {
-    id: 'hd-membership-mockup',
-    dateAdded: '2026-02-02'
+    dateAdded: '2026-01-23',
+    category: 'wedding'
   }
 ];
 
@@ -97,12 +93,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize scroll effect
   initScrollEffect();
 
+  // Render category filter
+  renderCategoryFilter();
+
   // Render app cards
   renderAppCards();
 
   // Initialize search
-  const searchEngine = new SearchEngine(getLocalizedAppData());
-  initSearch(searchEngine, currentLocale);
+  searchEngineInstance = new SearchEngine(getLocalizedAppData());
+  initSearch(searchEngineInstance, currentLocale);
 
   // Initialize easter eggs
   initEasterEgg();
@@ -167,6 +166,12 @@ function updatePageMetadata() {
     themeToggle.setAttribute('title', translations.themeToggleLabel);
   }
   
+  // Update category filter label
+  const categoryFilter = document.getElementById('category-filter');
+  if (categoryFilter) {
+    categoryFilter.setAttribute('aria-label', translations.categoryFilterLabel);
+  }
+  
   // Update no results message using textContent for security
   const noResultsDiv = document.getElementById('no-results');
   if (noResultsDiv) {
@@ -204,6 +209,47 @@ function getLocalizedAppData() {
 }
 
 /**
+ * Render category filter buttons
+ */
+function renderCategoryFilter() {
+  const container = document.getElementById('category-filter');
+  if (!container) return;
+
+  const translations = getTranslations(currentLocale);
+  container.innerHTML = '';
+
+  CATEGORIES.forEach(category => {
+    const btn = document.createElement('button');
+    btn.className = 'category-btn';
+    btn.dataset.category = category;
+    btn.setAttribute('data-haptic', 'circle');
+    if (category === activeCategory) {
+      btn.classList.add('active');
+    }
+    btn.textContent = translations.categories[category] || category;
+    btn.setAttribute('aria-label', translations.categories[category] || category);
+
+    btn.addEventListener('click', () => {
+      activeCategory = category;
+      // Update active button styles
+      container.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      // Re-render app cards with filter
+      renderAppCards();
+
+      // Re-apply current search query so category + search stay consistent
+      const searchInput = document.getElementById('search-input');
+      if (searchInput) {
+        const inputEvent = new Event('input', { bubbles: true });
+        searchInput.dispatchEvent(inputEvent);
+      }
+    });
+
+    container.appendChild(btn);
+  });
+}
+
+/**
  * Render app cards dynamically
  */
 function renderAppCards() {
@@ -213,8 +259,13 @@ function renderAppCards() {
   // Get localized app data
   const localizedData = getLocalizedAppData();
 
+  // Filter by active category
+  const filteredData = activeCategory === 'all'
+    ? localizedData
+    : localizedData.filter(app => app.category === activeCategory);
+
   // Sort apps (favorites first, then by date)
-  const sortedApps = sortApps(localizedData);
+  const sortedApps = sortApps(filteredData);
 
   // Clear existing cards
   container.innerHTML = '';
@@ -224,6 +275,11 @@ function renderAppCards() {
     const card = createAppCard(app, index);
     container.appendChild(card);
   });
+
+  // Update search engine items for the filtered dataset
+  if (searchEngineInstance) {
+    searchEngineInstance.updateItems(filteredData);
+  }
 }
 
 /**

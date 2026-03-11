@@ -147,6 +147,13 @@ export class SearchEngine {
     div.textContent = text;
     return div.innerHTML;
   }
+
+  /**
+   * Update the items dataset (e.g., when category filter changes)
+   */
+  updateItems(items) {
+    this.items = items;
+  }
 }
 
 /**
@@ -155,7 +162,6 @@ export class SearchEngine {
 export function initSearch(searchEngine, locale = 'en') {
   const searchInput = document.getElementById('search-input');
   const searchSuggestions = document.getElementById('search-suggestions');
-  const appCards = document.querySelectorAll('.app-card');
   const noResults = document.getElementById('no-results');
   const searchCount = document.getElementById('search-count');
 
@@ -200,7 +206,8 @@ export function initSearch(searchEngine, locale = 'en') {
       searchInput.setAttribute('aria-expanded', 'false');
     }
 
-    // Filter cards
+    // Filter cards (query DOM dynamically to support category changes)
+    const appCards = document.querySelectorAll('.app-card');
     const resultIds = results.map(r => r.id);
     let visibleCount = 0;
 
