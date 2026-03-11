@@ -121,6 +121,10 @@ const translations = {
       'wedding-framework': {
         title: '💒 결혼 준비 프레임워크',
         description: '결혼식 준비 과정을 일련의 프레임워크로 구성한 웹앱입니다.'
+      },
+      'button-design': {
+        title: '🎨 버튼 디자인 시스템',
+        description: '다양한 스타일의 버튼을 모아놓은 UI 디자인 시스템입니다.'
       }
     },
 
@@ -130,7 +134,8 @@ const translations = {
       wedding: '💒 결혼',
       learning: '📚 학습',
       lifestyle: '💰 생활',
-      game: '🎮 게임'
+      game: '🎮 게임',
+      design: '🎨 디자인'
     },
     
     // Buttons
@@ -185,6 +190,10 @@ const translations = {
       'wedding-framework': {
         title: '💒 Wedding Framework',
         description: 'A framework for wedding preparation process.'
+      },
+      'button-design': {
+        title: '🎨 Button Design System',
+        description: 'A UI design system showcasing various button styles.'
       }
     },
 
@@ -194,7 +203,8 @@ const translations = {
       wedding: '💒 Wedding',
       learning: '📚 Learning',
       lifestyle: '💰 Lifestyle',
-      game: '🎮 Games'
+      game: '🎮 Games',
+      design: '🎨 Design'
     },
     
     // Buttons

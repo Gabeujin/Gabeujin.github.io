@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ultimate Button Design System</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap');
+
+		:root {
+			--primary: #4f46e5;
+			--bg-dark: #0f172a;
+		}
+
+		body {
+			font-family: 'Pretendard', sans-serif;
+			background-color: #f8fafc;
+			color: #1e293b;
+			transition: background-color 0.3s, color 0.3s;
+		}
+
+		/* Dark Mode Support */
+		.dark-mode {
+			background-color: #0f172a;
+			color: #f1f5f9;
+		}
+		.dark-mode .bg-white { background-color: #1e293b; border-color: #334155; }
+		.dark-mode header { background-color: #1e293b; border-color: #334155; }
+		.dark-mode .text-slate-800 { color: #f1f5f9; }
+		.dark-mode .text-slate-700 { color: #cbd5e1; }
+		.dark-mode .border { border-color: #475569; }
+
+		/* Neumorphism Style */
+		.btn-neumorphic {
+			background: #e0e5ec;
+			box-shadow: 6px 6px 12px rgb(163,177,198,0.5), -6px -6px 12px rgba(255,255,255, 0.8);
+			transition: all 0.2s ease;
+		}
+		.btn-neumorphic:active {
+			box-shadow: inset 4px 4px 8px rgb(163,177,198,0.5), inset -4px -4px 8px rgba(255,255,255, 0.8);
+		}
+
+		/* Glassmorphism Style */
+		.glass-card {
+			background: rgba(255, 255, 255, 0.15);
+			backdrop-filter: blur(12px);
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+		}
+
+		/* 3D Push Button */
+		.btn-3d {
+			transform: translateY(-4px);
+			box-shadow: 0 4px 0 #3730a3;
+			transition: all 0.1s ease;
+		}
+		.btn-3d:active {
+			transform: translateY(0px);
+			box-shadow: 0 0px 0 #3730a3;
+		}
+
+		/* Magnetic Effect Mockup */
+		.btn-magnetic {
+			transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+		}
+		.btn-magnetic:hover {
+			transform: scale(1.05);
+		}
+
+		/* Shiny Effect */
+		.btn-shiny {
+			position: relative;
+			overflow: hidden;
+		}
+		.btn-shiny::after {
+			content: '';
+			position: absolute;
+			top: -50%;
+			left: -50%;
+			width: 200%;
+			height: 200%;
+			background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+			transform: rotate(45deg);
+			transition: 0.5s;
+		}
+		.btn-shiny:hover::after {
+			left: 120%;
+		}
+
+		/* Custom Scrollbar */
+		::-webkit-scrollbar { width: 8px; }
+		::-webkit-scrollbar-track { background: #f1f1f1; }
+		::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+		.toast {
+			visibility: hidden;
+			min-width: 280px;
+			background-color: #1e293b;
+			color: #fff;
+			text-align: center;
+			border-radius: 12px;
+			padding: 16px;
+			position: fixed;
+			z-index: 100;
+			left: 50%;
+			bottom: 30px;
+			transform: translateX(-50%);
+			box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+		}
+		.toast.show {
+			visibility: visible;
+			animation: fadein 0.5s, fadeout 0.5s 2.5s;
+		}
+		@keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+		@keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+	</style>
+</head>
+<body class="bg-slate-50 transition-colors duration-300">
+
+	<!-- Header -->
+	<header class="bg-white/80 border-b sticky top-0 z-40 backdrop-blur-md dark:bg-slate-900/80">
+		<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+			<div class="flex items-center gap-3">
+				<div class="bg-indigo-600 p-2 rounded-xl shadow-lg shadow-indigo-200">
+					<i class="fas fa-layer-group text-white text-xl"></i>
+				</div>
+				<div>
+					<h1 class="text-xl font-bold tracking-tight text-slate-800 dark:text-white">Ultimate UI System</h1>
+					<p class="text-[10px] text-slate-400 font-medium uppercase tracking-widest">Version 2.5 - All-in-One</p>
+				</div>
+			</div>
+			<div class="flex items-center gap-4">
+				<a href="/" class="w-10 h-10 flex items-center justify-center bg-slate-100 dark:bg-slate-800 rounded-full hover:ring-2 ring-indigo-500/20 transition-all" aria-label="홈으로 이동" title="홈으로 이동">
+					<i class="fas fa-home text-slate-600 dark:text-slate-300"></i>
+				</a>
+				<button onclick="toggleDarkMode()" class="w-10 h-10 flex items-center justify-center bg-slate-100 dark:bg-slate-800 rounded-full hover:ring-2 ring-indigo-500/20 transition-all">
+					<i id="theme-icon" class="fas fa-moon text-slate-600 dark:text-amber-400"></i>
+				</button>
+			</div>
+		</div>
+	</header>
+
+	<main class="max-w-7xl mx-auto px-6 py-10">
+		
+		<div class="mb-12">
+			<h2 class="text-3xl font-extrabold text-slate-800 dark:text-white mb-2 italic tracking-tight">The Library</h2>
+			<p class="text-slate-500 dark:text-slate-400 max-w-2xl text-sm leading-relaxed">
+				버전 1의 에센셜 버튼과 버전 2의 어드밴스드 버튼을 통합한 시스템입니다. 모든 버튼은 생산성을 고려하여 설계되었습니다.
+			</p>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+			
+			<!-- v1 Section: Solid & Basics -->
+			<section class="space-y-4">
+				<h2 class="text-sm font-bold text-slate-400 flex items-center gap-2 uppercase tracking-wider">
+					<i class="fas fa-square text-indigo-500"></i> v1: Solid & Basics
+				</h2>
+				<div class="bg-white p-6 rounded-3xl border shadow-sm space-y-6">
+					<div>
+						<p class="text-xs text-slate-400 mb-3 font-semibold italic">Primary & Loading</p>
+						<div class="flex flex-wrap gap-3">
+							<button class="px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 transition active:scale-95 shadow-sm">Primary</button>
+							<button class="px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-medium flex items-center gap-2 opacity-80">
+								<i class="fas fa-circle-notch animate-spin"></i> Loading
+							</button>
+						</div>
+					</div>
+					<div>
+						<p class="text-xs text-slate-400 mb-3 font-semibold italic">Semantic Feedback</p>
+						<div class="flex flex-wrap gap-3">
+							<button class="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition">Success</button>
+							<button class="px-4 py-2 bg-rose-500 text-white rounded-lg hover:bg-rose-600 transition">Danger</button>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- v1 Section: Outline & Ghost -->
+			<section class="space-y-4">
+				<h2 class="text-sm font-bold text-slate-400 flex items-center gap-2 uppercase tracking-wider">
+					<i class="fas fa-border-none text-indigo-500"></i> v1: Outline & Ghost
+				</h2>
+				<div class="bg-white p-6 rounded-3xl border shadow-sm space-y-6">
+					<div>
+						<p class="text-xs text-slate-400 mb-3 font-semibold italic">Outline Variants</p>
+						<div class="flex flex-wrap gap-3">
+							<button class="px-5 py-2.5 border-2 border-indigo-600 text-indigo-600 rounded-xl font-medium hover:bg-indigo-50 transition active:scale-95">Outline</button>
+							<button class="px-5 py-2.5 border-2 border-slate-200 text-slate-600 dark:text-slate-400 rounded-xl font-medium hover:border-slate-300 transition">Secondary</button>
+						</div>
+					</div>
+					<div>
+						<p class="text-xs text-slate-400 mb-3 font-semibold italic">Ghost & Interaction</p>
+						<div class="flex flex-wrap gap-3">
+							<button class="px-4 py-2 text-indigo-600 hover:bg-indigo-50 rounded-xl transition font-medium">Ghost</button>
+							<button class="px-4 py-2 text-slate-400 hover:text-indigo-600 hover:underline transition font-medium">Text Link</button>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- v2 Section: Interaction & Magnetic -->
+			<section class="space-y-4">
+				<h2 class="text-sm font-bold text-slate-400 flex items-center gap-2 uppercase tracking-wider">
+					<i class="fas fa-mouse-pointer text-indigo-500"></i> v2: Micro-Interactions
+				</h2>
+				<div class="bg-white p-6 rounded-3xl border shadow-sm space-y-6">
+					<div>
+						<p class="text-xs text-slate-400 mb-3 font-semibold italic">Magnetic & Scale</p>
+						<div class="flex flex-wrap gap-3">
+							<button class="btn-magnetic px-6 py-2.5 bg-indigo-600 text-white rounded-xl font-medium shadow-lg shadow-indigo-200">Magnetic</button>
+							<button class="px-5 py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl font-medium hover:scale-105 active:scale-90 transition-transform">Bounce</button>
+						</div>
+					</div>
+					<div>
+						<p class="text-xs text-slate-400 mb-3 font-semibold italic">Visual States</p>
+						<button class="px-6 py-2.5 bg-slate-900 text-white rounded-xl font-medium btn-shiny">Shiny Finish</button>
+					</div>
+				</div>
+			</section>
+
+			<!-- v2 Section: Brand & Social -->
+			<section class="space-y-4">
+				<h2 class="text-sm font-bold text-slate-400 flex items-center gap-2 uppercase tracking-wider">
+					<i class="fas fa-share-nodes text-indigo-500"></i> Brand & Social
+				</h2>
+				<div class="bg-white p-6 rounded-3xl border shadow-sm space-y-6">
+					<div class="space-y-3">
+						<button class="w-full flex items-center justify-center gap-3 px-4 py-2.5 border border-slate-200 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition font-medium">
+							<img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" class="w-5" alt="Google">
+							Google Login
+						</button>
+						<button class="w-full flex items-center justify-center gap-3 px-4 py-2.5 bg-[#1877F2] text-white rounded-xl hover:bg-[#166fe5] transition font-medium shadow-sm">
+							<i class="fab fa-facebook-f"></i>
+							Facebook Login
+						</button>
+					</div>
+				</div>
+			</section>
+
+			<!-- v2 Section: 3D & Isometric -->
+			<section class="space-y-4">
+				<h2 class="text-sm font-bold text-slate-400 flex items-center gap-2 uppercase tracking-wider">
+					<i class="fas fa-cubes text-indigo-500"></i> v2: 3D & Special
+				</h2>
+				<div class="bg-white p-6 rounded-3xl border shadow-sm space-y-6">
+					<div class="flex flex-wrap gap-4">
+						<button class="btn-3d px-8 py-2.5 bg-indigo-600 text-white rounded-xl font-bold italic">PUSH 3D</button>
+						<button class="btn-3d px-8 py-2.5 bg-rose-500 text-white rounded-xl font-bold" style="box-shadow: 0 4px 0 #9f1239;">DELETE</button>
+					</div>
+					<div>
+						<button class="px-6 py-2.5 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-xl font-medium shadow-lg hover:shadow-indigo-500/40 transition-all">Gradient Glow</button>
+					</div>
+				</div>
+			</section>
+
+			<!-- v2 Section: Modern Surfaces -->
+			<section class="space-y-4">
+				<h2 class="text-sm font-bold text-slate-400 flex items-center gap-2 uppercase tracking-wider">
+					<i class="fas fa-wand-magic-sparkles text-indigo-500"></i> Modern Surfaces
+				</h2>
+				<div class="relative h-44 rounded-3xl overflow-hidden bg-cover bg-center flex flex-col justify-end p-5" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80');">
+					<div class="absolute inset-0 bg-black/20"></div>
+					<button class="glass-card w-full py-2.5 text-white font-bold rounded-xl tracking-wide uppercase text-xs">Glassmorphism</button>
+					<div class="absolute top-4 right-4">
+						<button class="btn-neumorphic w-10 h-10 rounded-full flex items-center justify-center text-indigo-600" style="background: rgba(224, 229, 236, 0.9);">
+							<i class="fas fa-heart"></i>
+						</button>
+					</div>
+				</div>
+			</section>
+
+		</div>
+
+		<!-- Unified Code Inspector -->
+		<div class="mt-12 bg-slate-900 rounded-[2.5rem] overflow-hidden shadow-2xl border border-slate-800">
+			<div class="flex items-center justify-between px-8 py-5 border-b border-slate-800 bg-slate-900/80">
+				<div class="flex items-center gap-3">
+					<div class="flex gap-2">
+						<div class="w-3 h-3 rounded-full bg-rose-500 shadow-lg shadow-rose-500/20"></div>
+						<div class="w-3 h-3 rounded-full bg-amber-500 shadow-lg shadow-amber-500/20"></div>
+						<div class="w-3 h-3 rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/20"></div>
+					</div>
+					<span class="ml-4 text-xs font-mono text-slate-500 uppercase tracking-widest">UnifiedButtonSystem.tsx</span>
+				</div>
+				<button onclick="copyCode()" class="text-xs bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2 rounded-xl transition-all flex items-center gap-2 font-bold shadow-lg shadow-indigo-600/20 active:scale-95">
+					<i class="far fa-copy"></i> Copy Library
+				</button>
+			</div>
+			<div class="p-8">
+				<pre id="code-block" class="text-indigo-100 font-mono text-sm overflow-x-auto leading-relaxed scrollbar-hide">
+// v1 + v2 통합 버튼 컴포넌트 라이브러리 (React + Tailwind)
+import React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+
+const buttonVariants = cva(
+	"inline-flex items-center justify-center rounded-xl text-sm font-medium transition-all active:scale-95",
+	{
+		variants: {
+			variant: {
+				primary: "bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm",
+				outline: "border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50",
+				ghost: "text-indigo-600 hover:bg-indigo-50",
+				'3d': "transform translateY-[-4px] shadow-[0_4px_0_#3730a3] bg-indigo-600 text-white active:translate-y-0 active:shadow-none",
+				glass: "backdrop-blur-md bg-white/20 border border-white/30 text-white",
+				shiny: "relative overflow-hidden bg-slate-900 text-white before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-500",
+			},
+			size: {
+				default: "h-11 px-6 py-2",
+				sm: "h-9 px-4 text-xs",
+				lg: "h-14 px-8 text-base",
+			},
+		},
+		defaultVariants: {
+			variant: "primary",
+			size: "default",
+		},
+	}
+);
+
+export const Button = ({ className, variant, size, isLoading, ...props }) =&gt; {
+	return (
+		&lt;button className={buttonVariants({ variant, size, className })} {...props}&gt;
+			{isLoading &amp;&amp; &lt;i className="fas fa-spinner animate-spin mr-2" /&gt;}
+			{props.children}
+		&lt;/button&gt;
+	);
+};</pre>
+			</div>
+		</div>
+	</main>
+
+	<footer class="max-w-7xl mx-auto px-6 py-12 border-t mt-12 text-center text-slate-400 text-[10px] tracking-[0.2em] uppercase">
+		<p>&copy; 2026 Senior Dev Agency &bull; Design &amp; Development Consolidated</p>
+	</footer>
+
+	<div id="toast" class="toast font-medium">코드가 클립보드에 성공적으로 복사되었습니다!</div>
+
+	<script>
+		function copyCode() {
+			const code = document.getElementById('code-block').innerText;
+			navigator.clipboard.writeText(code).then(() => {
+				showToast();
+			}).catch(() => {
+				// Fallback for older browsers
+				const textArea = document.createElement("textarea");
+				textArea.value = code;
+				textArea.style.position = "fixed";
+				textArea.style.left = "-9999px";
+				document.body.appendChild(textArea);
+				textArea.select();
+				document.execCommand('copy');
+				document.body.removeChild(textArea);
+				showToast();
+			});
+		}
+
+		function showToast() {
+			const toast = document.getElementById("toast");
+			toast.className = "toast show";
+			setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+		}
+
+		function toggleDarkMode() {
+			const body = document.body;
+			const icon = document.getElementById('theme-icon');
+			body.classList.toggle('dark-mode');
+			
+			if (body.classList.contains('dark-mode')) {
+				icon.classList.replace('fa-moon', 'fa-sun');
+			} else {
+				icon.classList.replace('fa-sun', 'fa-moon');
+			}
+		}
+	</script>
+</body>
+</html>
