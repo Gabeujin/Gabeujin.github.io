@@ -91,6 +91,7 @@ const translations = {
     searchPlaceholder: '🔍 프로젝트 검색...',
     themeToggleLabel: '테마 변경',
     categoryFilterLabel: '카테고리 필터',
+    localeSelectLabel: '언어 선택',
     
     // App descriptions
     apps: {
@@ -121,6 +122,10 @@ const translations = {
       'wedding-framework': {
         title: '💒 결혼 준비 프레임워크',
         description: '결혼식 준비 과정을 일련의 프레임워크로 구성한 웹앱입니다.'
+      },
+      'win-or-die': {
+        title: '🎲 내기판',
+        description: '술게임, 스포츠, 당구, 골프, e스포츠 등 다양한 내기를 위한 대시보드 및 결과 계산 서비스입니다.'
       }
     },
 
@@ -155,6 +160,7 @@ const translations = {
     searchPlaceholder: '🔍 Search projects...',
     themeToggleLabel: 'Toggle theme',
     categoryFilterLabel: 'Category filter',
+    localeSelectLabel: 'Select language',
     
     // App descriptions
     apps: {
@@ -185,6 +191,10 @@ const translations = {
       'wedding-framework': {
         title: '💒 Wedding Framework',
         description: 'A framework for wedding preparation process.'
+      },
+      'win-or-die': {
+        title: '🎲 Win or Die',
+        description: 'A dashboard for various bets including drinking games, sports, billiards, golf, e-sports, and more with result tracking and prize calculation.'
       }
     },
 

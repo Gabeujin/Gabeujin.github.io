@@ -12,7 +12,7 @@ import {
   toggleExpanded, 
   isExpanded 
 } from './app-manager.js'
-import { getLocale, getTranslations } from './i18n.js'
+import { getLocale, setLocale, getTranslations } from './i18n.js'
 import { initHaptics } from './haptics.js'
 
 // Constants
@@ -67,6 +67,11 @@ const appData = [
     id: 'wedding-framework',
     dateAdded: '2026-01-23',
     category: 'wedding'
+  },
+  {
+    id: 'win-or-die',
+    dateAdded: '2026-03-11',
+    category: 'game'
   }
 ];
 
@@ -86,6 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Update page metadata
   updatePageMetadata();
+
+  // Initialize locale selector
+  initLocaleSelector();
 
   // Initialize theme (dark mode)
   initTheme();
@@ -125,6 +133,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
   console.log('✨ All features initialized!');
 })
+
+/**
+ * Initialize locale selector dropdown
+ */
+function initLocaleSelector() {
+  const localeSelect = document.getElementById('locale-select');
+  if (!localeSelect) return;
+
+  // Set current locale as selected value
+  localeSelect.value = currentLocale;
+
+  // Handle locale change
+  localeSelect.addEventListener('change', (e) => {
+    const newLocale = e.target.value;
+
+    // Attempt to persist the new locale preference
+    try {
+      setLocale(newLocale);
+    } catch (error) {
+      // If persistence fails (e.g., localStorage issues), still update the session
+      console.error('Failed to persist locale preference:', error);
+    }
+
+    // Always ensure the current session reflects the selected locale
+    if (currentLocale !== newLocale) {
+      currentLocale = newLocale;
+
+      // Update metadata for the new locale
+      updatePageMetadata();
+
+      // Re-render category filter and app cards with localized data
+      renderCategoryFilter();
+      renderAppCards();
+
+      // Reinitialize search with localized app data
+      searchEngineInstance = new SearchEngine(getLocalizedAppData());
+      initSearch(searchEngineInstance, currentLocale);
+    }
+  });
+}
 
 /**
  * Update page metadata based on locale
@@ -170,6 +218,12 @@ function updatePageMetadata() {
   const categoryFilter = document.getElementById('category-filter');
   if (categoryFilter) {
     categoryFilter.setAttribute('aria-label', translations.categoryFilterLabel);
+  }
+  
+  // Update locale selector label
+  const localeSelect = document.getElementById('locale-select');
+  if (localeSelect) {
+    localeSelect.setAttribute('aria-label', translations.localeSelectLabel);
   }
   
   // Update no results message using textContent for security
