@@ -67,6 +67,11 @@ const appData = [
     id: 'wedding-framework',
     dateAdded: '2026-01-23',
     category: 'wedding'
+  },
+  {
+    id: 'win-or-die',
+    dateAdded: '2026-03-11',
+    category: 'game'
   }
 ];
 
