@@ -28,6 +28,9 @@ let activeCategory = 'all';
 // Available categories (order matters for display)
 const CATEGORIES = ['all', 'wedding', 'learning', 'lifestyle', 'game'];
 
+// Module-level search engine reference
+let searchEngineInstance = null;
+
 // App data with dateAdded (format: YYYY-MM-DD) and category
 const appData = [
   {
@@ -97,8 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
   renderAppCards();
 
   // Initialize search
-  const searchEngine = new SearchEngine(getLocalizedAppData());
-  initSearch(searchEngine, currentLocale);
+  searchEngineInstance = new SearchEngine(getLocalizedAppData());
+  initSearch(searchEngineInstance, currentLocale);
 
   // Initialize easter eggs
   initEasterEgg();
@@ -260,9 +263,10 @@ function renderAppCards() {
     container.appendChild(card);
   });
 
-  // Re-initialize search with filtered data
-  const searchEngine = new SearchEngine(filteredData);
-  initSearch(searchEngine, currentLocale);
+  // Update search engine items for the filtered dataset
+  if (searchEngineInstance) {
+    searchEngineInstance.updateItems(filteredData);
+  }
 }
 
 /**
