@@ -13,7 +13,6 @@
   --category-learning: #1976d2;
   --category-lifestyle: #2e7d32;
   --category-game: #7b1fa2;
-  --category-design: #f57c00;
 }
 
 /* Dark mode theme */
@@ -291,10 +290,6 @@ main {
 
 .app-card[data-category="game"] {
   border-top: 3px solid var(--category-game);
-}
-
-.app-card[data-category="design"] {
-  border-top: 3px solid var(--category-design);
 }
 
 /* Star button */

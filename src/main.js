@@ -26,7 +26,7 @@ let currentLocale = 'en';
 let activeCategory = 'all';
 
 // Available categories (order matters for display)
-const CATEGORIES = ['all', 'wedding', 'learning', 'lifestyle', 'game', 'design'];
+const CATEGORIES = ['all', 'wedding', 'learning', 'lifestyle', 'game'];
 
 // Module-level search engine reference
 let searchEngineInstance = null;
@@ -67,11 +67,6 @@ const appData = [
     id: 'wedding-framework',
     dateAdded: '2026-01-23',
     category: 'wedding'
-  },
-  {
-    id: 'button-design',
-    dateAdded: '2026-03-11',
-    category: 'design'
   }
 ];
 
