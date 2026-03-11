@@ -90,6 +90,7 @@ const translations = {
     headerSubtitle: 'MIT License · Copyright (c) 2020 Gabeujin',
     searchPlaceholder: '🔍 프로젝트 검색...',
     themeToggleLabel: '테마 변경',
+    categoryFilterLabel: '카테고리 필터',
     
     // App descriptions
     apps: {
@@ -153,6 +154,7 @@ const translations = {
     headerSubtitle: 'MIT License · Copyright (c) 2020 Gabeujin',
     searchPlaceholder: '🔍 Search projects...',
     themeToggleLabel: 'Toggle theme',
+    categoryFilterLabel: 'Category filter',
     
     // App descriptions
     apps: {

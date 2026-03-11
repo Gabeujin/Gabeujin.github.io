@@ -166,6 +166,12 @@ function updatePageMetadata() {
     themeToggle.setAttribute('title', translations.themeToggleLabel);
   }
   
+  // Update category filter label
+  const categoryFilter = document.getElementById('category-filter');
+  if (categoryFilter) {
+    categoryFilter.setAttribute('aria-label', translations.categoryFilterLabel);
+  }
+  
   // Update no results message using textContent for security
   const noResultsDiv = document.getElementById('no-results');
   if (noResultsDiv) {
@@ -230,6 +236,13 @@ function renderCategoryFilter() {
       btn.classList.add('active');
       // Re-render app cards with filter
       renderAppCards();
+
+      // Re-apply current search query so category + search stay consistent
+      const searchInput = document.getElementById('search-input');
+      if (searchInput) {
+        const inputEvent = new Event('input', { bubbles: true });
+        searchInput.dispatchEvent(inputEvent);
+      }
     });
 
     container.appendChild(btn);
