@@ -77,12 +77,17 @@ header.scrolled {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .theme-toggle:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: scale(1.1);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+}
+
+.theme-toggle:active {
+  transform: scale(0.9);
 }
 
 .theme-toggle:focus {
@@ -223,6 +228,11 @@ main {
   color: #fff;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}
+
+.category-btn:active {
+  transform: translateY(0) scale(0.95);
+  box-shadow: 0 1px 4px rgba(13, 110, 253, 0.2);
 }
 
 .category-btn:focus {
@@ -481,45 +491,55 @@ main {
   color: #fff;
   text-decoration: none;
   padding: 0.875rem 2rem;
-  border-radius: 8px;
+  border-radius: 12px;
   font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
   margin-top: auto;
   flex-shrink: 0;
+  /* 3D push button effect inspired by template */
+  transform: translateY(-3px);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2), 0 6px 12px rgba(13, 110, 253, 0.2);
 }
 
+/* Shiny gloss sweep on hover */
 .app-card a::before {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: -50%;
+  left: -60%;
   width: 200%;
   height: 200%;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  transform: translate(-50%, -50%) scale(0);
-  transition: transform 0.6s ease-out;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: rotate(45deg);
+  transition: left 0.5s ease;
   pointer-events: none;
 }
 
 .app-card a:hover::before,
 .app-card a:focus-visible::before {
-  transform: translate(-50%, -50%) scale(1);
+  left: 120%;
 }
 
 .app-card a:hover,
 .app-card a:focus-visible {
   background-color: #0b5ed7;
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2), 0 8px 20px rgba(13, 110, 253, 0.4);
+}
+
+/* Snappy press-down: intentionally faster than base transition for tactile feel */
+.app-card a:active {
+  transform: translateY(0);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.2), 0 1px 4px rgba(13, 110, 253, 0.2);
+  transition: transform 0.06s ease, box-shadow 0.06s ease;
 }
 
 .app-card a:focus-visible {
   outline: 3px solid var(--accent-color);
   outline-offset: 2px;
-  box-shadow: 0 0 0 5px rgba(13, 110, 253, 0.2);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2), 0 0 0 5px rgba(13, 110, 253, 0.2);
 }
 
 footer {
@@ -646,6 +666,44 @@ footer {
 
 [data-theme="dark"] .suggestion-item span {
   color: var(--muted-color);
+}
+
+/* Reduced motion: disable 3D lifts and gloss sweep */
+@media (prefers-reduced-motion: reduce) {
+  .app-card a {
+    transform: none;
+  }
+
+  .app-card a:hover,
+  .app-card a:focus-visible {
+    transform: none;
+  }
+
+  .app-card a:active {
+    transform: none;
+    transition: none;
+  }
+
+  .app-card a::before {
+    transition: none;
+    display: none;
+  }
+
+  .theme-toggle:hover {
+    transform: none;
+  }
+
+  .theme-toggle:active {
+    transform: none;
+  }
+
+  .category-btn:hover {
+    transform: none;
+  }
+
+  .category-btn:active {
+    transform: none;
+  }
 }
 
 @media (max-width: 640px) {
