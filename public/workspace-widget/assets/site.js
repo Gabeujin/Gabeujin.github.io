@@ -105,7 +105,7 @@ const ko = {
   'privacy.processTitle': '로컬 프로세스',
   'privacy.processBody': '선택적 로컬 서비스 기능은 사용자가 직접 선택한 프로젝트 또는 스크립트만 로그인한 사용자의 권한으로 실행합니다. Workspace Widget은 프로젝트를 개발자에게 업로드하거나 프로젝트 의존성을 자동으로 설치하지 않습니다.',
   'privacy.retentionTitle': '보존과 삭제',
-  'privacy.retentionBody': 'Microsoft Store 제거는 앱 패키지를 제거합니다. 이후 다시 설치했을 때 레이아웃을 복구할 수 있도록 사용자별 상태 디렉터리는 남습니다. 그 디렉터리를 별도로 삭제하면 Workspace Widget의 로컬 구성이 영구 삭제됩니다. 삭제 전 정확한 경로와 범위를 확인하세요.',
+  'privacy.retentionBody': 'Store 릴리스는 사용자별 상태를 관리형 앱 패키지 밖에 두어 이후 재설치 시 레이아웃을 복구할 수 있도록 설계되어 있습니다. 정확한 업데이트·제거·재설치 동작은 인증 제출 전 Store 서명 패키지로 독립 검증합니다. 상태 디렉터리를 별도로 삭제하면 Workspace Widget의 로컬 구성이 영구 삭제됩니다. 삭제 전 정확한 경로와 범위를 확인하세요.',
   'privacy.childrenTitle': '아동',
   'privacy.childrenBody': 'Workspace Widget은 일반 생산성 도구이며 아동을 대상으로 하지 않습니다. 아동의 개인정보를 의도적으로 수집하지 않습니다.',
   'privacy.changesTitle': '변경 및 문의',
