@@ -20,6 +20,7 @@ Discover hidden surprises! Try these:
 
 ## Projects
 
+- [🧩 Workspace Widget](https://gabeujin.github.io/workspace-widget/) - Windows 11 로컬 앱·서비스 런처
 - [📚 Edu Platform](/edu-platform) - 교육 플랫폼
 - [💰 Wedding Money Manager](/wedding-money-manager) - 축의금 관리 서비스
 - [🎯 Quiz Master](/quiz-master) - 카드형식의 퀴즈 웹앱
@@ -45,7 +46,7 @@ npm run preview
 
 This project uses GitHub Actions for automatic deployment to GitHub Pages.
 
-Push to the `main` branch to trigger deployment.
+Push to the `master` branch to trigger deployment.
 
 ## License
 

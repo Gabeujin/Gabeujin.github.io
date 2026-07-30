@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — Workspace Widget</title>
+  <meta name="description" content="How Workspace Widget stores local configuration and when user-configured network requests occur.">
+  <meta name="theme-color" content="#09162b">
+  <link rel="canonical" href="https://gabeujin.github.io/workspace-widget/privacy/">
+  <link rel="icon" type="image/png" href="/workspace-widget/assets/workspace-widget-icon-64.png">
+  <link rel="stylesheet" href="/workspace-widget/assets/site.css">
+</head>
+<body data-page="privacy">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="/workspace-widget/" aria-label="Workspace Widget home">
+        <img src="/workspace-widget/assets/workspace-widget-icon-64.png" alt="" width="34" height="34">
+        <span>Workspace Widget</span>
+      </a>
+      <div class="nav-links">
+        <a href="/workspace-widget/#features" data-copy="nav.features">Features</a>
+        <a href="/workspace-widget/#screenshots" data-copy="nav.screenshots">Screenshots</a>
+        <a href="/workspace-widget/privacy/" aria-current="page" data-copy="nav.privacy">Privacy</a>
+        <a href="/workspace-widget/support/" data-copy="nav.support">Support</a>
+        <a href="https://github.com/Gabeujin/workspace-widget" target="_blank" data-copy="nav.source">Source</a>
+      </div>
+      <div class="nav-actions">
+        <select id="locale-select" class="locale-select" aria-label="Select language" data-copy-aria="common.language">
+          <option value="en">English</option>
+          <option value="ko">한국어</option>
+        </select>
+        <button id="theme-toggle" class="icon-button" type="button" aria-label="Switch to dark theme">◐</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="page-hero-inner shell">
+        <p class="eyebrow" data-copy="privacy.eyebrow">Policy · Version 2026-07-30</p>
+        <h1 data-copy="privacy.title">Privacy Policy</h1>
+        <p data-copy="privacy.intro">Workspace Widget is a local-first Windows desktop launcher. It does not include developer-operated analytics, advertising, telemetry, accounts, or a remote data-collection service.</p>
+        <p><small data-copy="common.updated">Last updated: July 30, 2026</small></p>
+      </div>
+    </section>
+
+    <section class="section-compact">
+      <div class="policy-layout shell">
+        <nav class="toc" aria-label="Policy sections">
+          <a href="#device" data-copy="privacy.tocDevice">Data on the device</a>
+          <a href="#network" data-copy="privacy.tocNetwork">Network requests</a>
+          <a href="#processes" data-copy="privacy.tocProcesses">Local processes</a>
+          <a href="#retention" data-copy="privacy.tocRetention">Retention and deletion</a>
+          <a href="#children" data-copy="privacy.tocChildren">Children</a>
+          <a href="#changes" data-copy="privacy.tocChanges">Changes and contact</a>
+        </nav>
+
+        <div class="prose">
+          <p class="notice" data-copy="privacy.notice">In short: configuration stays on your device. Network requests occur only for features you configure or invoke.</p>
+
+          <section id="device">
+            <h2 data-copy="privacy.deviceTitle">Data stored on the device</h2>
+            <p data-copy="privacy.deviceBody">Workspace Widget stores your layout, appearance settings, registered shortcut targets, optional launch arguments, optional health URLs, optional local-service startup configuration, and media selections in the signed-in user's local application-data directory. These values stay on the device unless you back up, synchronize, or share that directory through another product.</p>
+            <p><strong data-copy="privacy.deviceWarning">Shortcut arguments and URLs are plain-text local configuration. Do not put passwords, access tokens, private keys, or other secrets in them.</strong></p>
+          </section>
+
+          <section id="network">
+            <h2 data-copy="privacy.networkTitle">Network requests</h2>
+            <p data-copy="privacy.networkIntro">Workspace Widget makes network requests only for features you configure or invoke:</p>
+            <ul>
+              <li data-copy="privacy.networkHealth">An optional health URL is polled to show service availability.</li>
+              <li data-copy="privacy.networkShortcut">An HTTP or HTTPS shortcut opens in your selected browser.</li>
+              <li data-copy="privacy.networkMedia">Remote image or media sources are requested from their configured hosts.</li>
+              <li data-copy="privacy.networkYoutube">YouTube preview playback, when enabled, connects to YouTube's privacy-enhanced embed service through Microsoft Edge WebView2.</li>
+            </ul>
+            <p data-copy="privacy.networkOutro">Those services receive ordinary connection information such as your IP address and request metadata and apply their own privacy policies. Workspace Widget does not proxy those requests through a developer-operated server.</p>
+          </section>
+
+          <section id="processes">
+            <h2 data-copy="privacy.processTitle">Local processes</h2>
+            <p data-copy="privacy.processBody">The optional local-service feature starts only a project or script you select. It runs with the signed-in user's permissions. Workspace Widget does not upload the project to the developer and does not install project dependencies automatically.</p>
+          </section>
+
+          <section id="retention">
+            <h2 data-copy="privacy.retentionTitle">Retention and deletion</h2>
+            <p data-copy="privacy.retentionBody">Microsoft Store uninstall removes the application package. The per-user state directory is retained so a later reinstall can restore your layout. Deleting that directory separately permanently removes Workspace Widget's local configuration. Review the exact path and scope before deleting it.</p>
+          </section>
+
+          <section id="children">
+            <h2 data-copy="privacy.childrenTitle">Children</h2>
+            <p data-copy="privacy.childrenBody">Workspace Widget is a general productivity utility and is not directed to children. It does not knowingly collect personal information from children.</p>
+          </section>
+
+          <section id="changes">
+            <h2 data-copy="privacy.changesTitle">Changes and contact</h2>
+            <p data-copy="privacy.changesBody">Material policy changes update the date and are published with release information. For privacy questions, use the public issue path on the support page without including sensitive details. Send security vulnerabilities or sensitive information only through the private security form.</p>
+            <a class="button button-secondary" href="/workspace-widget/support/" data-copy="privacy.supportLink">View support channels</a>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner shell">
+      <span>© 2026 Workspace Widget Contributors · MIT License</span>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/workspace-widget/" data-copy="common.backHome">Product home</a>
+        <a href="/workspace-widget/support/" data-copy="footer.support">Support</a>
+        <a href="https://github.com/Gabeujin/workspace-widget" target="_blank" data-copy="footer.source">GitHub source</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="module" src="/workspace-widget/assets/site.js"></script>
+</body>
+</html>
