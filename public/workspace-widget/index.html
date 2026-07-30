@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workspace Widget — A calm launcher for local work</title>
+  <meta name="description" content="Launch Windows apps, folders, URLs, and health-aware local services from one movable workspace.">
+  <meta name="theme-color" content="#09162b">
+  <link rel="canonical" href="https://gabeujin.github.io/workspace-widget/">
+  <link rel="icon" type="image/png" href="/workspace-widget/assets/workspace-widget-icon-64.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Workspace Widget">
+  <meta property="og:description" content="A calm Windows 11 launcher for local apps, folders, URLs, and health-aware services.">
+  <meta property="og:url" content="https://gabeujin.github.io/workspace-widget/">
+  <meta property="og:image" content="https://gabeujin.github.io/workspace-widget/assets/workspace-widget-social-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/workspace-widget/assets/site.css">
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="/workspace-widget/" aria-label="Workspace Widget home">
+        <img src="/workspace-widget/assets/workspace-widget-icon-64.png" alt="" width="34" height="34">
+        <span>Workspace Widget</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features" data-copy="nav.features">Features</a>
+        <a href="#screenshots" data-copy="nav.screenshots">Screenshots</a>
+        <a href="/workspace-widget/privacy/" data-copy="nav.privacy">Privacy</a>
+        <a href="/workspace-widget/support/" data-copy="nav.support">Support</a>
+        <a href="https://github.com/Gabeujin/workspace-widget" target="_blank" data-copy="nav.source">Source</a>
+      </div>
+      <div class="nav-actions">
+        <select id="locale-select" class="locale-select" aria-label="Select language" data-copy-aria="common.language">
+          <option value="en">English</option>
+          <option value="ko">한국어</option>
+        </select>
+        <button id="theme-toggle" class="icon-button" type="button" aria-label="Switch to dark theme">◐</button>
+      </div>
+    </nav>
+  </header>
+
+  <noscript>
+    <p class="noscript shell">The English page remains available without JavaScript. Language and theme preferences require JavaScript.</p>
+  </noscript>
+
+  <main id="main">
+    <section class="hero">
+      <div class="shell">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow" data-copy="home.eyebrow">Windows 11 · Local-first</p>
+            <h1 data-copy="home.heroTitle">Your local tools, in one calmer place.</h1>
+            <p data-copy="home.heroBody">Workspace Widget is a movable Windows 11 launcher that brings apps, folders, URLs, and local services into one focused workspace.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="https://github.com/Gabeujin/workspace-widget" target="_blank" data-copy="home.ctaSource">View source on GitHub</a>
+              <a class="button button-secondary" href="#features" data-copy="home.ctaExplore">Explore features</a>
+            </div>
+            <ul class="hero-meta" aria-label="Product status">
+              <li data-copy="home.metaRc">0.1.0 release candidate</li>
+              <li data-copy="home.metaAccount">No account required</li>
+              <li data-copy="home.metaTelemetry">No developer telemetry</li>
+              <li data-copy="home.metaLicense">MIT licensed</li>
+            </ul>
+          </div>
+
+          <div class="hero-visual" aria-label="Workspace Widget application preview">
+            <div class="window-frame">
+              <div class="window-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+              <img
+                src="/workspace-widget/assets/screenshots/store-01-overview.png"
+                alt="Workspace Widget showing public example shortcuts and one healthy local service"
+                width="1366"
+                height="768">
+            </div>
+          </div>
+        </div>
+
+        <div class="trust-strip" aria-label="Product principles">
+          <div class="trust-item">
+            <strong data-copy="home.trustLocalTitle">Local state</strong>
+            <span data-copy="home.trustLocalBody">Configuration and layout stay in your user profile.</span>
+          </div>
+          <div class="trust-item">
+            <strong data-copy="home.trustHealthTitle">Health-aware</strong>
+            <span data-copy="home.trustHealthBody">Checks endpoints you register every 30 seconds.</span>
+          </div>
+          <div class="trust-item">
+            <strong data-copy="home.trustNodeTitle">Offline start</strong>
+            <span data-copy="home.trustNodeBody">Starts trusted local services with bundled Node.js.</span>
+          </div>
+          <div class="trust-item">
+            <strong data-copy="home.trustNativeTitle">Windows-native</strong>
+            <span data-copy="home.trustNativeBody">Tray, startup, always-on-top, and MIN UI support.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="section-kicker" data-copy="home.featuresKicker">Designed for focus</p>
+          <h2 data-copy="home.featuresTitle">A workspace with only what you use.</h2>
+          <p data-copy="home.featuresBody">Turn the local workflow scattered between browser bookmarks and the Start menu into one fast, predictable surface.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card large">
+            <div class="feature-icon" aria-hidden="true">↗</div>
+            <h3 data-copy="home.featureLaunchTitle">Every kind of shortcut</h3>
+            <p data-copy="home.featureLaunchBody">Add or drop .lnk, .url, EXE, file, folder, and HTTP/HTTPS targets.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">●</div>
+            <h3 data-copy="home.featureServiceTitle">Living local services</h3>
+            <p data-copy="home.featureServiceBody">See explicit ports and online status from the health API you choose.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">▶</div>
+            <h3 data-copy="home.featureStartTitle">Start when needed</h3>
+            <p data-copy="home.featureStartBody">Run a configured JavaScript or package script when offline, then open it when ready.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">│</div>
+            <h3 data-copy="home.featureMinTitle">96 px MIN UI</h3>
+            <p data-copy="home.featureMinBody">Collapse into an icon rail, snap it to a screen edge, and launch without losing focus.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">◐</div>
+            <h3 data-copy="home.featureVisualTitle">A surface that fits your work</h3>
+            <p data-copy="home.featureVisualBody">Tune themes, colors, opacity, local backgrounds, and validated HTTPS media.</p>
+          </article>
+          <article class="feature-card large">
+            <div class="feature-icon" aria-hidden="true">⌁</div>
+            <h3 data-copy="home.featureSafeTitle">Boundaries for remote media</h3>
+            <p data-copy="home.featureSafeBody">Static images use a size- and redirect-bounded cache, while direct remote video streams are rejected.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-compact">
+      <div class="shell">
+        <div class="section-heading centered">
+          <p class="section-kicker" data-copy="home.flowKicker">A simple flow</p>
+          <h2 data-copy="home.flowTitle">Add it. Watch it. Launch it.</h2>
+          <p data-copy="home.flowBody">More context than a bookmark, without turning into a server-management console.</p>
+        </div>
+        <div class="flow-grid">
+          <article class="flow-card">
+            <h3 data-copy="home.flowAddTitle">Add a shortcut</h3>
+            <p data-copy="home.flowAddBody">Drop an app or folder, or enter a URL, health API, and optional start target.</p>
+          </article>
+          <article class="flow-card">
+            <h3 data-copy="home.flowWatchTitle">See readiness</h3>
+            <p data-copy="home.flowWatchBody">Port and online indicators show which local services are ready at a glance.</p>
+          </article>
+          <article class="flow-card">
+            <h3 data-copy="home.flowOpenTitle">Launch in one step</h3>
+            <p data-copy="home.flowOpenBody">Open healthy services immediately or wait for an offline service to become ready.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="screenshots" class="section">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="section-kicker" data-copy="home.galleryKicker">Product views</p>
+          <h2 data-copy="home.galleryTitle">A quiet UI that keeps capability visible.</h2>
+          <p data-copy="home.galleryBody">Captured from the real application with public-safe example data.</p>
+        </div>
+        <div class="gallery">
+          <figure class="shot">
+            <img src="/workspace-widget/assets/screenshots/store-01-overview.png" alt="Workspace Widget overview" width="1366" height="768" loading="lazy">
+            <figcaption>
+              <strong data-copy="home.shotOverviewTitle">One workspace</strong>
+              <span data-copy="home.shotOverviewBody">Arrange apps, folders, URLs, and services together.</span>
+            </figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/workspace-widget/assets/screenshots/store-02-settings.png" alt="Workspace Widget settings" width="1366" height="768" loading="lazy">
+            <figcaption>
+              <strong data-copy="home.shotSettingsTitle">Behavior you control</strong>
+              <span data-copy="home.shotSettingsBody">Tune startup, always-on-top, MIN UI, and appearance.</span>
+            </figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/workspace-widget/assets/screenshots/store-03-add-service.png" alt="Add shortcut dialog with URL and health endpoint" width="1366" height="768" loading="lazy">
+            <figcaption>
+              <strong data-copy="home.shotAddTitle">Health-aware registration</strong>
+              <span data-copy="home.shotAddBody">Enter a URL, health API, and optional local start target.</span>
+            </figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/workspace-widget/assets/screenshots/store-04-context-menu.png" alt="Shortcut organization context menu" width="1366" height="768" loading="lazy">
+            <figcaption>
+              <strong data-copy="home.shotMenuTitle">Fast organization</strong>
+              <span data-copy="home.shotMenuBody">Edit, reorder, or remove only the widget entry from the context menu.</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell confidence-grid">
+        <article class="confidence-card">
+          <p class="section-kicker" data-copy="home.confidenceKicker">Local-first</p>
+          <h2 data-copy="home.confidenceTitle">Your workspace stays on your device.</h2>
+          <p class="section-lead" data-copy="home.confidenceBody">Workspace Widget has no developer-operated account, advertising, analytics, or telemetry service.</p>
+          <ul class="confidence-list">
+            <li data-copy="home.confidenceOne">Layout and shortcut configuration live in per-user local app data</li>
+            <li data-copy="home.confidenceTwo">Requests are limited to health, URL, and media features you configure or invoke</li>
+            <li data-copy="home.confidenceThree">Local projects are not uploaded and dependencies are not installed automatically</li>
+            <li data-copy="home.confidenceFour">Security boundaries and network behavior are documented in public source</li>
+          </ul>
+        </article>
+
+        <article class="status-panel">
+          <span class="status-badge" data-copy="home.statusBadge">Public release candidate</span>
+          <h2 data-copy="home.statusTitle">The source is public. Store distribution is awaiting certification.</h2>
+          <p data-copy="home.statusBody">The public repository is currently for source review. Unsigned development packages are not distributed, and no installer is offered until a certified Microsoft Store listing is ready.</p>
+          <div class="button-row">
+            <a class="button button-primary" href="https://github.com/Gabeujin/workspace-widget/releases/tag/v0.1.0-rc.1" target="_blank" data-copy="home.statusRoadmap">View public source release</a>
+            <a class="button button-secondary" href="/workspace-widget/support/" data-copy="home.statusSupport">Support and security</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner shell">
+      <span>© 2026 Workspace Widget Contributors · MIT License</span>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/workspace-widget/privacy/" data-copy="footer.privacy">Privacy</a>
+        <a href="/workspace-widget/support/" data-copy="footer.support">Support</a>
+        <a href="https://github.com/Gabeujin/workspace-widget" target="_blank" data-copy="footer.source">GitHub source</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script type="module" src="/workspace-widget/assets/site.js"></script>
+</body>
+</html>

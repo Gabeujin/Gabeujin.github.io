@@ -9,6 +9,7 @@
   --muted-color: #6c757d;
   --transition-speed: 0.3s;
   /* Category accent colors */
+  --category-tool: #2563eb;
   --category-wedding: #e91e63;
   --category-learning: #1976d2;
   --category-lifestyle: #2e7d32;
@@ -317,6 +318,10 @@ main {
 }
 
 /* Category color accent strip at the top of each card */
+.app-card[data-category="tool"] {
+  border-top: 3px solid var(--category-tool);
+}
+
 .app-card[data-category="wedding"] {
   border-top: 3px solid var(--category-wedding);
 }

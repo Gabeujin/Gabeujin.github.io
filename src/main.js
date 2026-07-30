@@ -26,13 +26,19 @@ let currentLocale = 'en';
 let activeCategory = 'all';
 
 // Available categories (order matters for display)
-const CATEGORIES = ['all', 'wedding', 'learning', 'lifestyle', 'game'];
+const CATEGORIES = ['all', 'tool', 'wedding', 'learning', 'lifestyle', 'game'];
 
 // Module-level search engine reference
 let searchEngineInstance = null;
 
 // App data with dateAdded (format: YYYY-MM-DD) and category
 const appData = [
+  {
+    id: 'workspace-widget',
+    dateAdded: '2026-07-30',
+    category: 'tool',
+    href: '/workspace-widget/'
+  },
   {
     id: 'edu-platform',
     dateAdded: '2024-06-15',
@@ -446,7 +452,7 @@ function createAppCard(app, index) {
 
   // Create link element safely
   const linkEl = document.createElement('a');
-  linkEl.href = `/${app.id}`;
+  linkEl.href = app.href || `/${app.id}`;
   // Add haptic feedback to link button (3D press effect)
   linkEl.setAttribute('data-haptic', 'button-primary');
   const translations = getTranslations(currentLocale);

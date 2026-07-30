@@ -95,6 +95,10 @@ const translations = {
     
     // App descriptions
     apps: {
+      'workspace-widget': {
+        title: '🧩 Workspace Widget',
+        description: '앱, 폴더, URL과 로컬 서비스를 한곳에서 실행하는 Windows 11 위젯입니다.'
+      },
       'edu-platform': {
         title: '📚 교육 플랫폼',
         description: '교육 플랫폼으로 이동합니다.'
@@ -132,6 +136,7 @@ const translations = {
     // Categories
     categories: {
       all: '전체',
+      tool: '🧰 도구',
       wedding: '💒 결혼',
       learning: '📚 학습',
       lifestyle: '💰 생활',
@@ -164,6 +169,10 @@ const translations = {
     
     // App descriptions
     apps: {
+      'workspace-widget': {
+        title: '🧩 Workspace Widget',
+        description: 'A Windows 11 widget for launching apps, folders, URLs, and local services in one place.'
+      },
       'edu-platform': {
         title: '📚 Edu Platform',
         description: 'Educational platform for learning and growth.'
@@ -201,6 +210,7 @@ const translations = {
     // Categories
     categories: {
       all: 'All',
+      tool: '🧰 Tools',
       wedding: '💒 Wedding',
       learning: '📚 Learning',
       lifestyle: '💰 Lifestyle',
