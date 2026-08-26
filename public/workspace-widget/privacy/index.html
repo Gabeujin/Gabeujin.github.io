@@ -39,10 +39,10 @@
   <main id="main">
     <section class="page-hero">
       <div class="page-hero-inner shell">
-        <p class="eyebrow" data-copy="privacy.eyebrow">Policy · Version 2026-07-30</p>
+        <p class="eyebrow" data-copy="privacy.eyebrow">Policy · Version 2026-08-26</p>
         <h1 data-copy="privacy.title">Privacy Policy</h1>
         <p data-copy="privacy.intro">Workspace Widget is a local-first Windows desktop launcher. It does not include developer-operated analytics, advertising, telemetry, accounts, or a remote data-collection service.</p>
-        <p><small data-copy="common.updated">Last updated: July 30, 2026</small></p>
+        <p><small data-copy="common.updated">Last updated: August 26, 2026</small></p>
       </div>
     </section>
 
@@ -51,8 +51,10 @@
         <nav class="toc" aria-label="Policy sections">
           <a href="#device" data-copy="privacy.tocDevice">Data on the device</a>
           <a href="#network" data-copy="privacy.tocNetwork">Network requests</a>
+          <a href="#sharing" data-copy="privacy.tocSharing">Third parties and sharing</a>
           <a href="#processes" data-copy="privacy.tocProcesses">Local processes</a>
           <a href="#retention" data-copy="privacy.tocRetention">Retention and deletion</a>
+          <a href="#website" data-copy="privacy.tocWebsite">Product website</a>
           <a href="#children" data-copy="privacy.tocChildren">Children</a>
           <a href="#changes" data-copy="privacy.tocChanges">Changes and contact</a>
         </nav>
@@ -62,7 +64,10 @@
 
           <section id="device">
             <h2 data-copy="privacy.deviceTitle">Data stored on the device</h2>
-            <p data-copy="privacy.deviceBody">Workspace Widget stores your layout, appearance settings, registered shortcut targets, optional launch arguments, optional health URLs, optional local-service startup configuration, and media selections in the signed-in user's local application-data directory. These values stay on the device unless you back up, synchronize, or share that directory through another product.</p>
+            <p data-copy="privacy.deviceBody">Workspace Widget stores its data under %LOCALAPPDATA%\WorkspaceServiceWidget. This can include layout and appearance settings, shortcut targets, arguments, working directories, health URLs, local-service settings, and media choices in state.json and state.json.previous.</p>
+            <p data-copy="privacy.deviceArtifacts">The directory can also contain runtime.log and host.log diagnostic files, downloaded remote media in IconCache and MediaCache, and the WebView2 profile and cache used by an optional YouTube preview. Logs can include timestamps, local paths, configured URLs, and error details.</p>
+            <p data-copy="privacy.deviceClipboard">Workspace Widget reads an image from the clipboard only after you choose Paste image. The selected image is saved as a local PNG in IconCache.</p>
+            <p data-copy="privacy.deviceSecurity">These are ordinary local files and are not encrypted by Workspace Widget. They rely on your Windows account, file-system, and device protections.</p>
             <p><strong data-copy="privacy.deviceWarning">Shortcut arguments and URLs are plain-text local configuration. Do not put passwords, access tokens, private keys, or other secrets in them.</strong></p>
           </section>
 
@@ -70,22 +75,36 @@
             <h2 data-copy="privacy.networkTitle">Network requests</h2>
             <p data-copy="privacy.networkIntro">Workspace Widget makes network requests only for features you configure or invoke:</p>
             <ul>
-              <li data-copy="privacy.networkHealth">An optional health URL is polled to show service availability.</li>
+              <li data-copy="privacy.networkHealth">An optional health URL is polled every 30 seconds to show service availability.</li>
               <li data-copy="privacy.networkShortcut">An HTTP or HTTPS shortcut opens in your selected browser.</li>
               <li data-copy="privacy.networkMedia">Remote image or media sources are requested from their configured hosts.</li>
               <li data-copy="privacy.networkYoutube">YouTube preview playback, when enabled, connects to YouTube's privacy-enhanced embed service through Microsoft Edge WebView2.</li>
             </ul>
-            <p data-copy="privacy.networkOutro">Those services receive ordinary connection information such as your IP address and request metadata and apply their own privacy policies. Workspace Widget does not proxy those requests through a developer-operated server.</p>
+            <p data-copy="privacy.networkOutro">Your device connects directly to the selected endpoint, browser destination, media host, or YouTube/Google service. Those parties can receive ordinary connection and request information, such as IP address, user agent, requested URL, and time, and apply their own privacy policies. Workspace Widget does not proxy these requests through a developer-operated server.</p>
+            <p data-copy="privacy.networkControls">You control these connections by editing or removing the relevant health, URL, or media setting, or by not enabling a YouTube preview. WebView2 permission requests are denied by the app, and downloads and pop-up windows are blocked.</p>
+          </section>
+
+          <section id="sharing">
+            <h2 data-copy="privacy.sharingTitle">Third parties, sale, and advertising</h2>
+            <p data-copy="privacy.sharingBody">The developer does not receive personal information through Workspace Widget, sell personal information, use it for targeted advertising, or share it with a developer-operated third party. A configured endpoint, browser destination, media provider, or YouTube/Google receives request data only when you configure or invoke the corresponding feature.</p>
           </section>
 
           <section id="processes">
             <h2 data-copy="privacy.processTitle">Local processes</h2>
-            <p data-copy="privacy.processBody">The optional local-service feature starts only a project or script you select. It runs with the signed-in user's permissions. Workspace Widget does not upload the project to the developer and does not install project dependencies automatically.</p>
+            <p data-copy="privacy.processBody">The optional local-service feature starts only a Node.js project or script you select and runs it with the signed-in user's Windows permissions. That project is separate software and can have its own network behavior and privacy practices. Workspace Widget does not upload the project to the developer and does not install project dependencies automatically.</p>
           </section>
 
           <section id="retention">
             <h2 data-copy="privacy.retentionTitle">Retention and deletion</h2>
-            <p data-copy="privacy.retentionBody">The Store release is designed to keep per-user state outside the managed package so a later reinstall can restore your layout. Exact update, uninstall, and reinstall behavior will be independently verified on the Store-signed package before certification. Deleting the state directory separately permanently removes Workspace Widget's local configuration. Review the exact path and scope before deleting it.</p>
+            <p data-copy="privacy.retentionControls">You can inspect and back up the local data directory, edit or remove registered entries, disable configured network features, and exit the app from its tray menu. Removing an entry does not delete its original file, folder, application, or project, and does not automatically delete an already cached icon or media file.</p>
+            <p data-copy="privacy.retentionBody">State and recovery data persist until normal use overwrites them or you remove them. runtime.log stops growing at 4 MB. IconCache and MediaCache each enforce a 128 MB write budget and are not silently cleared by the app. Exact update, uninstall, and reinstall retention will be independently verified when a Store-signed package becomes available. This policy will be updated before general availability if observed behavior differs.</p>
+            <p data-copy="privacy.deletionBody">To remove all local data, exit Workspace Widget from its tray menu, back up the directory if needed, and then delete %LOCALAPPDATA%\WorkspaceServiceWidget using Windows. This permanently removes the app's state, recovery data, logs, managed caches, and WebView2 profile and cannot be undone. Review the resolved path and contents before deleting it.</p>
+          </section>
+
+          <section id="website">
+            <h2 data-copy="privacy.websiteTitle">Product website</h2>
+            <p data-copy="privacy.websiteBody">This website stores only language and theme preferences in browser local storage. It does not use developer-operated analytics, advertising, or advertising cookies. The site is hosted by GitHub Pages, so GitHub can process ordinary connection information under its privacy statement.</p>
+            <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer" data-copy="privacy.websiteLink">Read the GitHub General Privacy Statement</a>
           </section>
 
           <section id="children">
